@@ -1,0 +1,7 @@
+ja:
+  enums:
+    order:
+      payment_method:
+        bank_transfer: "銀行振込"
+        cod: "代金引換"
+        credit_card_payment: "クレジットカード払い"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'top' => 'top#top'
   namespace :admins do
     get 'items/index'
     get 'items/show'

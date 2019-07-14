@@ -7,4 +7,10 @@ class Item < ApplicationRecord
 	belongs_to :label
 	belongs_to :genre
 
+
+	enum sales_status:{
+		on_sales: 0,
+		stopping_sales: 1
+	}
+
 end

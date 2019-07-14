@@ -7,5 +7,10 @@ class User < ApplicationRecord
 	has_many :order_items, dependent: :destroy
 	has_many :addresses, dependent: :destroy
 
+	enum is_deleted:{
+		member: 0,
+		resigned_member: 1
+	}
+
 
 end

@@ -10,9 +10,9 @@ class Order < ApplicationRecord
 	}
 
 	enum delivery_status: {
-		reception: 0,
-		preparing_product: 1,
-		shipped: 2
+		受付: 0,
+		商品準備中: 1,
+		出荷済: 2
 	}
 
 end

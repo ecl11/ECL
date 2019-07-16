@@ -9,8 +9,8 @@ class Item < ApplicationRecord
 
 
 	enum sales_status:{
-		on_sales: 0,
-		stopping_sales: 1
+		販売中: 0,
+		販売停止中: 1
 	}
 
 end

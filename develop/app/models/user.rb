@@ -8,8 +8,8 @@ class User < ApplicationRecord
 	has_many :addresses, dependent: :destroy
 
 	enum is_deleted:{
-		member: 0,
-		resigned_member: 1
+		会員: 0,
+		退会済み: 1
 	}
 
 

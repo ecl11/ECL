@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_034327) do
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  ends
+  end
 
   create_table "songs", force: :cascade do |t|
     t.integer "disc_id"

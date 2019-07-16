@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :items, :orders, :users
-  end
+    resources :orders, :users, :items
+    end
 
   namespace :users do
     resources :carts, :items, :orders, :users

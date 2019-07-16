@@ -1,2 +1,70 @@
-<h1>Admins::Orders#show</h1>
-<p>Find me in app/views/admins/orders/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+  	<h2>注文管理</h2>
+    <div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+		配送ステータス
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li role="presentation"><a href="#">受付</a></li>
+		<li role="presentation"><a href="#">商品準備中</a></li>
+		<li role="presentation"><a href="#">出荷</a></li>
+	    <li role="presentation"><a href="#">発送完了</a></li>
+	</ul>
+    </div>
+    <div class='col-xs-12'>
+       <table class='table table-striped'>
+          <thead>
+            <tr>
+              <th>商品情報</th>
+              <th>価格</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+　　　　　　　<tr>
+	          <td></td>
+              <td>2000円</td>
+              <td>1</td>
+              <td>2000円</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class='col-xs-12'>
+     <hr>
+     <b class="text-right"><dl class="dl-horizontal"><dt>商品合計</dt><dd>4000円</dd></dl></b>
+     <hr>
+     <b class="text-right"><dl class="dl-horizontal"><dt>送料</dt><dd>500円</dd></dl></b>
+     <hr>
+     <b class="text-right"><dl class="dl-horizontal"><dt>合計</dt><dd>4500円</dd></dl></b>
+     <hr>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <hr>
+      <h3>ユーザー情報</h3>
+      <hr>
+      <p>〒 122 -0077</p>
+      <p>東京都渋谷区赤坂</p>
+      <br>
+      <p>赤坂 太郎</p>
+      <p>shirley_amiami@gmail</p>
+      <hr>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <hr>
+      <h3>配送先</h3>
+      <hr>
+      <p>〒 171-2233</p>
+      <p>東京都港区六本木4丁目-3100</p>
+      <br>
+      <p>赤坂 一</p>
+      <p>クレジットカード</p>
+      <hr>
+</div>

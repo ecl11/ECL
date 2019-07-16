@@ -1,0 +1,16 @@
+<div class="">
+  <div class="">
+    <%= f.label :description %>
+    <%= link_to_remove_association "DISCを削除する", f %>
+  </div>
+
+  <div class="">
+    <%= f.fields_for :songs do |song| %>
+      <%= render 'song_fields', f: song %>
+    <%end%>
+    <div class="">
+      <%= link_to_add_association "add song", f, :songs %>
+    </div>
+  </div>
+</div>
+

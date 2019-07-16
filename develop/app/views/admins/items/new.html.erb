@@ -1,2 +1,14 @@
 <h1>Admins::Items#new</h1>
 <p>Find me in app/views/admins/items/new.html.erb</p>
+
+
+<div id="">
+	<%= f.fields_for :discs do |disc| %>
+		<%= render 'disc_fields', f: disc %>
+	<% end %>
+	<div id="">
+		<%= link_to_add_association 'ディスクを追加する',f, :discs %>
+	</div>
+	<%= f.submit %>
+</div>
+

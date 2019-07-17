@@ -19,16 +19,16 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li>
-                <%= link_to "Items", admins_items_index_path, class: "glyphicon glyphicon-music" %>
+                <%= link_to "Items", admins_items_path, class: "glyphicon glyphicon-music" %>
               </li>
               <li>
-                <%= link_to "Orders", admins_orders_index_path, class: "glyphicon glyphicon-list-alt" %>
+                <%= link_to "Orders", admins_orders_path, class: "glyphicon glyphicon-list-alt" %>
               </li>
               <li>
-                <%= link_to 'Users',admins_users_index_path, class: "glyphicon glyphicon-user" %>
+                <%= link_to 'Users',admins_users_path, class: "glyphicon glyphicon-user" %>
               </li>
               <li>
-                <%= link_to 'Add Item',admins_items_new_path, class: "glyphicon glyphicon-plus" %>
+                <%= link_to 'Add Item',new_admins_item_path, class: "glyphicon glyphicon-plus" %>
               </li>
               <li>
                 <%= link_to "Logout", destroy_admin_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>

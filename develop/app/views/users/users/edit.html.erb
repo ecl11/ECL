@@ -1,2 +1,72 @@
-<h1>Users::Users#edit</h1>
-<p>Find me in app/views/users/users/edit.html.erb</p>
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				<h2>ECL</h2>
+			  <tbody>
+
+			  	<thead>ユーザー情報編集</thead>
+
+				<%= form_for(@user) do |f| %>
+				<tr>
+				<div class="form-group has-icon">
+					  <%= f.label :姓 %><br>
+					  <%= f.text_field :family_name, class: "family_name", autofocus: true, autocomplete: "family_name" %>
+				</div>
+				  <div>
+				  	  <%= f.label :名 %><br>
+				  	  <%= f.text_field :first_name, class: "first_name", autocomplete: "first_name" %>
+				  </div>
+			    </tr>
+			    <tr>
+			    	<div>
+			    	  <%= f.label :セイ %><br>
+			    	  <%= f.text_field :kana_family_name, class: "kana_family_name", autocomplete: "kana_family_name" %>
+			        </div>
+			        <div>
+			          <%= f.label :メイ %><br>
+			          <%= f.text_field :kana_first_name, class: "kana_first_name", autocomplete: "kana_first_name" %>
+			        </div>
+			    </tr>
+			    <tr>
+			    	<div>
+			    		<%= f.label :郵便番号(ハイフンなし) %><br>
+			    		<%= f.text_field :post_number, class: "post_number", autocomplete: "post_number" %>
+			    	</div>
+			    </tr>
+			    <tr>
+			    	<div>
+			    		<%= f.label :住所 %><br>
+			    		<%= f.text_area :address, class: "address", autocomplete: "address" %>
+			    	</div>
+			    </tr>
+			    <tr>
+			    	<div>
+			    		<%= f.label :電話番号（ハイフンなし） %><br>
+			    		<%= f.text_field :phone_nember, class: "phone_nember", autocomplete: "phone_nember" %>
+			    	</div>
+			    </tr>
+			    <tr>
+			    	<div>
+			    		<%= f.label :メールアドレス %><br>
+			    		<%= f.email_field :email, class: "email", autocomplete: "email" %>
+			    	</div>
+			    </tr>
+			    <tr>
+			    	<div>
+			    		<%= f.label :新規パスワード %><br>
+			    		<%= f.password_field :encrypted_password, class: "encrypted_password", autocomplete: "encrypted_password" %>
+			    	</div>
+			    	<div>
+			    		<%= f.label :パスワード確認 %><br>
+			    		<%= f.password_field :password_confirmation, class: "password_confirm", autocomplete: "new_password" %>
+			    	</div>
+			    </tr>
+				<% end %>
+			  </tbody>
+			</div>
+		</div>
+
+
+
+</div>

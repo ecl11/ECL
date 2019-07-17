@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
 
+	acts_as_paranoid
+
 	has_many :cart_items, dependent: :destroy
 	has_many :discs, dependent: :destroy
 	belongs_to :order_item

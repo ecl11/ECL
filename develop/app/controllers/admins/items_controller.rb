@@ -39,15 +39,10 @@ class Admins::ItemsController < ApplicationController
   end
 
   private
-<<<<<<< HEAD
 
-  def item_params
-    params.require(:item).permit(:product_name, :price, :jacket_image_id, :stock_quantity, :sales_status, :deleted_at, )
-  end
-=======
   def item_params
     params.require(:item).permit(:product_name, :price, discs_attributes: [:id, :disc_name, :_destroy,
                                                          songs_attributes: [:id, :song_name, :song_turn, :_destroy]])
+  end
 end
-end
->>>>>>> master
+

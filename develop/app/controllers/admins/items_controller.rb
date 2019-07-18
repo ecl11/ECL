@@ -34,4 +34,10 @@ class Admins::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_path
-end
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:product_name, :price, :jacket_image_id, :stock_quantity, :sales_status, :deleted_at, )
+  end

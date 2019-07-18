@@ -11,7 +11,8 @@ class Admins::ItemsController < ApplicationController
   def new
     @item = Item.new
     @disc = @item.discs.build
-    @song = @disc.songs.build
+        @disc.songs.build
+
   end
 
   def create
@@ -21,6 +22,7 @@ class Admins::ItemsController < ApplicationController
       else
         @items = Item.all
         render :index
+      end
   end
 
   def edit
@@ -34,4 +36,11 @@ class Admins::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_path
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:product_name, :price, discs_attributes: [:id, :disc_name, :_destroy,
+                                                         songs_attributes: [:id, :song_name, :song_turn, :_destroy]])
+end
 end

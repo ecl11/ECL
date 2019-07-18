@@ -1,2 +1,85 @@
-<h1>Users::Items#show</h1>
-<p>Find me in app/views/users/items/show.html.erb</p>
+
+    <main class="container">
+          <ul class="breadcrumb">
+            <li><a href="/products">商品一覧</a></li>
+            <li><span>&gt;</span></li>
+            <li><a href="/products?category_id=1">販売中</a></li>
+            <li class="active"><span>&gt;　</span>嵐アルバム</li>
+          </ul>
+          <hr class="line-bg">
+          <div id="ProductDetailArea">
+            <!--画像側-->
+            <div class="main-product">
+              <div class="sample"><img class="main" width="100%" src="/image/3/girly_coat.jpg" alt="Girly coat"></div>
+              <ul class="stock">
+                <form action="/cart/add" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="xeefTRReNnm15TT/f/HJFiIK8GixLHbJr1owdsUqigzYwQKKsHMjcXPvRqo52gCeO1XO3PC1o75tZ7Tz0VVL1Q==">
+                  <li
+                    class="ed">
+                    <p>在庫</p>
+                    <p>（5）</p>
+                    <div class="add_cart form-inline form-group"><input type="hidden" name="stock_id" id="stock_id" value="5"><input type="hidden" name="product_id" id="product_id"
+                        value="2"><select name="quantity" id="quantity"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option></select><input alt="カートに入れる" type="image" src="/assets/shoppingcart-88e880f3fdc6cd428f9c1d44e2edbd9d02b4a26267fdc7d3f553f1a285307201.png"></div>
+                    </li>
+                </form>
+              </ul>
+            </div>
+            <!--詳細側-->
+            <div class="main-detail">
+              <div class="icon">
+                <p class="new">New</p>
+              </div>
+              <p class="lot-number">商品番号：00002</p>
+              <h1>嵐アルバム</h1>
+              <p>嵐</p>
+
+              <p class="price">9,000円</p>
+              <p class="title">Detail</p>
+              <div class="DetailColor">
+                <div class=""><label for="product_code">商品名</label><br>
+                  <p>嵐アルバム</p>
+                </div>
+<div class=""><label for="product_code">アーティスト</label><br>
+                  <p>嵐</p>
+                </div>
+
+                <div class=""><label for="product_code">レーベル名</label><br>
+                  <p>ジャニーズ</p>
+                </div>
+
+                <div class=""><label for="product_code">ジャンル</label><br>
+                  <p>ポップ</p>
+                </div>
+                <div class=""><label for="product_code">価格</label><br>
+                  <p>9000円</p>
+                </div>
+
+              <div class="row">
+                <div class="col-md-6"><label>曲名<span>#ディスク1</span></label>
+                  <div class=""><label for="product_price">1.　</label><p>ああああ</p>
+                    <label
+                      for="product_price">2.　</label><p>ああああ</p></div>
+
+                  <input type="hidden" value="1" name="product[images_attributes][0][id]" id="product_images_attributes_0_id"></div>
+                <div class="col-md-6"> <label>曲名<span>#ディスク2</span></label>
+                  <div class=""><label for="product_price">1.　</label><p>ああああ</p>
+                    <label
+                      for="product_price">2.　</label><p>ああああ</p></div>
+
+                </div><input type="hidden" value="2" name="product[images_attributes][1][id]" id="product_images_attributes_1_id">
+                           </div>
+              </ul>
+            </div>
+            <div class="introduction"></div>
+            <hr class="dod">
+          </div>
+    </main>
+    <a href="#header"><img src="/assets/pagetop-7053fbcf6b6c3269aceb4494c42b36412d43007682157ae844c3fe848386cbed.gif" alt="Pagetop"></a>

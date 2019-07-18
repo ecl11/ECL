@@ -1,0 +1,16 @@
+<h1>Admins::Genres#new</h1>
+<p>Find me in app/views/admins/genres/new.html.erb</p>
+
+
+<div>
+  <h1>新規ジャンル<h1>
+  <%= form_for(@genre) do |f| %>
+  <table>
+    <tr>
+      <th>ジャンル名</th>
+      <td>
+        <%= f.text_field :genre_name  %>
+     </td>
+    <tr><%= f.submit 'このジャンルを登録する' %></tr>
+  </table>
+<% end %>

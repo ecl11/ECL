@@ -57,11 +57,16 @@
 			    		<%= f.label :新規パスワード %><br>
 			    		<%= f.password_field :encrypted_password, class: "encrypted_password", autocomplete: "encrypted_password" %>
 			    	</div>
+			    </tr>
+			    <tr>
 			    	<div>
 			    		<%= f.label :パスワード確認 %><br>
 			    		<%= f.password_field :password_confirmation, class: "password_confirm", autocomplete: "new_password" %>
 			    	</div>
 			    </tr>
+			         <div class="actions">
+			         	<%= f.submit "編集する" %>
+			         </div>
 				<% end %>
 			  </tbody>
 			</div>

@@ -18,6 +18,7 @@ class Admins::ArtistsController < ApplicationController
   end
 
   private
-  def artisit_params
+  def artist_params
     params.require(:artist).permit(:artist_name)
+  end
 end

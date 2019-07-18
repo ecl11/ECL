@@ -10,37 +10,24 @@
 
              <tbody>
             <tr>
-              <th><h6>ナマエ</h6></th>
+              <td><h4><%= @user.kana_family_name %></h4></td>
+              <td><h4><%= @user.kana_first_name %></h4></td>
             </tr>
             <tr>
-              <td><h4>モリソウタ</h4></td>
+              <td><h4><%= @user.family_name %></h4></td>
+              <td><h4><%= @user.first_name %></h4></td>
             </tr>
             <tr>
-              <th><h6>名前</h6></th>
+              <td><h4>〒<%= @user.post_number %></h4></td>
             </tr>
             <tr>
-              <td><h4>森相太</h4></td>
+              <td><h4><%= @user.address %></h4></td>
             </tr>
             <tr>
-              <th><h6>住所</h6></th>
+              <td><h4><%= @user.phone_number %></h4></td>
             </tr>
             <tr>
-              <td><h4>〒1111111</h4></td>
-            </tr>
-            <tr>
-              <td><h4>東京都板橋区高島平１２３４５６７８</h4></td>
-            </tr>
-            <tr>
-              <th><H6>電話番号</H6></th>
-            </tr>
-            <tr>
-              <td><h4>09012345678</h4></td>
-            </tr>
-            <tr>
-              <th><h6>メールアドレス</h6></th>
-            </tr>
-            <tr>
-              <td><h4>yukihirakawa@com</h4></td>
+              <td><h4><%= @user.email %></h4></td>
             </tr>
            </tbody>
         </table>

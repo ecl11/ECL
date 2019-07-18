@@ -21,4 +21,5 @@ class Admins::LabelsController < ApplicationController
   private
   def label_params
     params.require(:label).permit(:label_name)
+  end
 end

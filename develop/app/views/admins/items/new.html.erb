@@ -23,6 +23,10 @@
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
+
+        <%= link_to "アーティスト追加",admins_artists_new_path,class: "col-lg-3 btn btn-default" %>
+        <%= link_to "ジャンル追加",admins_genres_new_path,class: "col-lg-3 btn btn-default" %>
+        <%= link_to "レーベル追加",admins_labels_new_path,class: "col-lg-3 btn btn-default" %>
               <div class="form-group"><label for="product_name">商品名</label><%= f.text_field :product_name %></div>
               <div class="form-group"><label for="artist_name">アーティスト名</label><%= f.select :artist_id, Artist.all.map{|t| [t.name, t.id]} %></div>
               <div class="form-group"><label for="label_name">レーベル</label><%= f.select :label_id, Label.all.map{|t| [t.name, t.id]} %></div>

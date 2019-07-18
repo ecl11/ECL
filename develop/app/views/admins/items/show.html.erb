@@ -9,7 +9,7 @@
               <ul class="pull-right list-inline">
                 <li class="dropdown"><a class="btn btn-default" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
                   <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="/products/4"><span class="fa fa-external-link"></span> この商品をフロントで確認する</a></li>
+                    <li><%= link_to users_item_path(@item) do %><span class="fa fa-external-link"></span> この商品をフロントで確認する<% end %></li>
                   </ul>
                 </li>
                 <li><%= f.submit "保存する", class:"btn btn-primary" %></li>
@@ -28,12 +28,12 @@
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
-              <div class="form-group"><label for="product_name">商品名</label><%= f.text_field :product_name %></div>
-              <div class="form-group"><label for="artist_name">アーティスト名</label><%= f.select :artist_id, Artist.all.map{|t| [t.name, t.id]} %></div>
-              <div class="form-group"><label for="label_name">レーベル</label><%= f.select :label_id, Label.all.map{|t| [t.name, t.id]} %></div>
-              <div class="form-group"><label for="genre_name">ジャンル</label><%= f.select :genre_id, Genre.all.map{|t| [t.name, t.id]} %></div>
-              <div class="form-group"><label for="price">価格</label><%= f.text_field :price %></div>
-              <div class="form-group disc"><%= f.fields_for :discs do |f| %><label for="disc">ディスク</label><div class="test"></div><div class=""><%= f.text_field :disc_name %></div><%= f.link_to_remove "削除" %>
+              <div class="form-group"><label for="product_name">商品名</label><br><%= f.text_field :product_name %></div>
+              <div class="form-group"><label for="artist_name">アーティスト名</label><br><%= f.select :artist_id, Artist.all.map{|t| [t.name, t.id]} %></div>
+              <div class="form-group"><label for="label_name">レーベル</label><br><%= f.select :label_id, Label.all.map{|t| [t.name, t.id]} %></div>
+              <div class="form-group"><label for="genre_name">ジャンル</label><br><%= f.select :genre_id, Genre.all.map{|t| [t.name, t.id]} %></div>
+              <div class="form-group"><label for="price">価格 (税込)</label><br><%= f.text_field :price %></div>
+              <div class="form-group disc"><%= f.fields_for :discs do |f| %><label for="disc">ディスク</label><div class="test"></div><div class=""><%= f.text_field :disc_name, {placeholder: "ディスクの名前"} %></div><%= f.link_to_remove "削除" %>
               <div class="form-group"><label for="song">収録曲</label><%= f.fields_for :songs do |f| %><%= f.text_field :song_name %><%= f.link_to_remove "削除" %><% end %><%= f.link_to_add "曲を追加", :songs %></div>
               <% end %><%= f.link_to_add "ディスクを追加", :discs %>
             </div>
@@ -46,10 +46,10 @@
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
-              <div class="form-group"><label for="stock_quantity">在庫</label><%= f.text_field :stock_quantity %>
+              <div class="form-group"><label for="stock_quantity">在庫</label><br><%= f.text_field :stock_quantity %>
                 <div class="help-block">販売停止の場合は下を編集してください。</div>
               </div>
-              <div class="form-group"><label for="sales_status">販売ステータス</label><%= f.select :sales_status, Item.sales_statuses.keys.to_a, {} %>
+              <div class="form-group"><label for="sales_status">販売ステータス</label><br><%= f.select :sales_status, Item.sales_statuses.keys.to_a, {} %>
               </div>
             </div>
           </fieldset>
@@ -62,12 +62,11 @@
       </div>
       <div class="col-md-9">
         <div class="row">
-          <div class="col-md-6"><label>メイン画像</label>
-            <p><input accept="image/*" type="file" name="product[images_attributes][0][file]" id="product_images_attributes_0_file"></p>
+          <div class="col-md-6"><label>ジャケット画像</label>
+            <p><%= f.attachment_field :jacket_image %></p>
             <div
-              class="thumbnail"><img src="/image/5/leather_boots.jpg" alt="Leather boots"><label class="remove"><span><input name="product[images_attributes][0][_destroy]" type="hidden" value="0"><input type="checkbox" value="1" name="product[images_attributes][0][_destroy]" id="product_images_attributes_0__destroy"></span> <span>削除する</span> </label></div>
-          <input
-            type="hidden" value="5" name="product[images_attributes][0][id]" id="product_images_attributes_0_id"></div>
+              class="thumbnail"><%= attachment_image_tag @item, :jacket_image %><label class="remove"><span><%= f.check_box :remove_jacket_image %></span> <span>削除する</span> </label></div>
+          </div>
       </div>
       </div>
     </fieldset>
@@ -78,20 +77,55 @@
       <div class="panel-heading" data-target="#comable-danger" data-toggle="collapse" type="button"><strong><span class="fa fa-angle-down"></span> 削除する</strong></div>
       <div class="collapse" id="comable-danger">
         <div class="panel-body">
-          <p>この操作は元に戻せません。商品を削除してもよろしいですか？</p><a class="btn btn-danger" rel="nofollow" data-method="delete" href="/admin/products/4">削除する</a></div>
+          <p>この操作は元に戻せません。商品を削除してもよろしいですか？</p><%= link_to "削除する", admins_item_path(@item), method: :delete, class:"btn btn-danger" %></div>
       </div>
     </div>
     </div>
     </div>
     </main>
-    <footer>
-      <ul class="list-inline">
-        <li>elecoma</li>
-        <li><a href="https://github.com/appirits/elecoma">GitHub</a></li>
-        <li><a href="https://github.com/appirits/elecoma#ライセンス">License</a></li>
-      </ul>
-    </footer>
     </div>
   </main>
   </div>
-  <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content tagit-autocomplete" id="ui-id-1" tabindex="0" style="display: none;"></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span></body>
+
+  <script>
+
+  $(document).on('nested:fieldAdded:discs', function(event){
+    // this field was just inserted into your form
+  var field = event.field; 
+  // it's a jQuery object already! Now you can find date input
+  var addField = field.find('.add_nested_fields');
+  // and activate datepicker on it
+  
+  addField.click();
+})
+$(function() {
+  
+  function setFieldNum() {
+      $('.disc').children('div.fields:visible').each(function(index) {
+        $(this).find('.test').text($('.disc').children('div.fields:visible').index(this) + 1)
+  });
+  }
+  
+  $(document).on('nested:fieldAdded', function(e) {
+    setFieldNum();
+    var link = $(e.currentTarget.activeElement);
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length >= link.data('limit')) {
+      link.hide();
+    }
+  });
+ 
+  $(document).on('nested:fieldRemoved', function(e) {
+    setFieldNum();
+    var link = $(e.target).siblings('a.add_nested_fields');
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length < link.data('limit')) {
+      link.show();
+    }
+  });
+})
+</script>

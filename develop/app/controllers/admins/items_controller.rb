@@ -43,13 +43,13 @@ end
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to admins_items_path
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :price, discs_attributes: [:id, :disc_name, :_destroy,
+    params.require(:item).permit(:product_name, :price, :jacket_image, :remove_jacket_image, :stock_quantity, :sales_status, discs_attributes: [:id, :disc_name, :_destroy,
                                                          songs_attributes: [:id, :song_name, :song_turn, :_destroy]])
   end
 end

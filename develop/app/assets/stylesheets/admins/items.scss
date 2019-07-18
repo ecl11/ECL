@@ -42,7 +42,7 @@ display:table-header-group;
 }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width :768px) {
 .awesome_admin_layout-main {
 padding-left:0;
 }
@@ -160,7 +160,7 @@ border-color:#adadad;
 color:#333;
 }
 
-.btn-group>.btn:first-child,.btn .caret {
+.btn-group>.btn:first-child,.btn .caret,.btn-group>.btn:first-child,.btn .caret {
 margin-left:0;
 }
 
@@ -186,7 +186,6 @@ display:none;
 }
 
 .comable-page-heading {
-border-bottom:5px solid #eee;
 margin:0 -15px 25px;
 padding:25px 30px;
 }
@@ -216,7 +215,7 @@ padding-left:15px;
 padding-right:15px;
 }
 
-.container-fluid:after,.row:after,.container-fluid:after,.row:after,.container-fluid:after,.row:after,.container-fluid:after,.row:after,.panel-body:after {
+.container-fluid:after,.row:after,.container-fluid:after,.row:after,.container-fluid:after,.row:after,.container-fluid:after,.row:after,.panel-body:after,.container-fluid:after,.row:after {
 clear:both;
 }
 

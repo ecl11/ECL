@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations'
   }
 
-  namespace :admin do
+  namespace :admins do
     resources :orders, :users, :items
     end
 

@@ -1,2 +1,67 @@
-<h1>Users::Items#index</h1>
-<p>Find me in app/views/users/items/index.html.erb</p>
+<main class="container">
+  <ul class="breadcrumb">
+    <li><a href="/products">商品一覧</a></li>
+  </ul>
+  <hr class="line-bg">
+  <p class="result">検索結果：10件</p>
+  <div class="search">
+    <form action="/products" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+      <div class="hidden"><input type="hidden" name="category_id" id="category_id"><input type="submit" name="commit" value="Save changes"></div>
+      <p class="cate">表示件数</p><select name="per_page" id="per_page"><option value="20">20</option>
+<option value="40">40</option>
+<option value="60">60</option>
+<option value="100">100</option></select>
+      <p class="cate">並び替え</p><select name="order_by" id="order_by"><option value="newly">Newly</option>
+<option value="high_price">High price</option>
+<option value="low_price">Low price</option></select>
+      <p class="cate">在庫の有無</p><select name="filter_by_stocks" id="filter_by_stocks"><option value="all">All</option>
+<option value="in_stock">In stock</option>
+<option value="out_of_stock">Out of stock</option></select> </form>
+  </div>
+  <div class="box">
+    <div class="product col-sm-10">
+      <ul class="product">
+        <li class="col-sm-4"><a class="thumbnail" href="/products/4"><img width="100" src="/image/5/leather_boots.jpg" alt="Leather boots"></a>          <a href="/products/4">嵐アルバム</a> <br>嵐
+          <div class="price">28,080円</div>
+        </li>
+        <li class="col-sm-4"><a class="thumbnail" href="/products/4"><img width="100" src="/image/5/leather_boots.jpg" alt="Leather boots"></a>          <a href="/products/4">嵐アルバム</a> <br>嵐
+          <div class="price">28,080円</div>
+        </li>
+        <li class="col-sm-4"><a class="thumbnail" href="/products/2"><img width="100" src="/image/3/girly_coat.jpg" alt="Girly coat"></a>
+          <div
+            class="name"><a href="/products/2">嵐アルバム</a></div>
+    <div class="artist_name">嵐</div>
+    <div class="price">9,000円</div>
+    </li>
+    <li class="col-sm-4"><a class="thumbnail" href="/products/2"><img width="100" src="/image/3/girly_coat.jpg" alt="Girly coat"></a> <a href="/products/4">嵐アルバム</a>      <br>嵐
+      <div class="price">9,000円</div>
+    </li>
+    <li class="col-sm-4"><a class="thumbnail" href="/products/2"><img width="100" src="/image/3/girly_coat.jpg" alt="Girly coat"></a> <a href="/products/4">嵐アルバム</a>      <br>嵐
+      <div class="price">9,000円</div>
+    </li>
+    </ul>
+    <ul class="product">
+      <li class="col-sm-4"><a class="thumbnail" href="/products/1"><img width="100" src="/image/1/suede_dress.jpg" alt="Suede dress"></a> <a href="/products/4">嵐アルバム</a>        <br>嵐
+        <div class="price">6,990円</div>
+      </li>
+      <li class="col-sm-4"><a class="thumbnail" href="/products/1"><img width="100" src="/image/1/suede_dress.jpg" alt="Suede dress"></a>
+        <div
+          class="name"><a href="/products/1">嵐アルバム</a></div>
+  <div class="artist_name">嵐</div>
+  <div class="price">6,990円</div>
+  </li>
+  <li class="col-sm-4"><a class="thumbnail" href="/products/4"><img width="100" src="/image/5/leather_boots.jpg" alt="Leather boots"></a> <a href="/products/4">嵐アルバム</a>    <br>嵐
+    <div class="price">28,080円</div>
+  </li>
+  <li class="col-sm-4"><a class="thumbnail" href="/products/3"><img width="100" src="/image/4/fur_gloves.jpg" alt="Fur gloves"></a> <a href="/products/4">嵐アルバム</a>    <br>嵐
+    <div class="price">5,292円</div>
+  </li>
+  <li class="col-sm-4"><a class="thumbnail" href="/products/2"><img width="100" src="/image/3/girly_coat.jpg" alt="Girly coat"></a> <a href="/products/4">嵐アルバム</a>    <br>嵐
+    <div class="price">9,000円</div>
+  </li>
+  </ul>
+  </div>
+  <ul class="pageNav"></ul>
+  </div>
+  <!--end#mian-->
+</main> <a href="#header"><img src="/assets/pagetop-7053fbcf6b6c3269aceb4494c42b36412d43007682157ae844c3fe848386cbed.gif" alt="Pagetop"></a>

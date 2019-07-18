@@ -1,0 +1,107 @@
+<%= nested_form_for(@item, url:admins_items_path) do |f| %>
+<!--errors-->
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--end_errors-->
+
+
+  <div class="field card" style="width: 500px;">
+    <!--user-->
+    <h3>item</h3>
+    <%= f.text_field :product_name, {placeholder: "商品の名前"} %>
+    <div class="cellphone card" style="width: 400px;">
+      
+
+            <h3>artist</h3>
+
+
+      <!--cellphone-->
+      <%= f.select :artist_id, Artist.all.map{|t| [t.name, t.id]}, {placeholder: "アーティストの名前"} %>
+          <div class="app card" style="width: 300px;">
+
+
+
+      <h3>disc</h3>
+      
+
+
+      <!--cellphone-->
+      <%= f.fields_for :discs do |f| %>
+        <%= f.text_field :disc_name, {placeholder: "ディスクの名前"} %>
+        <%= f.link_to_remove "削除" %>
+        <div class="test"></div>
+          <div class="app card" style="width: 300px;">
+            <h3>song</h3>
+            
+            <!--app-->
+            <%= f.fields_for :songs do |f| %>
+              <%= f.text_field :song_name, {placeholder: "曲の名前"} %>
+              <%= f.link_to_remove "削除" %>
+            <% end %>
+            <%= f.link_to_add "曲追加", :songs, data: { limit: 5 }%>
+            <!--end_app-->
+            
+          </div>
+      <% end %>
+      <%= f.link_to_add "ディスク追加", :discs, data: { limit: 5 } %>
+      <!--end_cellphone-->
+      
+    </div>
+    <!--end_user-->
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+  
+  $(document).on('nested:fieldAdded:discs', function(event){
+    // this field was just inserted into your form
+  var field = event.field; 
+  // it's a jQuery object already! Now you can find date input
+  var addField = field.find('.add_nested_fields');
+  // and activate datepicker on it
+  
+  addField.click();
+})
+$(function() {
+  
+  function setFieldNum() {
+      $('.cellphone').children('div.fields:visible').each(function(index) {
+        $(this).find('.test').text($('.cellphone').children('div.fields:visible').index(this) + 1)
+  });
+  }
+  
+  $(document).on('nested:fieldAdded', function(e) {
+    setFieldNum();
+    var link = $(e.currentTarget.activeElement);
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length >= link.data('limit')) {
+      link.hide();
+    }
+  });
+ 
+  $(document).on('nested:fieldRemoved', function(e) {
+    setFieldNum();
+    var link = $(e.target).siblings('a.add_nested_fields');
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length < link.data('limit')) {
+      link.show();
+    }
+  });
+})
+</script>

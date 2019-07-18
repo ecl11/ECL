@@ -1,0 +1,36 @@
+<h1>Users::Addresses#new</h1>
+<p>Find me in app/views/users/addresses/new.html.erb</p>
+
+<div>
+  <h1>新規届け先<h1>
+  <%= form_for(@address) do |f| %>
+  <table>
+    <tr>
+      <th>氏名</th>
+      <td>
+        <%= f.text_field :family_name  %>
+        <%= f.text_field :first_name %>
+      </td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td>
+        <%= f.text_field :kana_family_name  %>
+        <%= f.text_field :kana_first_name  %>
+      </td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= f.text_field :post_number  %></td>
+    </tr>
+    <tr>
+      <th>住所1 :</th>
+      <td><%= f.text_field :address  %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= f.text_field :phone_number %></td>
+    </tr>
+    <tr><%= f.submit 'この住所を登録する' %></tr>
+  </table>
+<% end %>

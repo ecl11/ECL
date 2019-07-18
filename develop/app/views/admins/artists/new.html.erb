@@ -1,0 +1,16 @@
+<h1>Admins::Artists#new</h1>
+<p>Find me in app/views/admins/artists/new.html.erb</p>
+
+
+<div>
+  <h1>新規アーティスト<h1>
+  <%= form_for(@artist) do |f| %>
+  <table>
+    <tr>
+      <th>氏名</th>
+      <td>
+        <%= f.text_field :artist_name  %>
+     </td>
+    <tr><%= f.submit 'このアーティストを登録する' %></tr>
+  </table>
+<% end %>

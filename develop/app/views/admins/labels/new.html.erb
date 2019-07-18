@@ -1,0 +1,16 @@
+<h1>Admins::Labels#new</h1>
+<p>Find me in app/views/admins/labels/new.html.erb</p>
+
+
+<div>
+  <h1>新規レーベル<h1>
+  <%= form_for(@label) do |f| %>
+  <table>
+    <tr>
+      <th>レーベル名</th>
+      <td>
+        <%= f.text_field :label_name  %>
+     </td>
+    <tr><%= f.submit 'このレーベルを登録する' %></tr>
+  </table>
+<% end %>

@@ -18,7 +18,8 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
       if @item.save
-        redirect_to root_path
+                    redirect_to admins_items_path
+
       else
         @items = Item.all
         render :index
@@ -30,6 +31,13 @@ class Admins::ItemsController < ApplicationController
   end
 
   def update
+     @item = Item.find(params[:id])
+  if @item.update(item_params)
+redirect_to admins_item_path(@item.id)
+  else
+        @items = Item.all
+        render :index
+end
   end
 
   def destroy

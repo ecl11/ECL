@@ -1,0 +1,81 @@
+.box {
+border-left:1px solid #f5f5f5;
+margin:0 0 0 2px;
+}
+
+.line-bg {
+background:url(/assets/line_bg-a813561cac62b95b06857e0fc019e4a5fc30f65732026127226ef29ca634b9ec.gif);
+border:none;
+clear:both;
+display:block;
+height:11px;
+margin:18px 0 0;
+text-indent:-9999px;
+}
+
+.price {
+font-size:14px;
+margin:30px 0 20px;
+}
+
+.search {
+background:#8e8e8e;
+margin:0 0 30px;
+overflow:hidden;
+padding:8px 0 8px 100px;
+}
+
+.search p.cate {
+color:#fff;
+float:left;
+}
+
+.search select {
+float:left;
+margin:0 50px 0 5px;
+}
+
+.title {
+font-size:14px;
+margin:0;
+}
+
+dl {
+margin:0 0 0 20px;
+padding:0;
+}
+
+dt {
+font-weight:700;
+margin:0;
+}
+
+p.result {
+font-family:"メイリオ", Meiryo;
+font-size:18px;
+font-weight:700;
+margin:18px 0;
+}
+
+ul.pageNav {
+margin:0 0 10px;
+padding:10px 10px 5px;
+text-align:right;
+}
+
+ul.product {
+clear:both;
+display:inline-block;
+overflow:hidden;
+}
+
+ul.product li {
+border-bottom:#f5f5f5 1px solid;
+border-right:#f5f5f5 1px solid;
+border-top:1px solid #f5f5f5;
+display:inline;
+float:left;
+height:320px;
+padding:0 10px;
+width:134px;
+}

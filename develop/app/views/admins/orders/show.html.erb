@@ -1,18 +1,10 @@
 <div class='container'>
   <div class='row'>
-  	<h2>注文管理</h2>
-    <div class="dropdown">
-	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-		配送ステータス
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-		<li role="presentation"><a href="#">受付</a></li>
-		<li role="presentation"><a href="#">商品準備中</a></li>
-		<li role="presentation"><a href="#">出荷</a></li>
-	    <li role="presentation"><a href="#">発送完了</a></li>
-	</ul>
-    </div>
+  	<h2>注文管理/</h2><%= @order.id %><%=@order.created_at %>
+    <%= form_for(@order) do |f| %>
+      <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a,{} %>
+    <% end %>
+
     <div class='col-xs-12'>
        <table class='table table-striped'>
           <thead>
@@ -26,7 +18,7 @@
           <tbody>
 　　　　　　　<tr>
 	          <td></td>
-              <td>2000円</td>
+              <td></td>
               <td>1</td>
               <td>2000円</td>
             </tr>

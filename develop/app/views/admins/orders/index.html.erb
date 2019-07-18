@@ -1,2 +1,38 @@
-<h1>Admins::Orders#index</h1>
-<p>Find me in app/views/admins/orders/index.html.erb</p>
+<body>
+  <h2>購入履歴</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>
+      <table class="table table-striped">
+        <%= @order.each do |order| %>
+        <tbody>
+         <tr>
+           <td>
+            <% user.family_name %>
+            <% user.first_name %>
+           </td>
+           <td>
+            <%= order.created_at %>
+           </td>
+           <td>
+            <%= order.delivery_status %>
+           </td>
+           <td>
+            <%= link_to "詳細画面へ",admin_order_path(@order.id), class: "btn-sm btn-info" %>
+           </td>
+         </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </h4>
+    <%= paginate @order %>
+    </div>
+  </div>
+  
+
+</div>
+  
+
+</body>

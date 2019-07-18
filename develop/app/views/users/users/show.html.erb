@@ -1,59 +1,95 @@
- <div class="container">
+<div class="container">
 
-  	<div class="row">
+    <div class="row">
 
-  		<div class="col-lg3">
-  			<table rules="none", border="1">
-  			  <thead>
-  				   <h2>User info</h2>
-  			  </thead>
+      <div class="col-lg-3">
+        <table rules="none", border="1">
+          <thead>
+             <h2>User info</h2>
+          </thead>
 
-  			     <tbody>
-  					<tr>
-  						<th>ナマエ</th>
-  					</tr>
-  					<tr>
-  						<td><h4>:モリソウタ</h4></td>
-  					</tr>
-  					<tr>
-  						<th>名前</th>
-  					</tr>
-  					<tr>
-  						<td><h4>:森相太</h4></td>
-  					</tr>
-  					<tr>
-  						<th>住所</th>
-  					</tr>
-  					<tr>
-  						<td><h4>〒　1111111</h4></td>
-  					</tr>
-  					<tr>
-  						<td><h4>東京都板橋区高島平１２３４５６７８</h4></td>
-  					</tr>
-  					<tr>
-  						<th>電話番号</th>
-  					</tr>
-  					<tr>
-  						<td><h4>09012345678</h4></td>
-  					</tr>
-  					<tr>
-  						<th>メールアドレス</th>
-  					</tr>
-  					<tr>
-  						<td><h4>yukihirakawa@com</h4></td>
-  					</tr>
-  					
-  					
-  				 </tbody>
-  			</table>
+             <tbody>
+            <tr>
+              <th><h6>ナマエ</h6></th>
+            </tr>
+            <tr>
+              <td><h4>モリソウタ</h4></td>
+            </tr>
+            <tr>
+              <th><h6>名前</h6></th>
+            </tr>
+            <tr>
+              <td><h4>森相太</h4></td>
+            </tr>
+            <tr>
+              <th><h6>住所</h6></th>
+            </tr>
+            <tr>
+              <td><h4>〒1111111</h4></td>
+            </tr>
+            <tr>
+              <td><h4>東京都板橋区高島平１２３４５６７８</h4></td>
+            </tr>
+            <tr>
+              <th><H6>電話番号</H6></th>
+            </tr>
+            <tr>
+              <td><h4>09012345678</h4></td>
+            </tr>
+            <tr>
+              <th><h6>メールアドレス</h6></th>
+            </tr>
+            <tr>
+              <td><h4>yukihirakawa@com</h4></td>
+            </tr>
+           </tbody>
+        </table>
 
-  			<%= link_to "編集する",edit_users_user_path(@user),class: "col-lg-3 btn btn-default" %>
-  				
-  				
-  			
-  		</div>
-  	</div>
+        <%= link_to "編集する",edit_users_user(@user.id),class: "col-lg-3 btn btn-default" %>
+      </div>
+      <div class="col-lg-9">
+        <table rules="none", border="1">
+          <thead>
+            <h2>購入履歴</h2>
+          </thead>
+
+          <tbody>
+            <%= @order.each do |order| %>
+            <tr>
+              <th>
+                <%= order.created_at %>
+              </th>
+              <th>
+                <%= f.select :delivery_status, Order.delivery_status.keys.to_a,{} %>
+                <% end %>
+              </th>
+            </tr>
+            <tr>
+              <td>
+               〒<%= order.post_number %><br>
+                <%= order.address %>
+              </td>
+              <td>
+                支払い:<%= order.payment_method %><br>
+　　　　　　　　　　合計金額:<%= order.total_price %>￥<br>
+                別途送料:<%= order.shipping_fee %>￥
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= order_items.item_id(.id) %>
+              </td>
+               <td>
+                <%= order_items.price %>×<%= order_items.sheet %>=<%= order.amount %>(税込)
+              </td>
+            </tr>
+            <% end %>
+            <%= paginate @order %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 
-</div>
+

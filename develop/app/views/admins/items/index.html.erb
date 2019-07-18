@@ -89,25 +89,22 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th><a class="sort_link " href="/admin/products?hoge=112&amp;q%5Bs%5D=code+asc">商品コード</a></th>
-                  <th><a class="sort_link " href="/admin/products?hoge=112&amp;q%5Bs%5D=name+asc">商品名</a></th>
-                  <th><a class="sort_link " href="/admin/products?hoge=112&amp;q%5Bs%5D=price+asc">価格</a></th>
+                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=code+asc">商品コード</a></th>
+                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=product_name+asc">商品名</a></th>
+                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=name+asc">アーティスト名</a></th>
+                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=price+asc">価格</a></th>
                   <th>在庫</th>
                 </tr>
               </thead>
               <tbody>
                 <% @items.each do |item| %>
                 <tr>
-                  <td class="comable-image"><a class="thumbnail" href="/admin/products/4"><img width="100%" src="/image/5/leather_boots.jpg" alt="Leather boots"></a></td>
-                  <td><a href="/admin/products/4">00004</a></td>
+                  <td class="comable-image"><%= link_to admins_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, width: "100%" %><% end %></td>
+                  <td><%= link_to admins_item_path(item.id) do %><%= item.id %><% end %></td>
                   <td><%= item.product_name %></td>
-                  <td>28,080円</td>
-                  <td>
-                    <ul class="list-unstyled">
-                      <li><strong class="text-danger">0</strong> <span>(S)</span></li>
-                      <li><strong class="text-danger">0</strong> <span>(M)</span></li>
-                      <li><strong class="text-danger">0</strong> <span>(L)</span></li>
-                    </ul>
+                  <td></td>
+                  <td><%= item.price %></td>
+                  <td><%= item.stock_quantity %>
                   </td>
                 </tr>
                 <% end %>

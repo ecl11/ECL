@@ -1,4 +1,4 @@
-<%= nested_form_for(@item, url:admins_items_path) do |f| %>
+<%= nested_form_for(@item, url:admins_item_path(@item.id)) do |f| %>
   <div id="awesome_admin_layout">
   <main class="awesome_admin_layout-main">
     <div class="awesome_admin_layout-navigation-toggle"> <i class="fa fa-bars"></i> </div>
@@ -71,7 +71,8 @@
       </div>
       </div>
     </fieldset>
-    </form>
+    <% end %>
+
     <hr>
     <div class="panel panel-danger">
       <div class="panel-heading" data-target="#comable-danger" data-toggle="collapse" type="button"><strong><span class="fa fa-angle-down"></span> 削除する</strong></div>

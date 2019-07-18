@@ -70,3 +70,5 @@ gem "cocoon"
 gem 'paranoia'
 gem 'kaminari', '~> 1.1.1'
 
+gem "font-awesome-rails"
+gem "nested_form"

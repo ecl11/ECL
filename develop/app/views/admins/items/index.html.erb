@@ -9,104 +9,34 @@
               <li>
                 <div class="btn-group" role="group">
                   <%= paginate @items %>
-
-                  <div class="btn btn-default" disabled="disabled">&lt;</div>
-                  <div class="btn btn-default" disabled="disabled">&gt;</div>
                 </div>
               </li>
               <li><a href="/"></a><a class="btn btn-default" href="/admins/items/new">新規作成</a></li>
             </ul>
-            <h1 class="page-header">商品管理 <small>4 件</small></h1>
+            <h1 class="page-header">商品管理 </h1>
           </div>
           <div class="comable-page-body">
-            <div class="comable-search">
-              <form class="product_search" id="product_search" action="/admin/products" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-                <div class="input-group"><span class="input-group-btn"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><i class="fa fa-search"></i> <span class="caret"></span></button>
-                  <ul
-                    class="dropdown-menu" role="menu">
-                    <li><a data-toggle="collapse" data-target="#comable-advanced-search" href="javascript:void(0)">詳細検索</a></li>
-                    <li><a href="/admin/products">検索条件をクリア</a></li>
-                    </ul>
-                    </span><input class="form-control" type="text" name="q[code_or_name_cont_any_splitted]" id="q_code_or_name_cont_any_splitted">
-                    <span
-                      class="input-group-btn"><input type="submit" name="commit" value="検索" class="btn btn-default"></span>
-                </div>
-                <fieldset>
-                  <div class="collapse" id="comable-advanced-search">
-                    <div class="well">
-                      <fieldset class="fields" data-object-name="q[g][new_grouping]">
-                        <fieldset class="fields condition" data-object-name="q[g][new_grouping][c][new_condition]">
-                          <div class="row">
-                            <div class="col-sm-2"><span class="fields" data-object-name="q[g][new_grouping][c][new_condition][a][0]"><select name="q[g][new_grouping][c][new_condition][a][0][name]" id="q_g_new_grouping_c_new_condition_a_0_name"><option value=""></option>
-<optgroup label="Product"><option value="id">ID</option>
-<option value="name">商品名</option>
-<option value="code">商品コード</option>
-<option value="price">価格</option>
-<option value="caption">キャプション</option>
-<option value="sku_h_item_name">SKU横軸項目名</option>
-<option value="sku_v_item_name">SKU縦軸項目名</option>
-<option value="created_at">Created at</option>
-<option value="updated_at">Updated at</option></optgroup><optgroup label="Stock"><option value="stocks_id">ID</option>
-<option value="stocks_code">SKU商品コード</option>
-<option value="stocks_quantity">在庫</option>
-<option value="stocks_sku_h_choice_name">SKU横軸選択肢名</option>
-<option value="stocks_sku_v_choice_name">SKU縦軸選択肢名</option>
-<option value="stocks_created_at">Created at</option>
-<option value="stocks_updated_at">Updated at</option></optgroup></select></span></div>
-                            <div class="col-sm-2"><select name="q[g][new_grouping][c][new_condition][p]" id="q_g_new_grouping_c_new_condition_p"><option value="lteq">以下</option>
-<option value="gteq">以上</option>
-<option value="eq_any_splitted">完全一致</option>
-<option value="cont_any_splitted">部分一致</option></select></div>
-                            <div class="col-sm-7"><span class="fields value" data-object-name="q[g][new_grouping][c][new_condition][v][0]"><input type="text" name="q[g][new_grouping][c][new_condition][v][0][value]" id="q_g_new_grouping_c_new_condition_v_0_value"></span></div>
-                            <div
-                              class="col-sm-1 text-center"><button class="ransack remove_fields comable-remove-button">×</button></div>
-                    </div>
-                    </fieldset><button class="ransack add_fields btn btn-link" data-field-type="condition" data-content="<fieldset class=&quot;fields condition&quot; data-object-name=&quot;q[g][new_grouping][c][new_condition]&quot;><div class=&quot;row&quot;><div class=&quot;col-sm-2&quot;><span class=&quot;fields&quot; data-object-name=&quot;q[g][new_grouping][c][new_condition][a][0]&quot;><select name=&quot;q[g][new_grouping][c][new_condition][a][0][name]&quot; id=&quot;q_g_new_grouping_c_new_condition_a_0_name&quot;><option value=&quot;&quot;></option>
-<optgroup label=&quot;Product&quot;><option value=&quot;id&quot;>ID</option>
-<option value=&quot;name&quot;>商品名</option>
-<option value=&quot;code&quot;>商品コード</option>
-<option value=&quot;price&quot;>価格</option>
-<option value=&quot;caption&quot;>キャプション</option>
-<option value=&quot;sku_h_item_name&quot;>SKU横軸項目名</option>
-<option value=&quot;sku_v_item_name&quot;>SKU縦軸項目名</option>
-<option value=&quot;created_at&quot;>Created at</option>
-<option value=&quot;updated_at&quot;>Updated at</option></optgroup><optgroup label=&quot;Stock&quot;><option value=&quot;stocks_id&quot;>ID</option>
-<option value=&quot;stocks_code&quot;>SKU商品コード</option>
-<option value=&quot;stocks_quantity&quot;>在庫</option>
-<option value=&quot;stocks_sku_h_choice_name&quot;>SKU横軸選択肢名</option>
-<option value=&quot;stocks_sku_v_choice_name&quot;>SKU縦軸選択肢名</option>
-<option value=&quot;stocks_created_at&quot;>Created at</option>
-<option value=&quot;stocks_updated_at&quot;>Updated at</option></optgroup></select></span></div><div class=&quot;col-sm-2&quot;><select name=&quot;q[g][new_grouping][c][new_condition][p]&quot; id=&quot;q_g_new_grouping_c_new_condition_p&quot;><option value=&quot;lteq&quot;>以下</option>
-<option value=&quot;gteq&quot;>以上</option>
-<option value=&quot;eq_any_splitted&quot;>完全一致</option>
-<option value=&quot;cont_any_splitted&quot;>部分一致</option></select></div><div class=&quot;col-sm-7&quot;><span class=&quot;fields value&quot; data-object-name=&quot;q[g][new_grouping][c][new_condition][v][0]&quot;><input type=&quot;text&quot; name=&quot;q[g][new_grouping][c][new_condition][v][0][value]&quot; id=&quot;q_g_new_grouping_c_new_condition_v_0_value&quot; /></span></div><div class=&quot;col-sm-1 text-center&quot;><button class=&quot;ransack remove_fields comable-remove-button&quot;>×</button></div></div></fieldset>">検索条件を追加</button>
-                    </fieldset>
-                  </div>
-            </div>
-            </fieldset>
-            </form>
-          </div>
           <section>
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th></th>
-                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=code+asc">商品コード</a></th>
-                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=product_name+asc">商品名</a></th>
-                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=name+asc">アーティスト名</a></th>
-                  <th><a class="sort_link " href="/admins/items?hoge=112&amp;q%5Bs%5D=price+asc">価格</a></th>
+                  <th>商品コード</th>
+                  <th>商品名</th>
+                  <th>アーティスト名</th>
+                  <th>価格</th>
                   <th>在庫</th>
                 </tr>
               </thead>
               <tbody>
                 <% @items.each do |item| %>
                 <tr>
-                  <td class="comable-image"><%= link_to admins_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, width: "100%" %><% end %></td>
+                  <td class="comable-image"><%= link_to admins_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, width: "100%", fallback:"no_image.jpg" %><% end %></td>
                   <td><%= link_to admins_item_path(item.id) do %><%= item.id %><% end %></td>
                   <td><%= item.product_name %></td>
-                  <td></td>
-                  <td><%= item.price %></td>
-                  <td><%= item.stock_quantity %>
+                  <td><% if item.artist.present? %><%= item.artist.artist_name %><% end %></td>
+                  <td>(税込) <%= item.price %> 円</td>
+                  <td><%= item.stock_quantity %> 枚
                   </td>
                 </tr>
                 <% end %>

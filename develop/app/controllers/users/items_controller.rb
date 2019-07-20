@@ -1,7 +1,6 @@
 class Users::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).per(20)
-
   end
 
   def show
@@ -10,7 +9,7 @@ class Users::ItemsController < ApplicationController
   end
 
   def add
-  	@cart_item = Item.find(params[:id])
+  	@cart_item = CartItem.find(params[:id])
   	@cart_item.save
   	redirect_to cart_items_path
   end

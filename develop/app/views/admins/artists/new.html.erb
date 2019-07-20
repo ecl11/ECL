@@ -4,7 +4,7 @@
 
 <div>
   <h1>新規アーティスト<h1>
-  <%= form_for(@artist) do |f| %>
+  <%= form_for [:admins, @artist] do |f| %>
   <table>
     <tr>
       <th>氏名</th>

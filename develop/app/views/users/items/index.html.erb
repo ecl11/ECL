@@ -1,51 +1,22 @@
   <div id="wrap">
     <main class="container">
-      <div id="menu">
-      </div>
-      <div id="main">
-        <ul class="breadcrumb">
-          <li><a href="/users/items">商品一覧</a></li>
-        </ul>
-        <hr class="line-bg">
-        <p class="result">検索結果：10件</p>
+      <div id="main" class="clearfix">
+        <ul class="breadcrumb"><li><a href="users/items">商品一覧</a></li></ul>
         <div class="search">
-          <form action="/products" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-            <div class="hidden"><input type="hidden" name="category_id" id="category_id"><input type="submit" name="commit" value="Save changes"></div>
-            <div
-              id="per_page">
-              <p class="cate">表示件数</p><select name="per_page" id="per_page"><option value="20">20</option>
-<option value="40">40</option>
-<option value="60">60</option>
-<option value="100">100</option></select></div>
-        <div id="order_by">
-          <p class="cate">並び替え</p><select name="order_by" id="order_by"><option value="newly">Newly</option>
-<option value="high_price">High price</option>
-<option value="low_price">Low price</option></select></div>
-        <div id="filter_by_stocks">
-          <p class="cate">在庫の有無</p><select name="filter_by_stocks" id="filter_by_stocks"><option value="all">All</option>
-<option value="in_stock">In stock</option>
-<option value="out_of_stock">Out of stock</option></select></div>
-        </form>
+                            <%= paginate @items %>
       </div>
       <div class="box">
         <div class="product col-sm-12">
-          <ul class="product">
-            <% @items.each do |item| %>
-
-            <li class="col-sm-4"><%= link_to users_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, width: "100", fallback:"no_image.jpg" %><% end %>
-              <div class="product_name"><%= link_to users_item_path(item.id) do %><%= item.product_name %><% end %></div>
-              <div class="artist_name">嵐</div>
-              <div class="price">￥<%= item.price %>　(税込)</div>
-            </li><% end %>
-          </ul>
+                            <% @items.each do |item| %>
+            <div class="col-sm-3"><div class="iiage"><%= link_to users_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %><% end %></div>
+              <div class="name"><%= link_to admins_item_path(item.id) do %><%= item.product_name %><% end %></div>
+              <div class="artist_name"><% if item.artist.present? %><%= item.artist.artist_name %><% end %></div>
+        <div class="price">(税込) <%= item.price %> 円</div>
+        </div><% end %>
 
   </div>
-  <ul class="pageNav"></ul>
   </div>
   </div>
   <!--end#mian-->
   </main>
-  </div>
-  <div id="pagetop">
-    <div class="pagetop"><a href="#header"><img src="/assets/pagetop-7053fbcf6b6c3269aceb4494c42b36412d43007682157ae844c3fe848386cbed.gif" alt="Pagetop"></a></div>
   </div>

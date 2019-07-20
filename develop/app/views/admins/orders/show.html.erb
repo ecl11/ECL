@@ -9,18 +9,23 @@
        <table class='table table-striped'>
           <thead>
             <tr>
-              <th>商品情報</th>
+              <th></th>
+              <th>商品名</th>
+              <th>アーティスト名</th>
               <th>価格</th>
               <th>個数</th>
               <th>小計</th>
             </tr>
           </thead>
           <tbody>
-　　　　　　　<tr>
-	          <td></td>
-              <td></td>
-              <td>1</td>
-              <td>2000円</td>
+　　　　　　　<% @order_items.each do |order_item| %>
+              <tr>
+	              <td><%= attachment_image_tag @order, :jacket_image,size: '100x100', fallback: "no_image.jpg" %></td>
+                <td><%= oreder_item.item.product_name %></td>
+                <td><%= oreder_item.item.artist.artist_name %></td>
+                <td><%= oreder_item.price %></td>
+                <td><%= oreder_item.sheet %></td>
+                <td><%= oreder_item.price * oreder_item.sheet %></td>
             </tr>
           </tbody>
         </table>
@@ -40,8 +45,8 @@
       <hr>
       <h3>ユーザー情報</h3>
       <hr>
-      <p>〒 122 -0077</p>
-      <p>東京都渋谷区赤坂</p>
+      <p>〒<%= @user.address.post_number %></p>
+      <p><%= @user.address.address %></p>
       <br>
       <p>赤坂 太郎</p>
       <p>shirley_amiami@gmail</p>

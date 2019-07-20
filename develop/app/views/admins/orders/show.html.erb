@@ -1,6 +1,9 @@
 <div class='container'>
   <div class='row'>
-  	<h2>注文管理/</h2><%= @order.id %><%=@order.created_at %>
+  	<h2>注文管理/</h2>
+    <%= @order.id %>
+    <%=@order.created_at %>
+    <%= @order.delivery_status %>
     <%= form_for(@order) do |f| %>
       <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a,{} %>
     <% end %>
@@ -21,22 +24,23 @@
 　　　　　　　<% @order_items.each do |order_item| %>
               <tr>
 	              <td><%= attachment_image_tag @order, :jacket_image,size: '100x100', fallback: "no_image.jpg" %></td>
-                <td><%= oreder_item.item.product_name %></td>
-                <td><%= oreder_item.item.artist.artist_name %></td>
-                <td><%= oreder_item.price %></td>
-                <td><%= oreder_item.sheet %></td>
-                <td><%= oreder_item.price * oreder_item.sheet %></td>
-            </tr>
+                <td><%= order_item.item.product_name %></td>
+                <td><%= order_item.item.artist.artist_name %></td>
+                <td><%= order_item.price.to_i %>円</td>
+                <td><%= order_item.sheet %></td>
+                <td><%= order_item.subtotal.to_i %>円</td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
     </div>
     <div class='col-xs-12'>
      <hr>
-     <b class="text-right"><dl class="dl-horizontal"><dt>商品合計</dt><dd>4000円</dd></dl></b>
+     <b class="text-right"><dl class="dl-horizontal"><dt>商品合計</dt><dd><%= @order.total_price.to_i %>円</dd></dl></b>
      <hr>
      <b class="text-right"><dl class="dl-horizontal"><dt>送料</dt><dd>500円</dd></dl></b>
      <hr>
-     <b class="text-right"><dl class="dl-horizontal"><dt>合計</dt><dd>4500円</dd></dl></b>
+     <b class="text-right"><dl class="dl-horizontal"><dt>合計</dt><dd><%= @order.amount.to_i %>円</dd></dl></b>
      <hr>
     </div>
   </div>
@@ -45,11 +49,11 @@
       <hr>
       <h3>ユーザー情報</h3>
       <hr>
-      <p>〒<%= @user.address.post_number %></p>
+      <p>〒<%= @user.address.post_number.to_s %></p>
       <p><%= @user.address.address %></p>
       <br>
-      <p>赤坂 太郎</p>
-      <p>shirley_amiami@gmail</p>
+      <p><%= @user.address.name %></p>
+      <p><%= @user.email %></p>
       <hr>
     </div>
   </div>
@@ -58,10 +62,12 @@
       <hr>
       <h3>配送先</h3>
       <hr>
-      <p>〒 171-2233</p>
-      <p>東京都港区六本木4丁目-3100</p>
+      <p>〒<%= @order.post_number.to_s %></p>
+      <p><%= @order.address %></p>
       <br>
-      <p>赤坂 一</p>
-      <p>クレジットカード</p>
+      <p><%= @order.name %></p>
+      <p><%= @order.payment_method %></p>
       <hr>
+    </div>
+  </div>
 </div>

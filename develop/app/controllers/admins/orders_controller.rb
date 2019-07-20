@@ -10,5 +10,16 @@ class Admins::OrdersController < ApplicationController
   end
 
   def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    if @order.save
+      flash[:notice] = "You have creatad delivery status successfully."
+      redirect_to order_path(@order)
+    end
   end
+
+  private
+    def order_params
+        params.require(:order).permit(:delivery_status)
+    end
 end

@@ -1,11 +1,12 @@
 class Admins::ArtistsController < ApplicationController
   def new
-    @artist = Artist.new(artist_params)
+    @artist = Artist.new
   end
 
   def create
+    @artist = Artist.new(artist_params)
     @artist.save
-    redirect_to item_path
+    redirect_to new_admins_item_path
   end
 
   def edit
@@ -13,6 +14,7 @@ class Admins::ArtistsController < ApplicationController
   end
 
   def update
+    @artisit = Artist.find(params[:id])
     @artisit.update(artist_params)
     redirect_to item_path
   end

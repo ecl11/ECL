@@ -1,19 +1,21 @@
 class Admins::LabelsController < ApplicationController
 
   def new
-    @label = Label.new(label_params)
+    @label = Label.new
   end
 
   def create
+    @label = Label.new(label_params)
     @label.save
-    redirect_to item_path
+    redirect_to new_admins_item_path
   end
 
   def edit
-    @label = label.find(params[:id])
+    @label = Label.find(params[:id])
   end
 
   def update
+    @label = Label.find(params[:id])
     @label.update(label_params)
     redirect_to item_path
   end

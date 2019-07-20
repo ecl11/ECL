@@ -1,39 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'artists/new'
-    get 'artists/create'
-    get 'artists/index'
-    get 'artists/edit'
-    get 'artists/update'
-  end
-  namespace :admins do
-    get 'genres/new'
-    get 'genres/create'
-    get 'genres/index'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admins do
-    get 'labels/new'
-    get 'labels/create'
-    get 'labels/index'
-    get 'labels/edit'
-    get 'labels/update'
-  end
-  namespace :users do
-    get 'addresses/new'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/index'
-    get 'addresses/update'
-  end
-  namespace :admins do
-    get 'addresses/new'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/index'
-    get 'addresses/update'
-  end
+
   get 'top' => 'top#top'
 
   devise_for :admins, :controllers => {
@@ -47,7 +13,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :orders, :users, :items
+    resources :orders, :users, :items, :artists, :genres, :discs, :songs, :labels
     end
 
   namespace :users do

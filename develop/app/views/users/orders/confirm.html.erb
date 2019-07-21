@@ -93,12 +93,9 @@
             <p><span>クロネコ</span></p>
           </div>
           <div class="btn-inner">
-            <form class="edit_order" id="edit_order" action="/order" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ay/kYf5giIEXAsxn8ywlKljjxmSRxoxXaaHHST+S2XVih//tFeMLL+ltlIy0H4cBSlGVCGDgw834Px1bta+MiA==">
-              <input
-                type="submit" name="commit" value="この内容で注文する" class="btn"></form>
+              <%= f.submit "この内容で注文する", class:"btn" %><% end %>
           </div>
       </div>
     </main>
   </div>
 
- 

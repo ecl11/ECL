@@ -1,4 +1,4 @@
-<%= nested_form_for(@item, url:admins_item_path(@item.id)) do |f| %>
+
   <div id="awesome_admin_layout">
   <main class="awesome_admin_layout-main">
     <div class="awesome_admin_layout-navigation-toggle"> <i class="fa fa-bars"></i> </div>
@@ -69,15 +69,27 @@
       <div class="col-md-9">
         <div class="row">
           <div class="col-md-6"><label>ジャケット画像</label>
-            <p><%= :jacket_image %></p>
-            <div class="thumbnail"><%= attachment_image_tag @item, :jacket_image %></div>
+            <p><%= :jacket_image %></p>:
+            <div class="thumbnail">
+              <%= attachment_image_tag @item, :jacket_image %></div>
           </div>
 
+          <div>
+          <% if user_signed_in? %>
+            <%= form_for(@cart_item, url: users_carts_path) do |f| %>
+            <%= f.number_field :sheet, in:0..30 %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit "カートに追加" %>
+            <% end %>
+          <% else %>
+              <div class="go-cart"><%= link_to "カートに入れる", new_user_session_path %></div>
+          <% end %>
+        </div>
 
       </div>
       </div>
     </fieldset>
-    <% end %>
 
 　   </div>
     </main>

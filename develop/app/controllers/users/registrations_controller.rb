@@ -5,14 +5,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+    @user = User.new
+    @user.addresses.build
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @user = User.new(configure_sign_up_params)
+    @user.save
+  end
 
   # GET /resource/edit
   # def edit
@@ -42,12 +46,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name, :first_name, :kana_family_name, :kana_first_name, :phone_number, address_attributes: [:post_number, :address]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:family_name, :first_name, :kana_family_name, :kana_first_name, :phone_number, address_attributes: [:post_number, :address]])
   end
 
   # The path used after sign up.

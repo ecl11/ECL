@@ -1,100 +1,129 @@
-!--end#heder-->
-  <hr class="line">
-  <div id="wrap">
-    <main class="container">
-      <div id="menu">
-        <div class="category">
-          <p class="title">カテゴリーから探す</p>
-          <dl id="acMenu"><dt class="audative">衣類</dt>
-            <dd style="display: none;">
-              <p><a href="/products?category_id=1">全てを見る</a></p>
-              <p><a href="/products?category_id=35">test</a></p>
-            </dd><dt class="audative">カラー</dt>
-            <dd style="display: none;">
-              <p><a href="/products?category_id=46">全てを見る</a></p>
-              <p><a href="/products?category_id=47">ネイビー</a></p>
-            </dd><dt class="audative">素敵</dt>
-            <dd style="display: none;">
-              <p><a href="/products?category_id=250">全てを見る</a></p>
-              <p><a href="/products?category_id=251">春物</a></p>
-              <p><a href="/products?category_id=252">夏物</a></p>
-            </dd>
-          </dl>
-        </div>
-        <div class="sns-banner"><a href="https://twitter.com/elecoma"><img src="/assets/TwitterLogo-cd0752f3a3a71fd481997dac4f13f4c71d123c70cd1aec2ab5e5018c476d6aea.png" alt="Twitterlogo"></a>
-          <a
-            href="https://www.facebook.com/pages/elecoma/108866442480194"><img src="/assets/FB-f-Logo_blue_90-62880da1ea18cfa4f6c8c75a7d273e56022c35bc4a99a00eb002f3693670d540.png" alt="Fb f logo blue 90"></a>
-        </div>
-      </div>
-      <div id="contents">
-        <div id="main">
-          <ul class="breadcrumb">
-            <li><a href="/products">商品一覧</a></li>
-            <li><span>&gt;</span></li>
-            <li><a href="/products?category_id=1">衣類</a></li>
-            <li class="active"><span>&gt;　</span>本革ロングブーツ</li>
-          </ul>
-          <hr class="line-bg">
-          <div id="ProductDetailArea">
-            <!--画像側-->
-            <div class="main-product">
-              <div class="sample"><img class="main" width="100%" src="/image/5/leather_boots.jpg" alt="Leather boots"></div>
-              <ul class="stock">
-                <form action="/cart/add" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="yriJvs+tUUBL1RLysPCfsfOOSRHhDOZRYvS1y10jzwHDEJIyJC7S7rW6Shn3wz2a4TwafRAqqcvzam/Z1x6a/A==">
-                  <li
-                    class="ed">
-                    <p></p>
-                    <p>S（0）</p>
-                    <p></p>
-                    <div class="sold_out">品切れ</div>
-                    <p></p>
-                    </li>
-                </form>
-                <form action="/cart/add" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="yriJvs+tUUBL1RLysPCfsfOOSRHhDOZRYvS1y10jzwHDEJIyJC7S7rW6Shn3wz2a4TwafRAqqcvzam/Z1x6a/A==">
-                  <li
-                    class="ed">
-                    <p></p>
-                    <p>M（0）</p>
-                    <p></p>
-                    <div class="sold_out">品切れ</div>
-                    <p></p>
-                    </li>
-                </form>
-                <form action="/cart/add" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="yriJvs+tUUBL1RLysPCfsfOOSRHhDOZRYvS1y10jzwHDEJIyJC7S7rW6Shn3wz2a4TwafRAqqcvzam/Z1x6a/A==">
-                  <li
-                    class="ed">
-                    <p></p>
-                    <p>L（0）</p>
-                    <p></p>
-                    <div class="sold_out">品切れ</div>
-                    <p></p>
-                    </li>
-                </form>
+<%= nested_form_for(@item, url:admins_item_path(@item.id)) do |f| %>
+  <div id="awesome_admin_layout">
+  <main class="awesome_admin_layout-main">
+    <div class="awesome_admin_layout-navigation-toggle"> <i class="fa fa-bars"></i> </div>
+    <div id="wrapper" class=" ">
+      <main class="container-fluid">
+        <div class="comable-page">
+            <div class="comable-page-heading">
+              <ul class="pull-right list-inline">
+                <li class="dropdown"><a class="btn btn-default" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><%= link_to users_item_path(@item) do %><span class="fa fa-external-link"></span> この商品をフロントで確認する<% end %></li>
+                  </ul>
+                </li>
               </ul>
+              <h1 class="page-header">
+                <ol class="breadcrumb">
+                  <li><a href="/admins/items">商品管理</a></li>
+                  <li class="active"><%= @item.product_name%></li>
+                </ol>
+              </h1>
             </div>
-            <!--詳細側-->
-            <div class="main-detail">
-              <div class="icon">
-                <p class="new">New</p>
+          <div class="comable-page-body">
+          <fieldset>
+            <div class="col-md-3">
+              <legend>一般</legend>
+              <div class="help-block"></div>
+            </div>
+            <div class="col-md-9">
+
+              <div class="form-group"><label for="product_name">商品名</label><br>
+                <%= :product_name %></div>
+              <div class="form-group"><label for="artist_name">アーティスト名</label><br>
+                <%= :artist_name %></div>
+              <div class="form-group"><label for="label_name">レーベル</label><br>
+                <%= :label_name %></div>
+              <div class="form-group"><label for="genre_name">ジャンル</label><br>
+                <%= :genre_name %></div>
+              <div class="form-group"><label for="price">価格 (税込)</label><br>
+                <%= :price %></div>
+
+              <div class="form-group disc">
+                <% @discs.each do |discs| %>
+                  <label for="disc">ディスク</label><div class="test"></div>
+                  <%= discs.disc_name %>
+                <div class="form-group">
+                 <label for="song">収録曲</label>
+                  <% discs.songs.each do |songs| %>
+                    <%= songs.song_name %>
+                  <% end %>
+                <% end %>
+
+              <div class="form-group"><label for="stock_quantity">在庫</label><br>
+                <%= :stock_quantity %></div>
+              <div class="form-group"><label for="sales_status">販売状況</label><br>
+                <%= :sales_status %></div>
+
+
               </div>
-              <p class="lot-number">商品番号：00004</p>
-              <h1>本革ロングブーツ</h1>
-              <p class="price">28,080円</p>
-              <p class="title">Detail</p>
-              <ul class="DetailColor">
-                <li><img src="/image/5/leather_boots.jpg" alt="Leather boots"></li>
-                <li><img src="/image/6/leather_boots_front.jpg" alt="Leather boots front"></li>
-                <li><img src="/image/7/leather_boots_back.jpg" alt="Leather boots back"></li>
-              </ul>
             </div>
-            <div class="introduction"></div>
-            <hr class="dod">
           </div>
-        </div>
+          </fieldset>
+
+    <fieldset>
+      <div class="col-md-3">
+        <legend>画像</legend>
+        <div class="help-block"></div>
       </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-6"><label>ジャケット画像</label>
+            <p><%= :jacket_image %></p>
+            <div class="thumbnail"><%= attachment_image_tag @item, :jacket_image %></div>
+          </div>
+
+
+      </div>
+      </div>
+    </fieldset>
+    <% end %>
+
+　   </div>
     </main>
+    </div>
+  </main>
   </div>
-  <div id="pagetop">
-    <div class="pagetop"><a href="#header"><img src="/assets/pagetop-7053fbcf6b6c3269aceb4494c42b36412d43007682157ae844c3fe848386cbed.gif" alt="Pagetop"></a></div>
-  </div>
-  
+
+  <script>
+
+  $(document).on('nested:fieldAdded:discs', function(event){
+    // this field was just inserted into your form
+  var field = event.field;
+  // it's a jQuery object already! Now you can find date input
+  var addField = field.find('.add_nested_fields');
+  // and activate datepicker on it
+
+  addField.click();
+})
+$(function() {
+
+  function setFieldNum() {
+      $('.disc').children('div.fields:visible').each(function(index) {
+        $(this).find('.test').text($('.disc').children('div.fields:visible').index(this) + 1)
+  });
+  }
+
+  $(document).on('nested:fieldAdded', function(e) {
+    setFieldNum();
+    var link = $(e.currentTarget.activeElement);
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length >= link.data('limit')) {
+      link.hide();
+    }
+  });
+
+  $(document).on('nested:fieldRemoved', function(e) {
+    setFieldNum();
+    var link = $(e.target).siblings('a.add_nested_fields');
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length < link.data('limit')) {
+      link.show();
+    }
+  });
+})
+</script>

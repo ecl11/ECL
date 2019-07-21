@@ -12,7 +12,9 @@
               <div class="name"><%= link_to users_item_path(item.id) do %><%= item.product_name %><% end %></div>
               <div class="artist_name"><% if item.artist.present? %><%= item.artist.artist_name %><% end %></div>
         <div class="price">(税込) <%= item.price %> 円</div>
-        </div><% end %>
+
+        </div>
+        <% end %>
 
   </div>
   </div>

@@ -5,13 +5,13 @@ class Admins::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @discs =@item.discs
+    @discs = @item.discs
   end
 
   def new
     @item = Item.new
     @disc = @item.discs.build
-        @disc.songs.build
+    @songs = @disc.songs.build
 
   end
 

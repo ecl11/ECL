@@ -18,10 +18,10 @@
               <td><h4><%= @user.first_name %></h4></td>
             </tr>
             <tr>
-              <td><h4>〒<%= @user.post_number %></h4></td>
+              <td><h4>〒<%= @address.post_number %></h4></td>
             </tr>
             <tr>
-              <td><h4><%= @user.address %></h4></td>
+              <td><h4><%= @address.address %></h4></td>
             </tr>
             <tr>
               <td><h4><%= @user.phone_number %></h4></td>
@@ -32,7 +32,7 @@
            </tbody>
         </table>
 
-        <%= link_to "編集する",edit_users_user(@user.id),class: "col-lg-3 btn btn-default" %>
+        <%= link_to "編集する",edit_users_user_path(current_user),class: "col-lg-3 btn btn-default" %>
       </div>
       <div class="col-lg-9">
         <table rules="none", border="1">
@@ -41,14 +41,14 @@
           </thead>
 
           <tbody>
-            <%= @order.each do |order| %>
+            <%= @orders.each do |order| %>
             <tr>
               <th>
                 <%= order.created_at %>
               </th>
               <th>
                 <%= f.select :delivery_status, Order.delivery_status.keys.to_a,{} %>
-                <% end %>
+                
               </th>
             </tr>
             <tr>
@@ -64,7 +64,7 @@
             </tr>
             <tr>
               <td>
-                <%= order_items.item_id(.id) %>
+                <%= order_items.item_id %>
               </td>
                <td>
                 <%= order_items.price %>×<%= order_items.sheet %>=<%= order.amount %>(税込)
@@ -72,6 +72,7 @@
             </tr>
             <% end %>
             <%= paginate @order %>
+
           </tbody>
         </table>
       </div>

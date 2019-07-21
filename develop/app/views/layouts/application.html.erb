@@ -25,7 +25,7 @@
                 <%= link_to "Items", users_items_path, class: "glyphicon glyphicon-music" %>
               </li>
               <li>
-                <%= link_to "My page", users_user_path, class: "glyphicon glyphicon-user" %>
+                <%= link_to "My page", users_user_path(current_user), class: "glyphicon glyphicon-user" %>
               </li>
               <li>
                 <%= link_to "Cart", users_carts_path, class: "glyphicon glyphicon-shopping-cart" %>

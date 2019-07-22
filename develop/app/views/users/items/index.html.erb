@@ -1,24 +1,36 @@
   <div id="wrap">
     <main class="container">
-      <div id="main" class="clearfix">
-        <ul class="breadcrumb"><li><a href="users/items">商品一覧</a></li></ul>
+      <div id="main">
+        <ul class="breadcrumb">
+          <li><a href="/users/items">商品一覧</a></li>
+        </ul>
+        <hr class="line-bg">
+        <p class="result">検索結果：<%= @items.count %>件</p>
         <div class="search">
-                            <%= paginate @items %>
-      </div>
-      <div class="box">
-        <div class="product col-sm-12">
-                            <% @items.each do |item| %>
-            <div class="col-sm-3"><div class="iiage"><%= link_to users_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %><% end %></div>
-              <div class="name"><%= link_to users_item_path(item.id) do %><%= item.product_name %><% end %></div>
-              <div class="artist_name"><% if item.artist.present? %><%= item.artist.artist_name %><% end %></div>
-        <div class="price">(税込) <%= item.price %> 円</div>
-
-        </div>
+        <%= form_tag users_items_path, :method => 'get' do %>
+          <p><%= text_field_tag :search, params[:search] %>
+             <%= submit_tag "Search", :product_name => nil %></p>
         <% end %>
-
+        </div>
+        <div id="per_page">
+        <p class="cate"><%= paginate @items %></p>
+        </div>
+        <div class="box">
+        <div class="product col-sm-10">
+          <ul class="product">
+            <% @items.each do |item| %>
+            <li class="col-sm-4"><%= link_to users_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %><% end %>
+              <div
+                class="name"><%= link_to users_item_path(item.id) do %><%= item.product_name %><% end %></div>
+              <div
+                class="name"><% if item.artist.present? %><%= item.artist.artist_name %><% end %></div>
+        <div class="price"><%= item.price %>円</div>
+        </li>
+        <% end %>
+  </ul>
   </div>
   </div>
   </div>
-  <!--end#mian-->
   </main>
   </div>
+

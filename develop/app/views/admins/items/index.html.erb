@@ -1,48 +1,52 @@
+<body data-page="products:index" id="comable-product">
   <div id="awesome_admin_layout">
   <main class="awesome_admin_layout-main">
-    <div class="awesome_admin_layout-navigation-toggle"> <i class="fa fa-bars"></i> </div>
     <div id="wrapper" class=" ">
       <main class="container-fluid">
         <div class="comable-page">
           <div class="comable-page-heading">
             <ul class="pull-right list-inline">
-              <li>
-                <div class="btn-group" role="group">
-                  <%= paginate @items %>
-                </div>
-              </li>
               <li><a href="/"></a><a class="btn btn-default" href="/admins/items/new">新規作成</a></li>
             </ul>
-            <h1 class="page-header">商品管理 </h1>
+            <h1 class="page-header">商品管理 <small><%= @items.count %> 件</small></h1>
           </div>
           <div class="comable-page-body">
+            <div class="comable-search">
+              <%= form_tag admins_items_path, :method => 'get' do %>
+              <p><%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Search", :product_name => nil %></p>
+              <% end %>
+            </div>
           <section>
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th></th>
-                  <th>商品コード</th>
-                  <th>商品名</th>
-                  <th>アーティスト名</th>
-                  <th>価格</th>
+                  <th><a class="sort_link">商品コード</a></th>
+                  <th><a class="sort_link">商品名</a></th>
+                  <th><a class="sort_link">アーティスト名</a></th>
+                  <th><a class="sort_link">価格</a></th>
                   <th>在庫</th>
                 </tr>
               </thead>
               <tbody>
                 <% @items.each do |item| %>
                 <tr>
-                  <td class="comable-image"><%= link_to admins_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, width: "100%", fallback:"no_image.jpg" %><% end %></td>
+                  <td class="comable-image"><%= link_to admins_item_path(item.id), class: "thumbnail" do %><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %><% end %></td>
                   <td><%= link_to admins_item_path(item.id) do %><%= item.id %><% end %></td>
                   <td><%= item.product_name %></td>
                   <td><% if item.artist.present? %><%= item.artist.artist_name %><% end %></td>
-                  <td>(税込) <%= item.price %> 円</td>
-                  <td><%= item.stock_quantity %> 枚
+                  <td><%= item.price %>円</td>
+                  <td>
+                    <ul class="list-unstyled">
+                      <li><strong class="text-success"><%= item.stock_quantity %></strong></li>
+                    </ul>
                   </td>
                 </tr>
                 <% end %>
               </tbody>
             </table>
-            <div class="text-center"></div>
+            <div class="text-center"><%= paginate @items %></div>
           </section>
         </div>
     </div>
@@ -50,3 +54,4 @@
     </div>
   </main>
   </div>
+</body>

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
 
   namespace :users do
-    resources :carts, :items, :orders, :users, :addresses
+    resources :carts, :items, :orders, :users, :cart_items, :addresses
   end
 
 

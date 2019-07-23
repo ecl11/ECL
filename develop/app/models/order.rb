@@ -2,6 +2,7 @@ class Order < ApplicationRecord
 
 	has_many :order_items, dependent: :destroy
 	belongs_to :user
+	accepts_nested_attributes_for :order_items, allow_destroy: true
 
 	enum payment_method: {
 		bank_transfer: 0,

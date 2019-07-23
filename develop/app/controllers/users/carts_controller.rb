@@ -1,8 +1,16 @@
 class Users::CartsController < ApplicationController
 
   def index
+    @user = current_user
   	@cart_items = CartItem.all
+    @item = Item
   end
+
+    def show
+      @user = current_user
+
+     @cart_item = CartItem.find(params[:id])
+end
 
   def create
   	@cart_item = CartItem.new(cart_item_params)
@@ -11,6 +19,9 @@ class Users::CartsController < ApplicationController
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to users_carts_path
   end
 
   def destroy

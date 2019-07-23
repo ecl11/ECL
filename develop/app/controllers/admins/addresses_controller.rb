@@ -2,7 +2,6 @@ class Admins::AddressesController < ApplicationController
 
 
 
-
 ##途中です
 
   def new

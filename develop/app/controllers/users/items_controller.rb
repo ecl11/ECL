@@ -1,7 +1,7 @@
 class Users::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page]).per(20)
+    @items = Item.page(params[:page]).per(20).search(params[:search])
   end
 
   def show

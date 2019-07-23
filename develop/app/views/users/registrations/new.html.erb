@@ -23,18 +23,6 @@
     <%= f.text_field :kana_first_name, autofocus: true %>
   </div>
 
-  <%= f.fields_for :address do |address| %>
-    <div class="field">
-      <%= address.label "郵便番号(ハイフンなし)" %><br />
-      <%= address.number_field :post_number, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= address.label "住所" %><br />
-      <%= address.text_field :address, autofocus: true %>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :phone_number, "電話番号(ハイフンなし)" %><br />
     <%= f.number_field :phone_number, autofocus: true %>

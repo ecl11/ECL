@@ -1,6 +1,8 @@
 class Users::UsersController < ApplicationController
   def show
   	@user = current_user
+    @address = Address.find(params[:id])
+    @address = @user.addresses.all
   end
 
   def edit

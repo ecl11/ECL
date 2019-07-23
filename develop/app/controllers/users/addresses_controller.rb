@@ -8,7 +8,7 @@ class Users::AddressesController < ApplicationController
   end
 
   def create
-    @adress = Address.new(address_params)
+    @address = Address.new(address_params)
     @address.user_id = current_user.id
     @address.save
     redirect_to users_items_path
@@ -21,6 +21,6 @@ class Users::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:family_name, :first_name, :kana_family_name, :kana_first_name, :post_number, :address, :phone_number)
+    params.require(:address).permit(:user_id, :family_name, :first_name, :kana_family_name, :kana_first_name, :post_number, :address, :phone_number)
   end
 end

@@ -1,7 +1,8 @@
 class Users::CartsController < ApplicationController
 
   def index
-  	@cart_items = CartItem.all
+  	@cart_items = CartItem.where(user_id: current_user.id)
+
   end
 
   def create

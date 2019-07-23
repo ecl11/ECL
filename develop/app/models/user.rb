@@ -14,5 +14,10 @@ class User < ApplicationRecord
 		退会済み: 1
 	}
 
+	def total_price
+		cart_items = CartItem.where(user_id: id)
+		cart_items.to_a.sum{|cart_item|cart_item.items_price}
+	end
+
 
 end

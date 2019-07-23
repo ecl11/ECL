@@ -1,9 +1,6 @@
-<h1>Users::Addresses#new</h1>
-<p>Find me in app/views/users/addresses/new.html.erb</p>
 
-<div>
-  <h1>新規届け先<h1>
-  <%= form_for(@address) do |f| %>
+  <h1>住所登録<h1>
+  <%= form_for(@address, url: users_addresses_path) do |f| %>
   <table>
     <tr>
       <th>氏名</th>

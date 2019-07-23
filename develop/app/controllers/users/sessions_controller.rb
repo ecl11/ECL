@@ -21,7 +21,11 @@ class Users::SessionsController < Devise::SessionsController
   # protected
 
   def after_sign_in_path_for(resource)
-    users_items_path
+    if current_user.addresses.count == 0
+      new_users_address_path
+    else
+      users_items_path
+    end
   end
 
   def after_sign_out_path_for(resource)

@@ -11,10 +11,4 @@ class CartItem < ApplicationRecord
 		item.price.to_i * sheet.to_i
 	end
 
-	def  total_price
-		
-	end
-
-
-
 end

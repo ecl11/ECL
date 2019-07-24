@@ -1,100 +1,156 @@
-<%= nested_form_for(@order) do |f| %>
 
-<div id="wrap">
-    <main class="container">
-      <div id="wrap">
-        <h2>注文内容を確認</h2>
-        <hr class="line-bg">
-        <table class="cart">
-          <tbody>
-            <tr>
-              <th>商品画像</th>
-              <th>品番・品名・詳細</th>
-              <th>数量</th>
-              <th>単価（税込）</th>
-              <th>小計</th>
-              <th>削除</th>
-            </tr>
-            <%= f.fields_for :order_items do |f| %>
-            <% @user.cart_items.each do |cart_item| %>
-            <%= form.hidden_field :item_id, value: @cart_item.item_id, required: true %>
-            <%= form.hidden_field :sheet, value: @cart_item.sheet, required: true %>
-            <%= form.hidden_field :price, value: @cart_item.price, required: true %>
-            <tr>
-             <% sum = 0 %>
-              <td class="center"><%= link_to users_item_path(item.id) do %><%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %></td>
-              <td>
-                <div class="code"><%= cart_item.item.id %></div>
-                <div class="name"><%= cart_item.item.product_name %></div>
-                <div class="caption"><%= cart_item.item.artist.artist_name %></div>
-              </td>
-              <td class="center"><%= cart_item.sheet %></td>
-              <td class="right"><%= cart_item.price %>円</td>
-              <% sub_total = cart_item.price.to_i * cart_item.sheet.to_i %><% sum+=sub_total %>
-              <td class="right"><%= sub_total %></td>
-              <td class="center"><%= link_to "delete", users_cart_item_path(@cart_item), method: :delete %></td>
-            </tr>
-            <% end %>
-            <% end %>
-            <tr>
-              <td>合計</td>
-              <td class="right" colspan="5"><%= sum %>円</td>
-              <%= f.hidden_field :total_price, :value => sum %>
-            </tr>
-            <tr>
-              <% shipping_fee = 500 %>
-              <td>送料</td>
-              <td class="right" colspan="5"><%= shipping_fee %></td>
-              <%= f.hidden_field :shipping_fee, :value => shipping_fee %>
-            </tr>
-            <tr>
-              <td>総額</td>
-              <% amount = sum.to_i + 500 %>
-              <td class="right" colspan="5"><%= amount %>円</td>
-              <%= f.hidden_field :amount, :value => amount %>
-            </tr>
-          </tbody>
-          </table>
-          <p class="title">注文者情報</p>
-          <div class="box">
-            <table class="nonmember-ordre">
-              <tbody>
-                <tr></tr>
-                <tr>
-                  <th>姓</th>
-                  <td><%= form.text_field :family_name, value: @user.family_name, required: true %></td>
-                </tr>
-                <tr>
-                  <th>名</th>
-                  <td><%= form.text_field :first_name, value: @user.first_name, required: true %></td>
-                </tr>
-                <tr>
-                  <th>郵便番号</th>
-                  <td><%= form.text_field :post_number, value: @user.address.post_number, required: true %></td>
-                </tr>
-                <tr>
-                  <th>住所</th>
-                  <td><%= form.text_field :address, value: @user.address.address, required: true %></td>
-                </tr>
-                <tr>
-                  <th>電話番号</th>
-                  <td><%= form.text_field :phone_number, value: @user.address.phone_number, required: true %></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="title">決済方法等</p>
-          <div class="box">
-            <p><span><%= f.select :payment_method, Order.payment_methods.keys.to_a, {} %></span></p>
-          </div>
-          <p class="title">配送方法</p>
-          <div class="box">
-            <p><span>クロネコ</span></p>
-          </div>
-          <div class="btn-inner">
-              <%= f.submit "この内容で注文する", class:"btn" %><% end %>
-          </div>
+<div id="awesome_admin_layout">
+  <main class="awesome_admin_layout-main">
+    <div id="wrapper" class=" ">
+      <main class="container-fluid">
+        <div class="comable-page">
+          <%= nested_form_for(@item, url:admins_item_path(@item.id)) do |f| %>
+          <div class="comable-page-heading">
+              <ul class="pull-right list-inline">
+                <li class="dropdown"><a class="btn btn-default" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><%= link_to users_item_path(@item) do %><span class="fa fa-external-link"></span> この商品をフロントで確認する<% end %></li>
+                    <li class="divider"></li>
+                  </ul>
+                </li>
+                <li><%= f.submit "保存する", class:"btn btn-primary" %></li>
+              </ul>
+              <h1 class="page-header">
+                <ol class="breadcrumb">
+                  <li><a href="/admins/items">商品管理</a></li>
+                  <li class="active"><%= @item.product_name%></li>
+                </ol>
+              </h1>
+            </div>
+
+  <div class="comable-page-body">
+          <fieldset>
+            <div class="col-md-3">
+              <legend>一般</legend>
+              <div class="help-block"></div>
+            </div>
+            <div class="col-md-9">
+              <div class="form-group"><label for="product_name">商品名</label><br><%= f.text_field :product_name %></div>
+
+              <div class="row">
+              <div class="col-md-6">
+              <div class="form-group"><label for="product_name">アーティスト名</label><br><%= f.select :artist_id, Artist.all.map{|t| [t.artist_name, t.id]} %></div></div>
+              <div class="col-md-6">
+              <div class="row">
+              <div class="col-md-6">
+                <%= link_to "アーティストを追加",new_admins_artist_path %>
+              </div></div></div></div>
+
+              <div class="row">
+              <div class="col-md-6">
+              <div class="form-group"><label for="product_caption">ジャンル</label><br><%= f.select :genre_id, Genre.all.map{|t| [t.genre_name, t.id]} %></div></div>
+              <div class="col-md-6">
+              <div class="row">
+              <div class="col-md-6">
+                <%= link_to "ジャンルを追加",new_admins_genre_path %>
+              </div></div></div></div>
+
+              <div class="row">
+              <div class="col-md-6">
+              <div class="form-group"><label for="product_name">レーベル</label><br><%= f.select :label_id, Label.all.map{|t| [t.label_name, t.id]} %></div></div>
+              <div class="col-md-6">
+              <div class="row">
+              <div class="col-md-6">
+                <%= link_to "レーベルを追加",new_admins_label_path %>
+              </div></div></div></div>
+
+              <div class="form-group"><label for="product_price">価格</label><br><%= f.text_field :price %></div>
+              <% sum = 1 %>
+              <%= f.fields_for :discs do |f| %>
+              <div class="form-group"><label for="product_categories">ディスク<%= sum %></label></div><div class=""><%= f.hidden_field :disc_name, {placeholder: sum} %></div><%= f.link_to_remove "削除する" %>
+              <% summer = 1 %>
+              <%= f.fields_for :songs do |f| %>
+              <div class="form-group"><label for="product_price"><%= summer %>．</label><br><%= f.text_field :song_name %><%= f.link_to_remove "削除する" %><% summer += 1 %><br><% end %><%= f.link_to_add "曲を追加", :songs %></div><% sum += 1 %><br><% end %><%= f.link_to_add "ディスクを追加", :discs %>
+            </div>
+            
+          </fieldset>
+    <hr>
+    <fieldset>
+      <div class="col-md-3">
+        <legend>在庫</legend>
       </div>
+      <div class="col-md-9">
+        <div class="form-group"><label for="product_sku_h_item_name">在庫数</label><br><%= f.text_field :stock_quantity %>
+          <div class="help-block">SKUを利用する場合はこの項目を記入してください。</div>
+        </div>
+        <div class="form-group"><label for="product_sku_v_item_name">販売状況</label><br><%= f.select :sales_status, Item.sales_statuses.keys.to_a, {} %></div>
+      </div>
+    </fieldset>
+    <hr>
+    <fieldset>
+      <div class="col-md-3">
+        <legend>画像</legend>
+        <div class="help-block"></div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-6"><label>ジャケット画像</label>
+            <p><%= f.attachment_field :jacket_image %></p>
+            <div class="thumbnail"><%= attachment_image_tag @item, :jacket_image %><label class="remove"><span><%= f.check_box :remove_jacket_image %></span> <span>削除する</span> </label></div>
+            </div>
+      </div>
+      </div>
+    </fieldset>
+    <% end %>
+  </div>
+    <hr>
+    <div class="panel panel-danger">
+      <div class="panel-heading" data-target="#comable-danger" data-toggle="collapse" type="button"><strong><span class="fa fa-angle-down"></span> 削除する</strong></div>
+      <div class="collapse" id="comable-danger">
+        <div class="panel-body">
+          <p>この操作は元に戻せません。商品を削除してもよろしいですか？</p><%= link_to "削除する", admins_item_path(@item), method: :delete, class:"btn btn-danger" %></div>
+      </div>
+    </div>
+    </div>
     </main>
+    </div>
+  </main>
   </div>
 
+ <script>
+
+  $(document).on('nested:fieldAdded:discs', function(event){
+    // this field was just inserted into your form
+  var field = event.field; 
+  // it's a jQuery object already! Now you can find date input
+  var addField = field.find('.add_nested_fields');
+  // and activate datepicker on it
+
+  addField.click();
+})
+$(function() {
+
+  function setFieldNum() {
+      $('.disc').children('div.fields:visible').each(function(index) {
+        $(this).find('.test').text($('.disc').children('div.fields:visible').index(this) + 1)
+  });
+  }
+
+  $(document).on('nested:fieldAdded', function(e) {
+    setFieldNum();
+    var link = $(e.currentTarget.activeElement);
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length >= link.data('limit')) {
+      link.hide();
+    }
+  });
+
+  $(document).on('nested:fieldRemoved', function(e) {
+    setFieldNum();
+    var link = $(e.target).siblings('a.add_nested_fields');
+    if (!link.data('limit')) {
+      return;
+    }
+    if (link.siblings('.fields:visible').length < link.data('limit')) {
+      link.show();
+    }
+  });
+})
+</script>

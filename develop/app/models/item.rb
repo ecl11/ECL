@@ -1,4 +1,4 @@
-　class Item < ApplicationRecord
+class Item < ApplicationRecord
 
 	acts_as_paranoid
 

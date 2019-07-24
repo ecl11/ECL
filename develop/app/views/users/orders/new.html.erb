@@ -68,6 +68,18 @@
                   <th>名</th>
                   <td><%= f.text_field :first_name, value: @user.first_name, required: true %></td>
                 </tr>
+                <tr>
+                <th>郵便番号</th>
+                  <td><%= f.text_field :post_number, value: @user.addresses.first.post_number, required: true %></td>
+                </tr>
+                <tr>
+                  <th>住所</th>
+                  <td><%= f.text_field :address, value: @user.addresses.first.address, required: true %></td>
+                </tr>
+                <tr>
+                  <th>電話番号</th>
+                  <td><%= f.text_field :phone_number, value: @user.addresses.first.phone_number, required: true %></td>
+                </tr>
               </tbody>
             </table>
           </div>

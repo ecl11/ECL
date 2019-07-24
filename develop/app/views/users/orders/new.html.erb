@@ -1,5 +1,5 @@
 
-<%= nested_form_for(@order) do |f| %>
+<%= nested_form_for(@order, url:users_orders_path(@order.id)) do |f| %>
 
 <div id="wrap">
     <main class="container">
@@ -16,24 +16,23 @@
               <th>小計</th>
               <th>削除</th>
             </tr>
+            <% sum = 0 %>
             <%= f.fields_for :order_items do |f| %>
             <% @user.cart_items.each do |cart_item| %>
-            <%= form.hidden_field :item_id, value: @cart_item.item_id, required: true %>
-            <%= form.hidden_field :sheet, value: @cart_item.sheet, required: true %>
-            <%= form.hidden_field :price, value: @cart_item.price, required: true %>
+            <%= f.hidden_field :item_id, value: cart_item.item_id, required: true %>
+            <%= f.hidden_field :sheet, value: cart_item.sheet, required: true %>
             <tr>
-             <% sum = 0 %>
-              <td class="center"><%= link_to users_item_path(item.id) do %><%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %></td>
+              <td class="center"><%= link_to users_item_path(cart_item.item.id) do %><%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %><% end %></td>
               <td>
                 <div class="code"><%= cart_item.item.id %></div>
                 <div class="name"><%= cart_item.item.product_name %></div>
                 <div class="caption"><%= cart_item.item.artist.artist_name %></div>
               </td>
               <td class="center"><%= cart_item.sheet %></td>
-              <td class="right"><%= cart_item.price %>円</td>
-              <% sub_total = cart_item.price.to_i * cart_item.sheet.to_i %><% sum+=sub_total %>
+              <td class="right"><%= cart_item.item.price %>円</td>
+              <% sub_total = cart_item.item.price.to_i * cart_item.sheet.to_i %><% sum += sub_total %>
               <td class="right"><%= sub_total %></td>
-              <td class="center"><%= link_to "delete", users_cart_item_path(@cart_item), method: :delete %></td>
+              <td class="center"><%= link_to "delete", users_cart_path(cart_item), method: :delete %></td>
             </tr>
             <% end %>
             <% end %>
@@ -63,23 +62,11 @@
                 <tr></tr>
                 <tr>
                   <th>姓</th>
-                  <td><%= form.text_field :family_name, value: @user.family_name, required: true %></td>
+                  <td><%= f.text_field :family_name, value: @user.family_name, required: true %></td>
                 </tr>
                 <tr>
                   <th>名</th>
-                  <td><%= form.text_field :first_name, value: @user.first_name, required: true %></td>
-                </tr>
-                <tr>
-                  <th>郵便番号</th>
-                  <td><%= form.text_field :post_number, value: @user.address.post_number, required: true %></td>
-                </tr>
-                <tr>
-                  <th>住所</th>
-                  <td><%= form.text_field :address, value: @user.address.address, required: true %></td>
-                </tr>
-                <tr>
-                  <th>電話番号</th>
-                  <td><%= form.text_field :phone_number, value: @user.address.phone_number, required: true %></td>
+                  <td><%= f.text_field :first_name, value: @user.first_name, required: true %></td>
                 </tr>
               </tbody>
             </table>

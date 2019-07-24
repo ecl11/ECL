@@ -30,11 +30,11 @@
               <% end %>
               </td>
               <td class="right"><%= cart_item.item.price %>円</td>
-              <% sub_total = cart_item.item.price.to_i * cart_item.sheet.to_i %>
-              <td class="right"><%= sub_total %>円</td>
+              <td class="right"><%= cart_item.sub_total %>円</td>
               <td class="center"><%= link_to "delete", users_cart_path(cart_item), method: :delete %></td>
             </tr>
             <% end %>
+
   </tbody>
   </table>
   <div class="btn-inner">

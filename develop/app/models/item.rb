@@ -26,4 +26,3 @@
 	}
 	attachment :jacket_image
 end
-end

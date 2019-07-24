@@ -1,141 +1,52 @@
 
-  <div id="awesome_admin_layout">
-  <main class="awesome_admin_layout-main">
-    <div class="awesome_admin_layout-navigation-toggle"> <i class="fa fa-bars"></i> </div>
-    <div id="wrapper" class=" ">
-      <main class="container-fluid">
-        <div class="comable-page">
-            <div class="comable-page-heading">
-              <ul class="pull-right list-inline">
-                <li class="dropdown"><a class="btn btn-default" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-right">
-                    <li><%= link_to users_item_path(@item) do %><span class="fa fa-external-link"></span> この商品をフロントで確認する<% end %></li>
-                  </ul>
-                </li>
+
+  <div id="wrap">
+    <main class="container">
+      <div id="contents">
+        <div id="main">
+          <ul class="breadcrumb">
+            <li><a href="/users/items">商品一覧</a></li>
+            <li class="active"><span>&gt;　</span><%= @item.product_name %></li>
+          </ul>
+          <hr class="line-bg">
+          <div id="ProductDetailArea">
+            <div class="main-product">
+              <div class="sample"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, format: 'jpeg', fallback:"no_image.jpg" %></div>
+              <ul class="stock">
+                    <%= form_for(@cart_item, url: users_carts_path) do |f| %>
+                <li class="ed">
+                    <p>在庫</p>
+                    <p>（<%= @item.stock_quantity %>）</p>
+                    <div class="add_cart form-inline form-group">
+                    <% if user_signed_in? %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :item_id, value: @item.id %>
+                    <%= f.number_field :sheet, in:1..10 %>
+                    <%= f.submit "カートに入れる" %>
+                    <% else %>
+                    <%= link_to "カートに入れる", new_user_session_path %>
+                    <% end %>
+                    </div>
+                    </li>
+                    <% end %>
               </ul>
-              <h1 class="page-header">
-                <ol class="breadcrumb">
-                  <li><a href="/admins/items">商品管理</a></li>
-                  <li class="active"><%= @item.product_name%></li>
-                </ol>
-              </h1>
             </div>
-          <div class="comable-page-body">
-          <fieldset>
-            <div class="col-md-3">
-              <legend>一般</legend>
-              <div class="help-block"></div>
+            <!--詳細側-->
+            <div class="main-detail">
+              <p class="lot-number">商品番号：<%= @item.id %></p>
+              <h1><%= @item.product_name %></h1>
+              <h1><% if @item.artist.present? %><%= @item.artist.artist_name %><% end %></h1>
+              <p class="price"><%= @item.price %>円</p>
             </div>
-            <div class="col-md-9">
-
-              <div class="form-group"><label for="product_name">商品名</label><br>
-                <%= :product_name %></div>
-              <div class="form-group"><label for="artist_name">アーティスト名</label><br>
-                <%= :artist_name %></div>
-              <div class="form-group"><label for="label_name">レーベル</label><br>
-                <%= :label_name %></div>
-              <div class="form-group"><label for="genre_name">ジャンル</label><br>
-                <%= :genre_name %></div>
-              <div class="form-group"><label for="price">価格 (税込)</label><br>
-                <%= :price %></div>
-
-              <div class="form-group disc">
-                <% @discs.each do |discs| %>
-                  <label for="disc">ディスク</label><div class="test"></div>
-                  <%= discs.disc_name %>
-                <div class="form-group">
-                 <label for="song">収録曲</label>
-                  <% discs.songs.each do |songs| %>
-                    <%= songs.song_name %>
-                  <% end %>
-                <% end %>
-
-              <div class="form-group"><label for="stock_quantity">在庫</label><br>
-                <%= :stock_quantity %></div>
-              <div class="form-group"><label for="sales_status">販売状況</label><br>
-                <%= :sales_status %></div>
-
-
-              </div>
+            <div class="introduction">
+              ジャンル：<% if @item.genre.present? %><%= @item.genre.genre_name %><% end %><br><br>
+              レーベル：<% if @item.label.present? %><%= @item.label.label_name %><% end %><br><br>
+              <% sum = 1 %><% @item.discs.each do |discs| %>
+ディスク<%= sum %><br><% summer = 1 %><% discs.songs.each do |songs| %><%= summer %>． <%= songs.song_name %><% summer += 1 %><br><% end %><% sum += 1 %><br><% end %>
             </div>
+            <hr class="dod">
           </div>
-          </fieldset>
-
-    <fieldset>
-      <div class="col-md-3">
-        <legend>画像</legend>
-        <div class="help-block"></div>
-      </div>
-      <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-6"><label>ジャケット画像</label>
-            <p><%= :jacket_image %></p>:
-            <div class="thumbnail">
-              <%= attachment_image_tag @item, :jacket_image %></div>
-          </div>
-
-          <div>
-          <% if user_signed_in? %>
-            <%= form_for(@cart_item, url: users_carts_path) do |f| %>
-            <%= f.number_field :sheet, in:0..30 %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.submit "カートに追加" %>
-            <% end %>
-          <% else %>
-              <div class="go-cart"><%= link_to "カートに入れる", new_user_session_path %></div>
-          <% end %>
         </div>
-
       </div>
-      </div>
-    </fieldset>
-
-　   </div>
     </main>
-    </div>
-  </main>
   </div>
-
-  <script>
-
-  $(document).on('nested:fieldAdded:discs', function(event){
-    // this field was just inserted into your form
-  var field = event.field;
-  // it's a jQuery object already! Now you can find date input
-  var addField = field.find('.add_nested_fields');
-  // and activate datepicker on it
-
-  addField.click();
-})
-$(function() {
-
-  function setFieldNum() {
-      $('.disc').children('div.fields:visible').each(function(index) {
-        $(this).find('.test').text($('.disc').children('div.fields:visible').index(this) + 1)
-  });
-  }
-
-  $(document).on('nested:fieldAdded', function(e) {
-    setFieldNum();
-    var link = $(e.currentTarget.activeElement);
-    if (!link.data('limit')) {
-      return;
-    }
-    if (link.siblings('.fields:visible').length >= link.data('limit')) {
-      link.hide();
-    }
-  });
-
-  $(document).on('nested:fieldRemoved', function(e) {
-    setFieldNum();
-    var link = $(e.target).siblings('a.add_nested_fields');
-    if (!link.data('limit')) {
-      return;
-    }
-    if (link.siblings('.fields:visible').length < link.data('limit')) {
-      link.show();
-    }
-  });
-})
-</script>

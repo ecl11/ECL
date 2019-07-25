@@ -7,9 +7,6 @@
       <main class="container-fluid">
         <div class="comable-page">
             <div class="comable-page-heading">
-              <ul class="pull-right list-inline">
-                <li><%= f.submit "保存する", class:"btn btn-primary" %></li>
-              </ul>
               <h1 class="page-header">
                 <ol class="breadcrumb">
                   <li><a href="/admins/items">商品管理</a></li>
@@ -24,25 +21,27 @@
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
-              <%= link_to "アーティスト追加",new_admins_artist_path,class: "col-lg-3 btn btn-default" %>
-              <%= link_to "ジャンル追加",new_admins_genre_path,class: "col-lg-3 btn btn-default" %>
-              <%= link_to "レーベル追加",new_admins_label_path,class: "col-lg-3 btn btn-default" %>
+              <br>
+              <br>
               <div class="form-group">
                 <label for="product_name">商品名</label><br>
                 <%= f.text_field :product_name %>
               </div>
               <div class="form-group">
                 <label for="artist_name">アーティスト名</label><br>
-                <%= f.select :artist_id, Artist.all.map{|t| [t.artist_name, t.id]} %>
+                <%= f.select :artist_id, Artist.all.map{|t| [t.artist_name, t.id]} %><br>
+                <%= link_to "アーティスト追加",new_admins_artist_path,class: "col-lg-3 btn btn-default" %><br>
               </div>
               <div class="form-group">
                 <label for="label_name">レーベル</label><br>
-                <%= f.select :label_id, Label.all.map{|t| [t.label_name, t.id]} %>
+                <%= f.select :label_id, Label.all.map{|t| [t.label_name, t.id]} %><br>
+                <%= link_to "レーベル追加",new_admins_label_path,class: "col-lg-3 btn btn-default" %><br>
               </div>
               <div class="form-group">
                 <label for="genre_name">ジャンル</label><br>
-                <%= f.select :genre_id, Genre.all.map{|t| [t.genre_name, t.id]} %>
-              </div>
+                <%= f.select :genre_id, Genre.all.map{|t| [t.genre_name, t.id]} %><br>
+                <%= link_to "ジャンル追加",new_admins_genre_path,class: "col-lg-3 btn btn-default" %><br>
+                </div>
               <div class="form-group">
                 <label for="price">価格 (税込)</label><br>
                 <div class="help-block">
@@ -102,6 +101,9 @@
                 </div>
               </div>
             </div>
+            <ul class="pull-right list-inline">
+                <li><%= f.submit "保存する", class:"btn btn-primary" %></li>
+              </ul>
           </fieldset>
           <% end %>
         </div>

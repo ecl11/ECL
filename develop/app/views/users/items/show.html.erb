@@ -13,7 +13,8 @@
             <div class="main-product">
               <div class="sample"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, format: 'jpeg', fallback:"no_image.jpg" %></div>
               <ul class="stock">
-                <% if @cart_item.sheet.present? %>
+                    <li class="ed"><div class="sold_out">この商品は現在<%= @cart_item.sheet %>枚カートに入っています。</div></li>
+                    <% if @cart_item.sheet.present? %>
                     <%= form_for(@cart_item, url: users_cart_path(@cart_item)) do |f| %>
                     <li class="ed">
                     <p>在庫</p>
@@ -23,7 +24,7 @@
                     <%= f.hidden_field :user_id, value: current_user.id %>
                     <%= f.hidden_field :item_id, value: @item.id %>
                     <%= f.number_field :sheet, in:1..10 %>
-                    <%= f.submit "カートに入れる" %>
+                    <%= f.submit "数量を変更する" %>
                     <% else %>
                     <%= link_to "カートに入れる", new_user_session_path %>
                     <% end %>
@@ -36,8 +37,9 @@
                     <%= form_for(@cart_item, url: users_carts_path) do |f| %>
                     <li class="ed">
                     <p>在庫</p>
-                    <p>（<%= @item.stock_quantity %>）</p>
+                    <p class="dara">（<%= @item.stock_quantity %>）</p>
                     <div class="add_cart form-inline form-group">
+
                     <% if user_signed_in? %>
                     <%= f.hidden_field :user_id, value: current_user.id %>
                     <%= f.hidden_field :item_id, value: @item.id %>

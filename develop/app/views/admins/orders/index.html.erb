@@ -6,7 +6,7 @@
     <div class="col-xs-12">
       <h4>
       <table class="table table-striped">
-        <%= @order.each do |order| %>
+        <%= @orders.each do |order| %>
         <tbody>
          <tr>
            <td>
@@ -27,7 +27,7 @@
         <% end %>
       </table>
     </h4>
-    <%= paginate @order %>
+    <%= paginate @orders %>
     </div>
   </div>
   

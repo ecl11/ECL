@@ -5,8 +5,8 @@
       <div id="nav-search">
         <%= form_tag '/', :method => 'get' do %>
             <p class="text-right">
-                <%= submit_tag "検索", :name => nil %>
                 <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "検索", :name => nil %>
             </p>
         <% end %>
       </div>
@@ -16,22 +16,25 @@
       <table class="table table-striped">
         <thead>
          <tr>
-          <th>User id</th>
           <th>Name</th>
+          <th>Phone_Number</th>
           <th>E-mail</th>
          <tr>
         </thead>
-        <%= @user.each do |user| %>
+        <% @users.each do |user| %>
         <tbody>
           <tr>
-            <td><%= user.user_id %></td>
-            <td><%= user.family_name %><%= user.first_name %></td>
+            <td><%= link_to admins_user_path(user.id) do %>
+              <%= user.family_name %><%= user.first_name %>
+                <% end %>
+            </td>
+            <td><%= user.phone_number %></td>
             <td><%= user.email %></td>
           </tr>
         </tbody>
         <% end %>
       </table>
-     <%= paginate @user %>
+     <%= paginate @users %>
     </div>
   </div>
 </div>

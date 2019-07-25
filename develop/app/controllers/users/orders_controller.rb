@@ -6,7 +6,6 @@ class Users::OrdersController < ApplicationController
     @order = Order.new
     @order_items = @order.order_items.build
     @user = current_user
-    @address = Address.new
   end
  
 

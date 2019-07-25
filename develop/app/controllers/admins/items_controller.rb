@@ -4,7 +4,7 @@ class Admins::ItemsController < ApplicationController
 
   def index
     @items = Item.page(params[:page]).per(20).search(params[:search])
-  end 
+  end
 
   def show
     @item = Item.find(params[:id])

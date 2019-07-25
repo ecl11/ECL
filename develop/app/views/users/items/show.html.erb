@@ -39,6 +39,7 @@
               <p class="price"><%= @item.price %>円</p>
             </div>
             <div class="introduction">
+              アーティスト：<% if @item.artist.present? %><%= @item.artist.artist_name %><% end %><br><br>
               ジャンル：<% if @item.genre.present? %><%= @item.genre.genre_name %><% end %><br><br>
               レーベル：<% if @item.label.present? %><%= @item.label.label_name %><% end %><br><br>
               <% sum = 1 %><% @item.discs.each do |discs| %>

@@ -1,5 +1,7 @@
 class Users::ItemsController < ApplicationController
 
+  include DisplayUserHeader
+
   def index
     @items = Item.page(params[:page]).per(20).search(params[:search])
   end

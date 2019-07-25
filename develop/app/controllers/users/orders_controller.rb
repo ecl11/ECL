@@ -1,4 +1,7 @@
 class Users::OrdersController < ApplicationController
+
+  include DisplayUserHeader
+
   def new
     @order = Order.new
     @order_items = @order.order_items.build

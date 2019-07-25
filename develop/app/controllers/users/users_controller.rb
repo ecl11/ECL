@@ -1,4 +1,7 @@
 class Users::UsersController < ApplicationController
+
+  include DisplayUserHeader
+
   def show
   	@user = current_user
     @address = Address.find(params[:id])

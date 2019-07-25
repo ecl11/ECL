@@ -1,4 +1,7 @@
 class Admins::OrdersController < ApplicationController
+
+  include DisplayAdminHeader
+
   def index
   	@orders = Order.all
   end

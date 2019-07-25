@@ -1,4 +1,7 @@
 class Users::AddressesController < ApplicationController
+
+  include DisplayUserHeader
+
   def new
     @address = Address.new
   end

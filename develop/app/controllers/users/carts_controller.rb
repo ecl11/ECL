@@ -1,5 +1,7 @@
 class Users::CartsController < ApplicationController
 
+  include DisplayUserHeader
+
   def index
     @user = current_user
   	@cart_items = CartItem.all

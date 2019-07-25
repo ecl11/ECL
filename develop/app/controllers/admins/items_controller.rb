@@ -1,7 +1,6 @@
 class Admins::ItemsController < ApplicationController
 
-
-
+  include DisplayAdminHeader
 
   def index
     @items = Item.page(params[:page]).per(20).search(params[:search])

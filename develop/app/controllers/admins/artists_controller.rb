@@ -1,4 +1,7 @@
 class Admins::ArtistsController < ApplicationController
+
+  include DisplayAdminHeader
+
   def new
     @artist = Artist.new
   end

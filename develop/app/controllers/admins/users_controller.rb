@@ -1,5 +1,7 @@
 class Admins::UsersController < ApplicationController
 
+  include DisplayAdminHeader
+
   def index
     @users = Users.all
   end

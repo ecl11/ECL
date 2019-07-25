@@ -1,5 +1,7 @@
 class Admins::LabelsController < ApplicationController
 
+  include DisplayAdminHeader
+
   def new
     @label = Label.new
   end

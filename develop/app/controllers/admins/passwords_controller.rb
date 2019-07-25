@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admins::PasswordsController < Devise::PasswordsController
+
+  include DisplayAdminHeader
   # GET /resource/password/new
   # def new
   #   super

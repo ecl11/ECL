@@ -1,5 +1,7 @@
 class Admins::GenresController < ApplicationController
 
+  include DisplayAdminHeader
+
   def new
     @genre = Genre.new
   end

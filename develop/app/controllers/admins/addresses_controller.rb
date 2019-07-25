@@ -1,5 +1,6 @@
 class Admins::AddressesController < ApplicationController
 
+  include DisplayAdminHeader
 
 
 ##途中です

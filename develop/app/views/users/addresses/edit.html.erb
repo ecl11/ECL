@@ -8,33 +8,47 @@
   <table>
     <%= form_for(@address) do |f| %>
     <tr>
-      <h4>氏名</h4>
-      <th><%= @address.family_name %></th>
-      <td><%= f.text_field :family_name %></td>
-      <th><%= @address.first_name %></th>
-      <td><%= f.text_field :first_name %></td>
+      <th>氏名</th>
+      <td>
+        <%= @address.family_name %>
+        <%= f.text_field :family_name %>
+      </td>
+      <td>
+        <%= @address.first_name %>
+        <%= f.text_field :first_name %>
+      </td>
     </tr>
     <tr>
-      <h4>フリガナ</h4>
-      <th><%= @address.kana_family_name %></th>
-      <td><%= f.text_field :kana_family_name %></td>
-      <th><%= @address.kana_first_name %></th>
-      <td><%= f.text_field :kana_first_name %></td>
+      <th>フリガナ</th>
+      <td>
+        <%= @address.kana_family_name %>
+        <%= f.text_field :kana_family_name %>
+      </td>
+      <td>
+        <%= @address.kana_first_name %>
+        <%= f.text_field :kana_first_name %>
+      </td>
     </tr>
     <tr>
-      <h4>郵便番号</h4>
-      <th><%= @address.post_number %></th>
-      <td><%= f.text_field :post_number %></td>
+      <th>郵便番号</th>
+      <td>
+        <%= @address.post_number %>
+        <%= f.text_field :post_number %>
+      </td>
     </tr>
     <tr>
-      <h4>住所1</h4>
-      <th><%= @address.address %></th><br>
-      <td><%= f.text_field :address %></td>
+      <th>住所1</th>
+      <td>
+        <%= @address.address %>
+        <%= f.text_field :address %>
+      </td>
     </tr>
     <tr>
-      <h4>電話番号</h4>
-      <th><%= @address.phone_number %></th>
-      <td><%= f.text_field :phone_number %></td>
+      <th>電話番号</th>
+      <td>
+        <%= @address.phone_number %>
+        <%= f.text_field :phone_number %>
+      </td>
     </tr>
     <tr>
       <%= f.submit '編集' %>

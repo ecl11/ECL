@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
+
+  include DisplayUserHeader
+
   # GET /resource/confirmation/new
   # def new
   #   super

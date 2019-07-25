@@ -7,12 +7,7 @@ class Users::OrdersController < ApplicationController
     @order_items = @order.order_items.build
     @user = current_user
   end
-  def confirm
-    @order = Order.new
-    @order_items = @order.order_items.build
-    @user = current_user
-
-  end
+ 
 
   def create
   	    @order.user_id = current_user.id

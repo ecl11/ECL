@@ -11,4 +11,5 @@ class CartItem < ApplicationRecord
 		item.price.to_i * sheet.to_i
 	end
 
+
 end

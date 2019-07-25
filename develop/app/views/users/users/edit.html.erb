@@ -15,8 +15,7 @@
 					  <%= f.text_field :family_name, class: "family_name", autofocus: true, autocomplete: "family_name" %>
 				</div>
 				  <div>
-				  	  <%= f.label :first_name,"名" %><br>
-				  	  <%= f.text_field :first_name, class: "first_name", autocomplete: "first_name" %>
+				  	
 				  </div>
 			    </tr>
 			    <tr>
@@ -29,21 +28,16 @@
 			          <%= f.text_field :kana_first_name, class: "kana_first_name", autocomplete: "kana_first_name" %>
 			        </div>
 			    </tr>
-			    <%= f.fields_for :addresses do |address| %>
-			    <tr>
-			    	<div class="field">
-                        <%= address.label "郵便番号（ハイフンなし）" %><br>
-                        <%= address.text_field :post_number, class: "post_number", autocomplete: "post_number" %>
-			    	</div>
-			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= address.label "住所" %><%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %><br>
-			    		<div class="form-group"><label for="artist_name"></label><br><%= f.select :address_id, Address.all.map{|t| [t.address, t.id]} %></div>
+			    		<%= address.label "住所" %><br>
+			    		<%= link_to "住所追加",edit_users_user_path,class: "col-lg-3 btn btn-default" %><br>
+			    		<div class="form-group"><label for="artist_name"></label>
+			    			<br><%= f.select :address_id, Address.all.map{|t| [t.address, t.id]} %></div>
 			    		<%= address.text_field :address, class: "address", autocomplete: "address" %>
 			    	</div>
 			    </tr>
-			    <% end %>
+	
 			    <tr>
 			    	<div>
 			    		<%= f.label :phone_number, "電話番号（ハイフンなし）" %><br>

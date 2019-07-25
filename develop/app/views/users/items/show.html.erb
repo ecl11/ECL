@@ -42,7 +42,7 @@
               ジャンル：<% if @item.genre.present? %><%= @item.genre.genre_name %><% end %><br><br>
               レーベル：<% if @item.label.present? %><%= @item.label.label_name %><% end %><br><br>
               <% sum = 1 %><% @item.discs.each do |discs| %>
-ディスク<%= sum %><br><% summer = 1 %><% discs.songs.each do |songs| %><%= summer %>． <%= songs.song_name %><% summer += 1 %><br><% end %><% sum += 1 %><br><% end %>
+              ディスク<%= sum %><br><% summer = 1 %><% discs.songs.each do |songs| %><%= summer %>． <%= songs.song_name %><% summer += 1 %><br><% end %><% sum += 1 %><br><% end %>
             </div>
             <hr class="dod">
           </div>

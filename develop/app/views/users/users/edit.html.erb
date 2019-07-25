@@ -8,7 +8,7 @@
 			  	<thead>ユーザー情報編集</thead>
 			  	<tbody>
 
-				<%= form_for(@user) do |f| %>
+				<%= form_for @user,:url => {:action => :update} do |f| %>
 				<tr>
 				<div class="form-group has-icon">
 					  <%= f.label :family_name, "姓" %><br>
@@ -29,11 +29,11 @@
 			          <%= f.text_field :kana_first_name, class: "kana_first_name", autocomplete: "kana_first_name" %>
 			        </div>
 			    </tr>
-			    <%= f.fields_for :address do |address| %>
+			    <%= f.fields_for :addresses do |address| %>
 			    <tr>
 			    	<div class="field">
                         <%= address.label "郵便番号（ハイフンなし）" %><br>
-                        <%= address.number_field :post_number, class: "post_number", autocomplete: "post_number" %>
+                        <%= address.text_field :post_number, class: "post_number", autocomplete: "post_number" %>
 			    	</div>
 			    </tr>
 			    <tr>

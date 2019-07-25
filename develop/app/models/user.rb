@@ -4,8 +4,9 @@ class User < ApplicationRecord
 	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
 	has_many :cart_items, dependent: :destroy
-	has_many :order_items, dependent: :destroy
+	has_many :orders, dependent: :destroy
 	has_many :addresses, dependent: :destroy
+	accepts_nested_attributes_for :addresses
 
 	enum is_deleted:{
 		会員: 0,

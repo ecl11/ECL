@@ -3,36 +3,40 @@
     <div class="row">
 
       <div class="col-lg-3">
-        <table rules="none", border="1">
+        <table class="table table-stryped">
           <thead>
              <h2>User info</h2>
           </thead>
 
              <tbody>
             <tr>
-              <td><h4><%= @user.kana_family_name %></h4></td>
-              <td><h4><%= @user.kana_first_name %></h4></td>
+              <td><%= @user.kana_family_name %></td>
+              <td><%= @user.kana_first_name %></td>
             </tr>
             <tr>
-              <td><h4><%= @user.family_name %></h4></td>
-              <td><h4><%= @user.first_name %></h4></td>
+              <td><%= @user.family_name %></td>
+              <td><%= @user.first_name %></td>
             </tr>
             <tr>
-              <td><h4>〒<%= @address.post_number %></h4></td>
+              <td>〒<%= @user.addresses.first.post_number %></td>
+              <td></td>
             </tr>
             <tr>
-              <td><h4><%= @address.address %></h4></td>
+              <td><%= @user.addresses.first.address %></td>
+              <td></td>
             </tr>
             <tr>
-              <td><h4><%= @user.phone_number %></h4></td>
+              <td><%= @user.phone_number %></td>
+              <td></td>
             </tr>
             <tr>
-              <td><h4><%= @user.email %></h4></td>
+              <td><%= @user.email %></td>
+              <td></td>
             </tr>
            </tbody>
         </table>
 
-        <%= link_to "編集する",edit_users_user_path(current_user),class: "col-lg-3 btn btn-default" %>
+        <%= link_to "編集する",edit_users_user_path(current_user),class: "col-lg-12 btn btn-default" %>
       </div>
       <div class="col-lg-9">
         <table rules="none", border="1">
@@ -71,7 +75,7 @@
               </td>
             </tr>
             <% end %>
-            <%= paginate @order %>
+            <%= paginate @orders %>
 
           </tbody>
         </table>

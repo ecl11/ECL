@@ -19,7 +19,7 @@ class Users::AddressesController < ApplicationController
 
   def update
     @address.update(address_params)
-    redirect_to edit_users_user_path
+    redirect_to edit_users_address_path
   end
 
   private

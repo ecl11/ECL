@@ -31,7 +31,7 @@
 			    <tr>
 			    	<div>
 			    		<%= address.label "住所" %><br>
-			    		<%= link_to "住所追加",edit_users_user_path,class: "col-lg-3 btn btn-default" %><br>
+			    		<%= link_to "住所追加",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
 			    		<div class="form-group"><label for="artist_name"></label>
 			    			<br><%= f.select :address_id, Address.all.map{|t| [t.address, t.id]} %></div>
 			    		<%= address.text_field :address, class: "address", autocomplete: "address" %>

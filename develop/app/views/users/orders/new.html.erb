@@ -74,7 +74,7 @@
                 </tr>
                 <tr>
                   <th>配送先住所</th>
-                  <td><%= f.text_field :address, value: @user.addresses.first.address, required: true %></td>
+                  <td><%= f.select :address, :address_id, @user.addresses.all.map{|t| [t.address, t.id]} %> %></td>
                 </tr>
                 <tr>
                   <th>電話番号</th>

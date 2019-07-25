@@ -4,8 +4,7 @@ class Admins::ItemsController < ApplicationController
 
   def index
     @items = Item.page(params[:page]).per(20).search(params[:search])
-
-  end
+  end 
 
   def show
     @item = Item.find(params[:id])
@@ -23,7 +22,6 @@ class Admins::ItemsController < ApplicationController
     @item = Item.new(item_params)
       if @item.save
                     redirect_to admins_items_path
-
       else
         @items = Item.all
         render :index
@@ -35,13 +33,13 @@ class Admins::ItemsController < ApplicationController
   end
 
   def update
-     @item = Item.find(params[:id])
-  if @item.update(item_params)
-redirect_to admins_item_path(@item.id)
-  else
-        @items = Item.all
-        render :index
-end
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admins_item_path(@item.id)
+    else
+      @items = Item.all
+      render :index
+    end
   end
 
   def destroy
@@ -53,8 +51,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :price, :jacket_image, :remove_jacket_image, :stock_quantity, :sales_status, discs_attributes: [:id, :disc_name, :_destroy,
-                                                         songs_attributes: [:id, :song_name, :song_turn, :_destroy]])
+    params.require(:item).permit(:product_name, :price, :artist_id, :genre_id, :label_id, :jacket_image, :remove_jacket_image, :stock_quantity, :sales_status, discs_attributes: [:id, :disc_name, :_destroy, songs_attributes: [:id, :song_name, :song_turn, :_destroy]])
   end
 end
 

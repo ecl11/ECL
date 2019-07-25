@@ -17,7 +17,12 @@ end
   def create
   	@cart_item = CartItem.new(cart_item_params)
     @cart_item.save
+    if @cart_item.item.stock_quantity.to_i >= @cart_item.sheet.to_i
     redirect_to users_carts_path
+    else
+    @cart_item.destroy
+    redirect_to users_carts_path
+  end
   end
 
   def update
@@ -31,6 +36,7 @@ end
   	@cart_item.destroy
   	redirect_to users_carts_path
   end
+
 
   private
   def cart_item_params

@@ -27,14 +27,45 @@
               <%= link_to "アーティスト追加",new_admins_artist_path,class: "col-lg-3 btn btn-default" %>
               <%= link_to "ジャンル追加",new_admins_genre_path,class: "col-lg-3 btn btn-default" %>
               <%= link_to "レーベル追加",new_admins_label_path,class: "col-lg-3 btn btn-default" %>
-              <div class="form-group"><label for="product_name">商品名</label><br><%= f.text_field :product_name %></div>
-              <div class="form-group"><label for="artist_name">アーティスト名</label><br><%= f.select :artist_id, Artist.all.map{|t| [t.artist_name, t.id]} %></div>
-              <div class="form-group"><label for="label_name">レーベル</label><br><%= f.select :label_id, Label.all.map{|t| [t.label_name, t.id]} %></div>
-              <div class="form-group"><label for="genre_name">ジャンル</label><br><%= f.select :genre_id, Genre.all.map{|t| [t.genre_name, t.id]} %></div>
-              <div class="form-group"><label for="price">価格 (税込)</label><br><%= f.text_field :price %></div>
-              <div class="form-group disc"><%= f.fields_for :discs do |f| %><label for="disc">ディスク</label><div class="test"></div><div class=""><%= f.text_field :disc_name, {placeholder: "ディスクの名前"} %></div><%= f.link_to_remove "削除" %>
-              <div class="form-group"><label for="song">収録曲</label><%= f.fields_for :songs do |f| %><%= f.text_field :song_name %><%= f.link_to_remove "削除" %><% end %><%= f.link_to_add "曲を追加", :songs %></div>
-              <% end %><%= f.link_to_add "ディスクを追加", :discs %>
+              <div class="form-group">
+                <label for="product_name">商品名</label><br>
+                <%= f.text_field :product_name %>
+              </div>
+              <div class="form-group">
+                <label for="artist_name">アーティスト名</label><br>
+                <%= f.select :artist_id, Artist.all.map{|t| [t.artist_name, t.id]} %>
+              </div>
+              <div class="form-group">
+                <label for="label_name">レーベル</label><br>
+                <%= f.select :label_id, Label.all.map{|t| [t.label_name, t.id]} %>
+              </div>
+              <div class="form-group">
+                <label for="genre_name">ジャンル</label><br>
+                <%= f.select :genre_id, Genre.all.map{|t| [t.genre_name, t.id]} %>
+              </div>
+              <div class="form-group">
+                <label for="price">価格 (税込)</label><br>
+                <%= f.text_field :price %>
+              </div>
+                <div class="help-block">
+                  価格は半角で入力してください。
+                </div>
+              <div class="form-group disc">
+                <%= f.fields_for :discs do |f| %>
+                <label for="disc">ディスク</label>
+                <%= f.text_field :disc_name, {placeholder: "ディスクの名前"} %>
+              </div>
+              <%= f.link_to_remove "削除" %>
+              <div class="form-group">
+                <label for="song">収録曲</label>
+                <%= f.fields_for :songs do |f| %>
+                <%= f.text_field :song_name %>
+                <%= f.link_to_remove "削除" %>
+                <% end %>
+                <%= f.link_to_add "曲を追加", :songs %>
+              </div>
+              <% end %>
+              <%= f.link_to_add "ディスクを追加", :discs %>
             </div>
           </div>
           </fieldset>
@@ -45,10 +76,15 @@
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
-              <div class="form-group"><label for="stock_quantity">在庫</label><br><%= f.text_field :stock_quantity %>
+              <div class="form-group">
+                <label for="stock_quantity">在庫</label><br>
+                <%= f.text_field :stock_quantity %>
+                <div class="help-block">在庫数は半角で入力してください。</div>
                 <div class="help-block">販売停止の場合は下を編集してください。</div>
               </div>
-              <div class="form-group"><label for="sales_status">販売ステータス</label><br><%= f.select :sales_status, Item.sales_statuses.keys.to_a, {} %>
+              <div class="form-group">
+                <label for="sales_status">販売ステータス</label><br>
+                <%= f.select :sales_status, Item.sales_statuses.keys.to_a, {} %>
               </div>
             </div>
           </fieldset>

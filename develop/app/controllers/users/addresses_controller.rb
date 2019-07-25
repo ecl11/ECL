@@ -14,12 +14,12 @@ class Users::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.user_id = current_user.id
     @address.save
-    redirect_to users_users_path
+    redirect_to users_items_path
   end
 
   def update
     @address.update(address_params)
-    redirect_to current_user_path
+    redirect_to edit_users_address_path
   end
 
   private

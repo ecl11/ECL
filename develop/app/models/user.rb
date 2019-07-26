@@ -25,5 +25,19 @@ class User < ApplicationRecord
 		cart_items.to_a.sum{|cart_item|cart_item.items_price}
 	end
 
+	def add_item(item_id)
+
+		current_item = cart_items.find_by_item_id(item_id)
+
+		if  current_item
+			current_item.sheet += @current_item.sheet.to_i
+		else
+			current_item = cart_items.build(item_id: item_id)
+		end
+		current_item
+
+	end
+
+
 
 end

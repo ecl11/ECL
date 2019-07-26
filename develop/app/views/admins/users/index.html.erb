@@ -6,7 +6,11 @@
         <%= form_tag '/', :method => 'get' do %>
             <p class="text-right">
                 <%= text_field_tag :search, params[:search] %>
+<<<<<<< HEAD
                 <%= submit_tag "検索", :family_name  => nil %>
+=======
+                <%= submit_tag "検索", :name => nil %>
+>>>>>>> master
             </p>
         <% end %>
       </div>
@@ -16,23 +20,34 @@
       <table class="table table-striped">
         <thead>
          <tr>
-          <th>User id</th>
           <th>Name</th>
+          <th>Phone_Number</th>
           <th>E-mail</th>
           <th></th>
          <tr>
         </thead>
+<<<<<<< HEAD
         <% @user.each do |user| %>
         <tbody>
           <tr>
             <td><%= user.id %></td>
             <td><%= user.family_name %><%= user.first_name %></td>
+=======
+        <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= link_to admins_user_path(user.id) do %>
+              <%= user.family_name %><%= user.first_name %>
+                <% end %>
+            </td>
+            <td><%= user.phone_number %></td>
+>>>>>>> master
             <td><%= user.email %></td>
           </tr>
         </tbody>
         <% end %>
       </table>
-     <%= paginate @user %>
+     <%= paginate @users %>
     </div>
   </div>
 </div>

@@ -6,11 +6,11 @@
         <%= form_tag '/', :method => 'get' do %>
             <p class="text-right">
                 <%= text_field_tag :search, params[:search] %>
-<<<<<<< HEAD
+
                 <%= submit_tag "検索", :family_name  => nil %>
-=======
+
                 <%= submit_tag "検索", :name => nil %>
->>>>>>> master
+
             </p>
         <% end %>
       </div>
@@ -26,13 +26,13 @@
           <th></th>
          <tr>
         </thead>
-<<<<<<< HEAD
+
         <% @user.each do |user| %>
         <tbody>
           <tr>
             <td><%= user.id %></td>
             <td><%= user.family_name %><%= user.first_name %></td>
-=======
+
         <% @users.each do |user| %>
         <tbody>
           <tr>
@@ -41,10 +41,11 @@
                 <% end %>
             </td>
             <td><%= user.phone_number %></td>
->>>>>>> master
+
             <td><%= user.email %></td>
           </tr>
         </tbody>
+        <% end %>
         <% end %>
       </table>
      <%= paginate @users %>

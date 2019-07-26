@@ -3,13 +3,13 @@ class Admins::UsersController < ApplicationController
   include DisplayAdminHeader
 
   def index
-<<<<<<< HEAD
+
     @user = User.all
     #@user = User.find
     @user = User.page(params[:page]).per(10).search(params[:search])
-=======
+
     @users = User.page(params[:page]).per(20)
->>>>>>> master
+
   end
 
   def show

@@ -6,7 +6,8 @@ class Admins::UsersController < ApplicationController
 
     @user = User.all
     #@user = User.find
-    @user = User.page(params[:page]).per(10).search(params[:search])
+    @user = User.page(params[:page]).per(10)
+    @user = User.search(params[:search])
 
     @users = User.page(params[:page]).per(20)
 
@@ -14,12 +15,22 @@ class Admins::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @address = @user.addresses.all
+    @orders = @user.orders
+    @orders = Order.page(params[:page]).per(3)
   end
 
   def edit
+    @user = User.find(params[:id])
+    @user.addresses.build
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_user_path(@user.id)
+    else
+      end
   end
 
   def destroy

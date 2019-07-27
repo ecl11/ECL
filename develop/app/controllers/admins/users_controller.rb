@@ -6,15 +6,16 @@ class Admins::UsersController < ApplicationController
 
     @user = User.all
     #@user = User.find
-    @user = User.page(params[:page]).per(10)
-    @user = User.search(params[:search])
+    #@user = User.search(params[:search])
+    @user = User.page(params[:page]).per(20).search(params[:search])
 
-    @users = User.page(params[:page]).per(20)
+    #@users = User.page(params[:page]).per(20)
 
   end
 
   def show
     @user = User.find(params[:id])
+    #@address = Address.find_by(post_number: params[:post_number],address: params[:address])
     @address = @user.addresses.all
     @orders = @user.orders
     @orders = Order.page(params[:page]).per(3)
@@ -28,7 +29,7 @@ class Admins::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_user_path(@user.id)
+      redirect_to admins_user_path(@user.id)
     else
       end
   end
@@ -36,7 +37,7 @@ class Admins::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path
+    redirect_to admins_users_path
   end
 
    def user_params

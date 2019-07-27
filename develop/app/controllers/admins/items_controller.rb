@@ -21,10 +21,10 @@ class Admins::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
       if @item.save
-        redirect_to admins_items_path
+        redirect_to admins_item_path(@item)
+        flash[:notice] = "成功しました"
       else
-        @items = Item.all
-        render :index
+        render:new
       end
   end
 

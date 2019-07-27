@@ -11,8 +11,9 @@ class Users::OrdersController < ApplicationController
 
   def create
   	    @order = Order.new(order_params)
+        @order.user_id = current_user.id
       if @order.save
-         redirect_to users_orders_path
+         redirect_to users_user_path(current_user)
 
       else
         @items = Item.all

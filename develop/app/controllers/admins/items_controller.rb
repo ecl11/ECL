@@ -35,7 +35,8 @@ class Admins::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admins_items_path
+      redirect_to admins_item_path(@item)
+      flash[:notice] = "成功しました"
     else
       @items = Item.all
       render :index

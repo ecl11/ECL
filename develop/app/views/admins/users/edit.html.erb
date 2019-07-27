@@ -7,48 +7,45 @@
 
 			  	<thead>ユーザー情報編集</thead>
 
-				<%= form_for(@user) do |f| %>
+				<%= form_for @user,:url => {:action => :update} do |f| %>
 				<tr>
 				<div class="form-group has-icon">
-					  <%= f.label :姓 %><br>
+					  <%= f.label :family_name, "姓" %><br>
 					  <%= f.text_field :family_name, class: "family_name", autofocus: true, autocomplete: "family_name" %>
 				</div>
 				  <div>
-				  	  <%= f.label :名 %><br>
+				  	  <%= f.label :first_name, "名" %><br>
 				  	  <%= f.text_field :first_name, class: "first_name", autocomplete: "first_name" %>
 				  </div>
 			    </tr>
 			    <tr>
 			    	<div>
-			    	  <%= f.label :セイ %><br>
+			    	  <%= f.label :kana_family_name, "セイ" %><br>
 			    	  <%= f.text_field :kana_family_name, class: "kana_family_name", autocomplete: "kana_family_name" %>
 			        </div>
 			        <div>
-			          <%= f.label :メイ %><br>
+			          <%= f.label :kana_first_name, "メイ" %><br>
 			          <%= f.text_field :kana_first_name, class: "kana_first_name", autocomplete: "kana_first_name" %>
 			        </div>
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= f.label :郵便番号(ハイフンなし) %><br>
-			    		<%= f.text_field :post_number, class: "post_number", autocomplete: "post_number" %>
+			    		<%= f.label "住所" %><br>
+			    		<%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
+			    		<%= link_to "住所の編集と削除",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
+			    		<div class="form-group"><label for="artist_name"></label>
+			    			<br><%= f.select :address_id, Address.all.map{|t| [t.address, t.id]} %></div>
 			    	</div>
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= f.label :住所 %><br>
-			    		<%= f.text_area :address, class: "address", autocomplete: "address" %>
+			    		<%= f.label :phene_number, "電話番号（ハイフンなし）" %><br>
+			    		<%= f.text_field :phone_number, class: "phone_nember", autocomplete: "phone_nember" %>
 			    	</div>
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= f.label :電話番号（ハイフンなし） %><br>
-			    		<%= f.text_field :phone_nember, class: "phone_nember", autocomplete: "phone_nember" %>
-			    	</div>
-			    </tr>
-			    <tr>
-			    	<div>
-			    		<%= f.label :メールアドレス %><br>
+			    		<%= f.label :email, "メールアドレス" %><br>
 			    		<%= f.email_field :email, class: "email", autocomplete: "email" %>
 			    	</div>
 			    </tr>

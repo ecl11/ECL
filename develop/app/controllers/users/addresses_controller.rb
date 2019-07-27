@@ -22,8 +22,13 @@ class Users::AddressesController < ApplicationController
   end
 
   def update
-    @address.update(address_params)
-    redirect_to edit_users_address_path
+    if @address.update(address_params)
+      flash[:notice] = "変更しました"
+    redirect_to edit_users_user_path(current_user.id)
+  else
+   
+  end
+
   end
 
   private

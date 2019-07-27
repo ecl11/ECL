@@ -1,13 +1,14 @@
-<h1>Users::Addresses#edit</h1>
-<p>Find me in app/views/users/addresses/edit.html.erb</p>
 
 
 
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
 　<h2>住所の編集</h2>
-  <table>
     <% @address.each do |address| %>
+    <div class="form-group">
     <%= form_for(address, url: users_addresses_path) do |f| %>
+  <table>
     <tr>
       <th>氏名</th>
       <td>
@@ -45,9 +46,18 @@
       </td>
     </tr>
     <tr>
-      <%= f.submit 'この住所を追加する' %>
+      <td></td>
+      <td>
+      <%= f.submit '変更確認' %>
+      </td>
+      <td>
+        <%= link_to "削除",edit_users_user_path(current_user),class: "col-lg-6 btn btn-danger", data: {:confirm => '本当に消しますか？'}, method: :delete %>
+      </td>
     </tr>
-    <% end %>
-    <% end %>
   </table>
+  <% end %>
+</div>
+    <% end %>
+</div>
+</div>
 </div>

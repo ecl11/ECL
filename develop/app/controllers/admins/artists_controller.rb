@@ -1,5 +1,7 @@
 class Admins::ArtistsController < ApplicationController
 
+  before_action :authenticate_user!
+
   include DisplayAdminHeader
 
   def new

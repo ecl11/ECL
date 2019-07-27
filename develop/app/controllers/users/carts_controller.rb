@@ -1,5 +1,7 @@
 class Users::CartsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:create]
+
   include DisplayUserHeader
 
   def index

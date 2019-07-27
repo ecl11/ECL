@@ -22,6 +22,7 @@
             
             <%= f.hidden_field :item_id, value: cart_item.item_id, required: true %>
             <%= f.hidden_field :sheet, value: cart_item.sheet, required: true %>
+            <%= f.hidden_field :price, value: cart_item.item.price, required: true %>
             <tr>
               <td class="center">
                 <%= link_to users_item_path(cart_item.item.id) do %>

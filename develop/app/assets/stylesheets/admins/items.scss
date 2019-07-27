@@ -1,5 +1,5 @@
 
-@media (min-width :992px) {
+@media (min-width: 992px) {
 .col-md-3 {
 width:25%;
 }
@@ -29,7 +29,7 @@ display:table-header-group;
 }
 }
 
-@media screen and (max-width :768px) {
+@media screen and (max-width: 768px) {
 .awesome_admin_layout-main {
 padding-left:0;
 }
@@ -47,6 +47,14 @@ padding-left:84px !important;
 font-size:larger;
 }
 
+#gritter-notice-wrapper {
+position:fixed;
+right:20px;
+top:20px;
+width:301px;
+z-index:9999;
+}
+
 #wrapper {
 display:table;
 height:100%;
@@ -54,7 +62,8 @@ width:100%;
 }
 
 .awesome_admin_layout-main {
-margin:0 0 15px 0;
+margin:0;
+
 }
 
 .awesome_admin_layout-navigation-toggle {
@@ -149,12 +158,12 @@ padding-left:15px;
 padding-right:15px;
 }
 
-.container-fluid:after,.row:after,.panel-body:after {
+.container-fluid:after,.row:after,.panel-body:after,.container-fluid:after,.row:after,.panel-body:after {
 clear:both;
 }
 
 .ddd {
-	width: 140px
+width:140px;
 }
 
 .dropdown-menu {
@@ -193,8 +202,61 @@ content:"\f107";
 content:"\f08e";
 }
 
+
+
 .form-group {
 margin-bottom:15px;
+}
+
+.gritter-close {
+cursor:pointer;
+display:none;
+height:30px;
+left:3px;
+position:absolute;
+top:5px;
+width:30px;
+}
+
+.gritter-css3 .gritter-close {
+background:url(/assets/gritter-close-76efc9d3f6a516a817908cad53584510a8cbf5d4ac482e80c5ec93bababccf15.png) no-repeat;
+}
+
+.gritter-item {
+color:#eee;
+display:block;
+font-family:verdana;
+font-size:11px;
+padding:2px 11px 8px;
+}
+
+.gritter-item p {
+margin:0;
+padding:0;
+}
+
+.gritter-item-wrapper {
+background:url(url(/assets/ie-spacer-548f2d6f4d0d820c6c5ffbeffcbd7f0e73193e2932eefe542accc84762deec87.gif));
+margin:0 0 10px;
+position:relative;
+}
+
+.gritter-item.gritter-css3 {
+background:rgba(0,0,0,0.8);
+padding-bottom:16px;
+padding-top:12px;
+}
+
+.gritter-title {
+display:block;
+font-size:14px;
+font-weight:700;
+padding:0 0 7px;
+}
+
+.gritter-with-image {
+float:right;
+width:220px;
 }
 
 .help-block {
@@ -282,7 +344,7 @@ background:#f9f9f9;
 }
 
 .test {
-	display:inline;
+display:inline;
 }
 
 .text-center {
@@ -383,11 +445,10 @@ border-collapse:collapse;
 border-spacing:0;
 }
 
-table>tbody>tr>td>ul,.comable-page-heading>.page-header,.comable-page-heading>.page-header {
+table>tbody>tr>td>ul,.comable-page-heading>.page-header,.comable-page-heading>.page-header,.comable-page-heading>.page-header {
 margin-bottom:0;
 }
 
 th {
 text-align:left;
 }
-

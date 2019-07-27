@@ -6,7 +6,7 @@ class User < ApplicationRecord
 	has_many :cart_items, dependent: :destroy
 	has_many :orders, dependent: :destroy
 	has_many :addresses, dependent: :destroy
-	accepts_nested_attributes_for :addresses
+	accepts_nested_attributes_for :addresses, :cart_items
 
 	enum is_deleted:{
 		会員: 0,

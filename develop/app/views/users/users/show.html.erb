@@ -45,7 +45,7 @@
           </thead>
 
           <tbody>
-            <%= @orders.each do |order| %>
+            <% @orders.each do |order| %>
             <tr>
               <th>
                 <%= order.created_at %>
@@ -67,13 +67,13 @@
               </td>
             </tr>
             <tr>
-<% @order.order_items.each do |order_item| %>
+              <% order.order_items.each do |order_item| %>
 
               <td>
                 <%= order_item.item_id %>
               </td>
                <td>
-                <%= order_item.price %> × <%= order_item.sheet %> = <%= order_item.amount %>(税込)
+                <%= order_item.price %> × <%= order_item.sheet %> = <%= order.amount %>(税込)
               </td>
             </tr>
             <% end %>

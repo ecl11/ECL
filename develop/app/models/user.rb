@@ -12,6 +12,13 @@ class User < ApplicationRecord
 		会員: 0,
 		退会済み: 1
 	}
+	def self.search(search) #self.でクラスメソッドとしている
+     if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+       User.where(['family_name LIKE ? OR first_name LIKE ?', "%#{search}%" ,"%#{search}%"])
+     else
+       User.all #全て表示。
+     end
+    end
 
 	def total_price
 		cart_items = CartItem.where(user_id: id)

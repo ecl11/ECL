@@ -3,54 +3,53 @@
     <div class="row">
 
       <div class="col-lg-3">
-        <table rules="none", border="1">
+        <table class="table table-stryped">
           <thead>
              <h2>User info</h2>
           </thead>
 
             <tbody>
             <tr>
-              <td><h4><%= @user.kana_family_name %></h4></td>
-              <td><h4><%= @user.kana_first_name %></h4></td>
+              <td><%= @user.kana_family_name %></td>
+              <td><%= @user.kana_first_name %></td>
             </tr>
             <tr>
-              <td><h4><%= @user.family_name %></h4></td>
-              <td><h4><%= @user.first_name %></h4></td>
+              <td><%= @user.family_name %></td>
+              <td><%= @user.first_name %></td>
+            </tr>
+            
+            <tr>
+              <td><%= @user.phone_number %></td>
+              <td></td>
             </tr>
             <tr>
-              <td><h4>〒<%= @user.post_number %></h4></td>
+              <td><%= @user.email %></td>
+              <td></td>
             </tr>
             <tr>
-              <td><h4><%= @user.address %></h4></td>
-            </tr>
-            <tr>
-              <td><h4><%= @user.phone_number %></h4></td>
-            </tr>
-            <tr>
-              <td><h4><%= @user.email %></h4></td>
+              <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-6 btn btn-default" %></td>
+              <td><%= link_to "削除",admins_users_path(@user),class: "col-lg-6 btn-default", data: {:confirm => '本当に消しますか？'}, method: :delete %></td>
             </tr>
            </tbody>
         </table>
 
-        <%= link_to "ユーザー編集",admin_user(@user.id),class: "col-lg-3 btn btn-default" %>
-        <%= link_to "ユーザー削除",admin_orders(@admin_orders),class: "col-lg-3 btn-default", data: {:confirm => '本当に消しますか？'}, metod: :delete %>
 
       </div>
       <div class="col-lg-9">
-        <table rules="none", border="1">
+        <table class="table table-stryped">
           <thead>
             <h2>受注履歴</h2>
           </thead>
 
           <tbody>
-            <%= @order.each do |order| %>
+            <%= @orders.each do |order| %>
             <tr>
               <th>
                 <%= order.created_at %>
               </th>
               <th>
                 <%= f.select :delivery_status, Order.delivery_status.keys.to_a,{} %>
-                <% end %>
+                
               </th>
             </tr>
             <tr>
@@ -66,14 +65,14 @@
             </tr>
             <tr>
               <td>
-                <%= order_items.item_id(.id) %>
+                <%= order.orde_items.id %>
               </td>
                <td>
                 <%= order_items.price %>×<%= order_items.sheet %>=<%= order.amount %>(税込)
               </td>
             </tr>
             <% end %>
-            <%= paginate @order %>
+            <%= paginate @orders %>
           </tbody>
         </table>
       </div>

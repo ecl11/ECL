@@ -7,17 +7,17 @@ class Users::AddressesController < ApplicationController
   end
 
   def edit
-    @address = Address.find(params[:id])
+    @address = Address.where(user_id: current_user.id)
   end
 
   def create
     @address = Address.new(address_params)
     @address.user_id = current_user.id
     @address.save
-    if @address_id = 1 #編集中
+    if @address == current_user.addresses.first
       redirect_to users_items_path
     else
-      redirect_to edit_users_user_path
+      redirect_to edit_users_user_path(current_user)
     end
   end
 

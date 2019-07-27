@@ -51,7 +51,7 @@
                 <%= order.created_at %>
               </th>
               <th>
-                <%= f.select :delivery_status, Order.delivery_status.keys.to_a,{} %>
+                <%= order.delivery_status %>
                 
               </th>
             </tr>

@@ -2,6 +2,8 @@
 
 class Admins::ConfirmationsController < Devise::ConfirmationsController
 
+  before_action :authenticate_user!
+
   include DisplayAdminHeader
 
   # GET /resource/confirmation/new

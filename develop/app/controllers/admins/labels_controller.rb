@@ -1,5 +1,7 @@
 class Admins::LabelsController < ApplicationController
 
+  before_action :authenticate_user!
+
   include DisplayAdminHeader
 
   def new

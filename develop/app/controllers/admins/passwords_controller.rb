@@ -2,6 +2,8 @@
 
 class Admins::PasswordsController < Devise::PasswordsController
 
+  before_action :authenticate_user!
+
   include DisplayAdminHeader
   # GET /resource/password/new
   # def new

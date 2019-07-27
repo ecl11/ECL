@@ -1,5 +1,7 @@
 class Admins::UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   include DisplayAdminHeader
 
   def index

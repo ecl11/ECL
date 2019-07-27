@@ -17,8 +17,9 @@
               <th>削除</th>
             </tr>
             <% sum = 0 %>
-            <%= f.fields_for :order_items do |f| %>
             <% @user.cart_items.each do |cart_item| %>
+            <%= f.fields_for :order_items do |f| %>
+            
             <%= f.hidden_field :item_id, value: cart_item.item_id, required: true %>
             <%= f.hidden_field :sheet, value: cart_item.sheet, required: true %>
             <tr>
@@ -54,6 +55,7 @@
               </td>
             </tr>
             <% end %>
+
             <% end %>
             <tr>
               <td>合計</td>

@@ -14,27 +14,30 @@ class Users::OrdersController < ApplicationController
     @user = current_user
     else
     redirect_to new_users_address_path
-  
+  end
   end
 
 
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @sheet = current_user.cart_item.sheet  #色々と書き換えたり@order.saveを先に持ってきて =order.cart_itemなどにしてみてもcart_itemで同じエラーを吐く。リレーションに何か問題？
-    @stock = current_user.cart_item.item.stock_quantity
+    #@sheet = current_user.cart_item.sheet  #色々と書き換えたり@order.saveを先に持ってきて =order.cart_itemなどにしてみてもcart_itemで同じエラーを吐く。リレーションに何か問題？
+    #@stock = current_user.cart_item.item.stock_quantity
+    #@order_items = @order.order_items.build
 
-    if @stock >= @sheet
-      @stock -= @sheet
-      @stock.save
+    #if @stock >= @sheet
+      #@stock -= @sheet
+      #@stock.save
+      @order.delivery_status = 0
       @order.save
-      current_user.cart_item.destroy
-      flash[:notice] = "購入しました。カートは空です。"
+      ##@order_item.save??
+      #current_user.cart_item.destroy
+      flash[:notice] = "購入ありがとうございました。カートは空です。"
       redirect_to users_user_path(current_user)
-    else
-      @items = Item.all
-      redirect_to users_items_path #カートに戻す＋在庫数より多く注文はできませんメッセージ入れる
-      end
+    #else
+      #@items = Item.all
+      #redirect_to users_items_path #カートに戻す＋在庫数より多く注文はできませんメッセージ入れる
+      #end
   end
 
 

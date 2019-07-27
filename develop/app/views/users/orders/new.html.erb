@@ -22,17 +22,36 @@
             <%= f.hidden_field :item_id, value: cart_item.item_id, required: true %>
             <%= f.hidden_field :sheet, value: cart_item.sheet, required: true %>
             <tr>
-              <td class="center"><%= link_to users_item_path(cart_item.item.id) do %><%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %><% end %></td>
-              <td>
-                <div class="code"><%= cart_item.item.id %></div>
-                <div class="name"><%= cart_item.item.product_name %></div>
-                <div class="caption"><%= cart_item.item.artist.artist_name %></div>
+              <td class="center">
+                <%= link_to users_item_path(cart_item.item.id) do %>
+                <%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, format: 'jpeg', fallback:"no_image.jpg" %>
+                <% end %>
               </td>
-              <td class="center"><%= cart_item.sheet %></td>
-              <td class="right"><%= cart_item.item.price %>円</td>
-              <% sub_total = cart_item.item.price.to_i * cart_item.sheet.to_i %><% sum += sub_total %>
-              <td class="right"><%= sub_total %></td>
-              <td class="center"><%= link_to "delete", users_cart_path(cart_item), method: :delete %></td>
+              <td>
+                <div class="code">
+                  <%= cart_item.item.id %>
+                </div>
+                <div class="name">
+                  <%= cart_item.item.product_name %>
+                </div>
+                <div class="caption">
+                  <%= cart_item.item.artist.artist_name %>
+                </div>
+              </td>
+              <td class="center">
+                <%= cart_item.sheet %>
+              </td>
+              <td class="right">
+                <%= cart_item.item.price %>円
+              </td>
+              <% sub_total = cart_item.item.price.to_i * cart_item.sheet.to_i %>
+              <% sum += sub_total %>
+              <td class="right">
+                <%= sub_total %>
+              </td>
+              <td class="center">
+                <%= link_to "delete", users_cart_path(cart_item), method: :delete %>
+              </td>
             </tr>
             <% end %>
             <% end %>
@@ -55,6 +74,8 @@
             </tr>
           </tbody>
           </table>
+
+
           <p class="title">注文者情報</p>
           <div class="box">
             <table class="nonmember-ordre">
@@ -69,12 +90,11 @@
                   <td><%= f.text_field :first_name, value: @user.first_name, required: true %></td>
                 </tr>
                 <tr>
-                <th>配送先郵便番号</th>
-                  <td><%= f.text_field :post_number, value: @user.addresses.first.post_number, required: true %></td>
-                </tr>
-                <tr>
                   <th>配送先住所</th>
-                  <td><%= f.select :address, @user.addresses.all.map{|t| [t.address, t.id]} %></td>
+                  <td><%= f.select :address, @user.addresses.all.map{|t| [t.address, t.id]} %><br>
+                    <%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
+                  
+                  </td>
                 </tr>
                 <tr>
                   <th>電話番号</th>
@@ -83,6 +103,8 @@
               </tbody>
             </table>
           </div>
+
+
           <p class="title">決済方法等</p>
           <div class="box">
             <p><span><%= f.select :payment_method, Order.payment_methods.keys.to_a, {} %></span></p>

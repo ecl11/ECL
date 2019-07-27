@@ -21,23 +21,21 @@ class Users::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    #@sheet = current_user.cart_item.sheet  #色々と書き換えたり@order.saveを先に持ってきて =order.cart_itemなどにしてみてもcart_itemで同じエラーを吐く。リレーションに何か問題？
-    #@stock = current_user.cart_item.item.stock_quantity
-    #@order_items = @order.order_items.build
-
-    #if @stock >= @sheet
-      #@stock -= @sheet
-      #@stock.save
+    @cart_items = CartItem.where(user_id: current_user.id)
+    @cart_items.each do |cart_item|
+    @item = cart_item.item
+    if @item.stock_quantity >= cart_item.sheet
+      @item.decrement!(:stock_quantity, cart_item.sheet.to_i)
+      cart_item.destroy
+    else
+      redirect_to users_carts_path
+    end
+  end
       @order.delivery_status = 0
       @order.save
-      ##@order_item.save??
-      #current_user.cart_item.destroy
       flash[:notice] = "購入ありがとうございました。カートは空です。"
       redirect_to users_user_path(current_user)
-    #else
-      #@items = Item.all
-      #redirect_to users_items_path #カートに戻す＋在庫数より多く注文はできませんメッセージ入れる
-      #end
+    
   end
 
 

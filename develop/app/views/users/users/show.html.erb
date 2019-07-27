@@ -42,6 +42,7 @@
         <table class="table table-stryped">
           <thead>
             <h2>購入履歴</h2>
+            <%= flash[:notice] %>
           </thead>
 
           <tbody>
@@ -68,15 +69,17 @@
             </tr>
             <tr>
               <% order.order_items.each do |order_item| %>
+             <%# <% order_item.items.each do |item| %>
 
               <td>
-                <%= order_item.item_id %>
+             <%#   <%= item.productname %>
               </td>
                <td>
                 <%= order_item.price %> × <%= order_item.sheet %> = <%= order.amount %>(税込)
               </td>
             </tr>
-            <% end %>
+           <%# <% end %>
+           <% end %>
            <% end %>
             <%= paginate @orders %>
 

@@ -5,10 +5,12 @@ class Users::UsersController < ApplicationController
   def show
     @user = current_user
     @current_address = @user.addresses.first
+
     if @current_address
     @address = Address.find_by(post_number: params[:post_number],address: params[:address])
       @orders = Order.where(user_id: current_user.id).page(params[:page]).per(3)
-     else
+      @items = Item.all
+    else
     redirect_to new_users_address_path
   end
   end

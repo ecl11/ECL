@@ -3,7 +3,7 @@
   <div id="gritter-notice-wrapper">
     <div id="gritter-item-1" class="gritter-item-wrapper">
       <div class="gritter-item gritter-css3">
-        <div class="gritter-close" style="display: none;"></div>
+        <div class="gritter-close" style="display: none;"></div><img src="/assets/1249.png" class="gritter-image">
         <div class="gritter-with-image">
           <span class="gritter-title">Notification</span>
           <p><%= flash[:notice] %></p></div>
@@ -21,7 +21,7 @@
                   </ul>
                 </li>
               </ul>
-              <h1 class="page-header">
+              <h1 class="puge-header">
                 <ol class="breadcrumb">
                   <li><a href="/admins/items">商品管理</a></li>
                   <li class="active"><%= @item.product_name%></li>
@@ -35,10 +35,6 @@
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
-
-              <br>
-              <br>
-
               <div class="form-group">
                 <label for="product_name">商品名</label><br>
                 <%= f.text_field :product_name %>

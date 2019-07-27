@@ -2,12 +2,11 @@
 <%= nested_form_for(@item, url:admins_items_path) do |f| %>
 <div id="awesome_admin_layout">
   <main class="awesome_admin_layout-main">
-<div class="awesome_admin_layout-navigation-toggle"> <i class="fa fa-bars"></i> </div>
     <div id="wrapper" class=" ">
       <main class="container-fluid">
         <div class="comable-page">
             <div class="comable-page-heading">
-              <h1 class="page-header">
+              <h1 class="puge-header">
                 <ol class="breadcrumb">
                   <li><a href="/admins/items">商品管理</a></li>
                   <li class="active">新規作成</li>
@@ -15,14 +14,22 @@
               </h1>
             </div>
           <div class="comable-page-body">
+            <div id="errorExplanation" class="errorExplanation">
+              <% if @item.errors.any? %>
+              <h2>エラーが発生しました</h2>
+              <p>以下のエラーを修正してください。</p>
+              <ul><% @item.errors.full_messages.each do |message| %>
+                 <li><%= message %></li>
+                 <% end %>
+              </ul>
+            </div>
+            <% end %>
           <fieldset>
             <div class="col-md-3">
               <legend>一般</legend>
               <div class="help-block"></div>
             </div>
             <div class="col-md-9">
-              <br>
-              <br>
               <div class="form-group">
                 <label for="product_name">商品名</label><br>
                 <%= f.text_field :product_name %>
@@ -51,10 +58,9 @@
               </div>
               <div class="form-group disc">
                 <%= f.fields_for :discs do |f| %>
-                <label for="disc">ディスク</label>
-                <%= f.text_field :disc_name, {placeholder: "ディスクの名前"} %>
-              </div>
-              <%= f.link_to_remove "削除" %>
+                <label for="disc">ディスク</label><div class='test'></div>
+                <%= f.hidden_field :disc_name %>
+                <%= f.link_to_remove "削除" %>
               <div class="form-group">
                 <label for="song">収録曲</label>
                 <%= f.fields_for :songs do |f| %>
@@ -65,6 +71,7 @@
               </div>
               <% end %>
               <%= f.link_to_add "ディスクを追加", :discs %>
+            </div>
             </div>
           </div>
           </fieldset>

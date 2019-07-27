@@ -10,6 +10,26 @@ class Item < ApplicationRecord
 	belongs_to :label, optional: true
 	belongs_to :genre, optional: true
 
+
+    validate :add_error_sample
+
+    def add_error_sample
+    # nameが空のときにエラーメッセージを追加する
+    if product_name.blank?
+      errors[:base] << "商品名を入力してください"
+    end
+
+    # 価格が空のときにエラーメッセージを追加する
+    if price.blank?
+      errors[:base] << "価格を入力してください"
+    end
+
+    if stock_quantity.blank?
+      errors[:base] << "在庫数を入力してください"
+    end
+
+  end
+
 	def self.search(search) #self.でクラスメソッドとしている
     	if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
       		Item.where(['product_name LIKE ?', "%#{search}%"])

@@ -40,8 +40,7 @@ class Admins::ItemsController < ApplicationController
       redirect_to admins_items_path
       flash[:notice] = "成功しました"
     else
-      @items = Item.all
-      render :index
+      render:show
     end
   end
 

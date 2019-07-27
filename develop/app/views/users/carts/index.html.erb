@@ -32,7 +32,8 @@
               <%= f.hidden_field :item_id, value: cart_item.item.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.submit "更新する",  class:"btn-default" %>
-              <% end %>
+              <% end %><br>
+              ※在庫数: <%= cart_item.item.stock_quantity %> 個
               </td>
               <td class="right"><%= cart_item.item.price %>円</td>
               <td class="right"><%= cart_item.sub_total %>円</td>

@@ -5,9 +5,16 @@ class Users::OrdersController < ApplicationController
 
 
   def new
+
     @user = current_user
+    @current_address = @user.addresses.first
+    if @current_address
     @order = Order.new
-    @order_item = @order.order_items.build
+    @order_items = @order.order_items.build
+    @user = current_user
+    else
+    redirect_to new_users_address_path
+  
   end
 
 

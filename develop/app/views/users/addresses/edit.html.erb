@@ -5,9 +5,9 @@
   <div class="row">
     <div class="col-xs-12">
 　<h2>住所の編集</h2>
-    <% @address.each do |address| %>
+    <%= @address.each do |address| %>
     <div class="form-group">
-    <%= form_for(address, url: users_addresses_path) do |f| %>
+    <%= form_for(address, url: users_address_path(address.id)) do |f| %>
   <table>
     <tr>
       <th>氏名</th>
@@ -51,7 +51,7 @@
       <%= f.submit '変更確認' %>
       </td>
       <td>
-        <%= link_to "削除",edit_users_user_path(current_user),class: "col-lg-6 btn btn-danger", data: {:confirm => '本当に消しますか？'}, method: :delete %>
+        <%= link_to "削除",users_address_path(address.id),class: "col-lg-6 btn btn-danger", data: {:confirm => '本当に消しますか？'}, method: :delete %>
       </td>
     </tr>
   </table>

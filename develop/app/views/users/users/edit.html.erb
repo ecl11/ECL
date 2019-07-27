@@ -15,7 +15,6 @@
 					  <%= f.text_field :family_name, class: "family_name", autofocus: true, autocomplete: "family_name" %>
 				</div>
 				  <div>
-				  	
 				  </div>
 			    </tr>
 			    <tr>
@@ -30,14 +29,13 @@
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= address.label "住所" %><br>
-			    		<%= link_to "住所追加",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
+			    		<%= f.label "住所" %><br>
+			    		<%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
+			    		<%= link_to "住所の編集と削除",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
 			    		<div class="form-group"><label for="artist_name"></label>
 			    			<br><%= f.select :address_id, Address.all.map{|t| [t.address, t.id]} %></div>
-			    		<%= address.text_field :address, class: "address", autocomplete: "address" %>
 			    	</div>
 			    </tr>
-	
 			    <tr>
 			    	<div>
 			    		<%= f.label :phone_number, "電話番号（ハイフンなし）" %><br>
@@ -67,7 +65,7 @@
 			         	<%= f.submit "編集する" %>
 			         </div>
 				<% end %>
-			  </table>>
+			  </table>
 			</div>
 		</div>
 

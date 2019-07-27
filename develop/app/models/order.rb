@@ -5,9 +5,9 @@
 	accepts_nested_attributes_for :order_items, allow_destroy: true
 
 	enum payment_method: {
-		bank_transfer: 0,
-		cod: 1,
-		credit_card_payment: 2
+		銀行振込: 0,
+		代金引換: 1,
+		クレジットカード決済: 2
 	}
 
 	enum delivery_status: {

@@ -1,5 +1,7 @@
 class Admins::GenresController < ApplicationController
 
+  before_action :authenticate_user!
+
   include DisplayAdminHeader
 
   def new

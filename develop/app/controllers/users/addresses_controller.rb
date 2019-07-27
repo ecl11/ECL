@@ -22,13 +22,23 @@ class Users::AddressesController < ApplicationController
   end
 
   def update
+    @address = Address.find(params[:id])
     if @address.update(address_params)
       flash[:notice] = "変更しました"
-    redirect_to edit_users_user_path(current_user.id)
+    redirect_to edit_users_user_path(current_user)
   else
    
   end
 
+  end
+  def destroy
+
+    @address = Address.find(params[:id])
+    if @address.destroy
+      flash[:notice] = "削除しました"
+    redirect_to edit_users_user_path(current_user)
+  end
+    
   end
 
   private

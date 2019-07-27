@@ -9,9 +9,10 @@ class Users::ItemsController < ApplicationController
   def show
   	@item = Item.find(params[:id])
     @discs = @item.discs.all
-    @cart_items = CartItem.all
+    @user = current_user
+    @cart_items = @user.cart_items
 
-    @current_item = CartItem.find_by(item_id: @item.id)
+    @current_item = @user.cart_items.find_by(item_id: @item.id)
 
     if  @current_item
       @cart_item = CartItem.find(@current_item.id)

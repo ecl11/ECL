@@ -35,8 +35,8 @@
               <% end %><br>
               ※在庫数: <%= cart_item.item.stock_quantity %> 個
               </td>
-              <td class="right"><%= cart_item.item.price %>円</td>
-              <td class="right"><%= cart_item.sub_total %>円</td>
+              <td class="right"><%= number_with_delimiter(cart_item.item.price.to_s) %>円</td>
+              <td class="right"><%= number_with_delimiter(cart_item.sub_total.to_s) %>円</td>
               <td class="center"><%= link_to "delete", users_cart_path(cart_item), method: :delete %></td>
             </tr>
             <% end %>

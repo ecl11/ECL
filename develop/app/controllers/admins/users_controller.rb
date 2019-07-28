@@ -18,7 +18,7 @@ class Admins::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #@address = Address.find_by(post_number: params[:post_number],address: params[:address])
-    @address = @user.addresses.all
+    #@address = @user.addresses.all
     @orders = @user.orders
     @orders = Order.page(params[:page]).per(3)
   end

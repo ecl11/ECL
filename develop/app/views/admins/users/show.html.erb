@@ -18,12 +18,13 @@
               <td><%= @user.first_name %></td>
             </tr>
             <tr>
-              <td>〒<%= @user.addresses.first.post_number %></td>
+              <td></td>
               <td></td>
             </tr>
             <tr>
-              <td><%= @user.addresses.first.address %></td>
-              <td></td>
+              <td><% @user.addresses.each do |address| %></td>
+              <td><% address.address %></td>
+              <% end %>
             </tr>
             <tr>
               <td><%= @user.phone_number %></td>
@@ -50,7 +51,7 @@
 
           <tbody>
 
-            <% @user.order.each do |order| %>
+            <% @user.orders.each do |order| %>
 
             <tr>
               <th>
@@ -63,7 +64,7 @@
             </tr>
             <tr>
               <td>
-               〒<%= order.post_number %><br>
+               住所<br>
                 <%= order.address %>
               </td>
               <td>

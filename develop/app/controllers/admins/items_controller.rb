@@ -5,7 +5,7 @@ class Admins::ItemsController < ApplicationController
   include DisplayAdminHeader
 
   def index
-    @items = Item.page(params[:page]).per(20).search(params[:search])
+    @items = Item.page(params[:page]).per(20).search(params[:search]).order(id: "DESC")
   end
 
   def show

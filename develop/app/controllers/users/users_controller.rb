@@ -7,7 +7,7 @@ class Users::UsersController < ApplicationController
     @current_address = @user.addresses.first
     if @current_address #@user.ddresses.present?
 
-      @orders = Order.where(user_id: current_user.id).page(params[:page]).per(3)
+      @orders = Order.where(user_id: current_user.id).page(params[:page]).per(3).order(id: "DESC")
       @items = Item.all#
     else
         redirect_to new_users_address_path

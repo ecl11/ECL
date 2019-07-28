@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
   	<h2>注文管理</h2>
-    <%=@order.created_at %>
+    <%=@order[:created_at].strftime("%Y-%m-%d　%H:%M")  %>
     <h3><%= @order.delivery_status %></h3>
     <%= form_for(@order, url: admins_order_path) do |f| %>
       <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a,{} %>

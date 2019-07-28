@@ -2,7 +2,7 @@ class Admins::OrdersController < ApplicationController
 
   include DisplayAdminHeader
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
 

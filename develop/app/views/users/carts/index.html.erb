@@ -32,17 +32,19 @@
               <%= f.hidden_field :item_id, value: cart_item.item.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.submit "更新する",  class:"btn-default" %>
-              <% end %>
+              購入数量を変更した場合、更新を押してください。
+              <% end %><br>
+              ※在庫数: <%= cart_item.item.stock_quantity %> 個
               </td>
-              <td class="right"><%= cart_item.item.price %>円</td>
-              <td class="right"><%= cart_item.sub_total %>円</td>
+              <td class="right"><%= number_with_delimiter(cart_item.item.price.to_s) %>円</td>
+              <td class="right"><%= number_with_delimiter(cart_item.sub_total.to_s) %>円</td>
               <td class="center"><%= link_to "delete", users_cart_path(cart_item), method: :delete %></td>
             </tr>
             <% end %>
 
   </tbody>
   </table>
-
+ 購入数量を変更した場合、更新を押してください。
   <div class="btn-inner">
     <%= link_to "ご注文画面へすすむ", new_users_order_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>

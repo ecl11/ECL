@@ -15,7 +15,7 @@
         <div class="comable-page">
             <div class="comable-page-heading">
               <ul class="pull-right list-inline">
-                <li class="dropdown"><a class="btn btn-default" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
+                <li class="dropdown opaopa"><a class="btn btn-default" data-toggle="dropdown" href="#"><i class="fa fa-bars"></i></a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li><%= link_to users_item_path(@item) do %><span class="fa fa-external-link"></span> この商品をフロントで確認する<% end %></li>
                   </ul>
@@ -29,6 +29,16 @@
               </h1>
             </div>
           <div class="comable-page-body">
+            <% if @item.errors.any? %>
+            <div id="errorExplanation" class="errorExplanation">
+              <h2>エラーが発生しました</h2>
+              <p>以下のエラーを修正してください。</p>
+              <ul><% @item.errors.full_messages.each do |message| %>
+                 <li><%= message %></li>
+                 <% end %>
+              </ul>
+            </div>
+            <% end %>
           <fieldset>
             <div class="col-md-3">
               <legend>一般</legend>
@@ -60,7 +70,7 @@
               </div>
               <div class="form-group disc">
                 <%= f.fields_for :discs do |f| %>
-                <label for="disc">ディスク</label>
+                <label for="disc">ディスク</label><div class="test"></div>
                 <%= f.hidden_field :disc_name %>
                 <%= f.link_to_remove "削除" %>
               <div class="form-group">

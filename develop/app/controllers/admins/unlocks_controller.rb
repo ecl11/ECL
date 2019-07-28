@@ -2,7 +2,7 @@
 
 class Admins::UnlocksController < Devise::UnlocksController
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   include DisplayAdminHeader
 

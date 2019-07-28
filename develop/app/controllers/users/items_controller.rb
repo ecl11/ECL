@@ -7,12 +7,12 @@ class Users::ItemsController < ApplicationController
     #@count = Item.search
    end
 
-  def show
-  	@item = Item.find(params[:id])
+
+def show
+    @item = Item.find(params[:id])
     @discs = @item.discs.all
     @user = current_user
     @cart_items = @user.cart_items
-
     @current_item = @user.cart_items.find_by(item_id: @item.id)
 
     if  @current_item
@@ -21,6 +21,8 @@ class Users::ItemsController < ApplicationController
       @cart_item = CartItem.new
     end
   end
+
+
 
 
   private

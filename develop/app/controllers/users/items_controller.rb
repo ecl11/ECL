@@ -3,7 +3,7 @@ class Users::ItemsController < ApplicationController
   include DisplayUserHeader
 
   def index
-    @items = Item.page(params[:page]).per(20).search(params[:search])
+    @items = Item.page(params[:page]).per(20).search(params[:search]).order(id: "DESC")
     #@count = Item.search
    end
 

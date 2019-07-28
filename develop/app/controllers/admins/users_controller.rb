@@ -9,7 +9,7 @@ class Admins::UsersController < ApplicationController
     @user = User.all
     #@user = User.find
     #@user = User.search(params[:search])
-    @user = User.page(params[:page]).per(20).search(params[:search])
+    @user = User.page(params[:page]).per(20).search(params[:search]).order(id: "DESC")
 
     #@users = User.page(params[:page]).per(20)
 
@@ -19,8 +19,8 @@ class Admins::UsersController < ApplicationController
     @user = User.find(params[:id])
     #@address = Address.find_by(post_number: params[:post_number],address: params[:address])
     #@address = @user.addresses.all
-    @orders = @user.orders
-    @orders = Order.page(params[:page]).per(3)
+    @orders = @user.orders.page(params[:page]).per(3).order(id: "DESC")
+    #@orders = Order.page(params[:page]).per(3)
   end
 
   def edit

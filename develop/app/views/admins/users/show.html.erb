@@ -51,15 +51,14 @@
 
           <tbody>
 
-            <% @user.orders.each do |order| %>
+            <% @orders.each do |order| %>
 
             <tr>
               <th>
-                <%= order.created_at %>
+                <%= order[:created_at].strftime("%Y-%m-%d　%H:%M")  %>
               </th>
               <th>
                 <%#<%= order.select :delivery_status, Order.delivery_status.keys.to_a,{} %>
-                
               </th>
             </tr>
             <tr>
@@ -75,13 +74,15 @@
             </tr>
             <tr>
               <td>
-                <%= order.order_items.id %>
+                <% order.order_items.each do |order_item| %>
+                <%= order_item.id %>
               </td>
                <td>
-                <%= order_items.price %>×<%= order_items.sheet %>=<%= order.amount %>(税込)
+                <%= order_item.price %>×<%= order_item.sheet %>=<%= order_item.price*order_item.sheet %>(税込)
               </td>
             </tr>
             <% end %>
+           <% end %>
             <%= paginate @orders %>
           </tbody>
         </table>

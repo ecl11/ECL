@@ -10,8 +10,8 @@
         <tbody>
          <tr>
            <td>
-            <%= user.family_name %>
-            <%= user.first_name %>
+            <%= order.user.family_name %>
+            <%= order.user.first_name %>
            </td>
            <td>
             <%= order.created_at %>
@@ -20,7 +20,7 @@
             <%= order.delivery_status %>
            </td>
            <td>
-            <%= link_to "詳細画面へ",admins_order_path(@order.id), class: "btn-sm btn-info" %>
+            <%= link_to "詳細画面へ",admins_order_path(order.id), class: "btn-sm btn-info" %>
            </td>
          </tr>
         </tbody>

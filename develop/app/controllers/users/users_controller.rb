@@ -9,11 +9,13 @@ class Users::UsersController < ApplicationController
 
    #if @current_adderess #@user.ddresses.present?
     @address = Address.find_by(post_number: params[:post_number],address: params[:address])
+
       @orders = Order.where(user_id: current_user.id).page(params[:page]).per(3)
       @items = Item.all#where(order_id: order_id) 空だとエラーが出る でもアイテムとりすぎ
      #else
     #redirect_to new_users_address_path
   #end
+
   end
 
   def edit

@@ -1,8 +1,8 @@
 <div class='container'>
   <div class='row'>
-  	<h2>注文管理/</h2>
-    <%=@order.created_at %>
-    <%= @order.delivery_status %>
+  	<h2>注文管理</h2>
+    <%=@order[:created_at].strftime("%Y-%m-%d　%H:%M")  %>
+    <h3><%= @order.delivery_status %></h3>
     <%= form_for(@order, url: admins_order_path) do |f| %>
       <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a,{} %>
       <%= f.submit '配送ステータス変更' %>
@@ -62,7 +62,7 @@
       <hr>
       <h3>配送先</h3>
       <hr>
-      <p>〒<%= @order.post_number.to_s %></p>
+      <p>〒<%= @order.post_number %></p>
       <p><%= @order.address %></p>
       <br>
       <p><%= @order.name %></p>

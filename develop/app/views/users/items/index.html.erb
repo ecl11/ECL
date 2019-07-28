@@ -24,6 +24,7 @@
               <div
                 class="name"><% if item.artist.present? %><%= item.artist.artist_name %><% end %></div>
         <div class="price"><%= number_with_delimiter(item.price.to_s) %>円</div>
+        <% if item.stock_quantity == 0 %><font color="red"><h4><売り切れ></h4></font><% end %>
         </li>
         <% end %>
   </ul>

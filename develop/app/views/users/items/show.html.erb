@@ -30,7 +30,7 @@
                     <% end %>
                     </div>
                     </li>
-                    <% end %>
+                <% end %>
               </ul>
             </div>
                     <% else %>
@@ -58,6 +58,7 @@
 
             <!--詳細側-->
             <div class="main-detail">
+              <% if @item.stock_quantity == 0 %><font color="red"><h3><売り切れ></h3></font><% end %>
               <p class="lot-number">商品番号：<%= @item.id %></p>
               <h1><%= @item.product_name %></h1>
               <h1><% if @item.artist.present? %><%= @item.artist.artist_name %><% end %></h1>

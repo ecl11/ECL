@@ -16,9 +16,7 @@
 		出荷済: 2
 	}
 
-
-
-  def name
-    family_name + first_name
-  end
+   def name
+     family_name + first_name
+   end
 end

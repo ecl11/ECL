@@ -17,7 +17,14 @@
               <td><%= @user.family_name %></td>
               <td><%= @user.first_name %></td>
             </tr>
-            
+            <tr>
+              <td>〒<%= @user.addresses.first.post_number %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><%= @user.addresses.first.address %></td>
+              <td></td>
+            </tr>
             <tr>
               <td><%= @user.phone_number %></td>
               <td></td>
@@ -42,7 +49,9 @@
           </thead>
 
           <tbody>
-            <% @orders.each do |order| %>
+
+            <% @user.order.each do |order| %>
+
             <tr>
               <th>
                 <%= order.created_at %>

@@ -4,7 +4,8 @@ class Users::ItemsController < ApplicationController
 
   def index
     @items = Item.page(params[:page]).per(20).search(params[:search])
-  end
+    #@count = Item.search
+   end
 
 
 def show

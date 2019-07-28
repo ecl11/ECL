@@ -1,7 +1,6 @@
 <div class='container'>
   <div class='row'>
   	<h2>注文管理/</h2>
-    <%= @order.id %>
     <%=@order.created_at %>
     <%= @order.delivery_status %>
     <%= form_for(@order, url: admins_order_path) do |f| %>
@@ -49,10 +48,10 @@
       <hr>
       <h3>ユーザー情報</h3>
       <hr>
-      <p>〒<%= @user.address.post_number.to_s %></p>
-      <p><%= @user.address.address %></p>
+      <p>〒<%= @user.addresses.first.post_number.to_s %></p>
+      <p><%= @user.addresses.first.address %></p>
       <br>
-      <p><%= @user.address.name %></p>
+      <p><%= @user.addresses.first.family_name %><%= @user.addresses.first.first_name %></p>
       <p><%= @user.email %></p>
       <hr>
     </div>

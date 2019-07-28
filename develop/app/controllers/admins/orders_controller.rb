@@ -16,8 +16,9 @@ class Admins::OrdersController < ApplicationController
   def show
   	@order = Order.find(params[:id])
     @order_items = @order.order_items
-    @order_items = OrderItem.includes(:item)
+    # @order_items = OrderItem.includes(:item)
     @user = @order.user
+    # @user = User.includes(:address)
   end
 
   def update

@@ -69,8 +69,7 @@
             <tr>
               <% order.order_items.each do |order_item| %>
               <td>
-             <%#<%= order_item.item.product_name  %>
-            
+             <%= order_item.item.product_name  %>
               </td>
                <td>
                 <%= order_item.price %> × <%= order_item.sheet %> = <%= order_item.price*order_item.sheet %>(税込)

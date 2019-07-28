@@ -15,4 +15,8 @@
 		商品準備中: 1,
 		出荷済: 2
 	}
+
+   def name
+     family_name + first_name
+   end
 end

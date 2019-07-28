@@ -38,14 +38,14 @@ class Users::UsersController < ApplicationController
       @user.destroy
       @address.destroy
       flash[:notice] = "退会しました"
-      redirect_to "/top"
+      redirect_to '/top'
     else
       @orders.destroy
       @user.destroy
       @address.destroy
       flash[:notice] = "退会しました"
-      redirect_to "/top"
-    end
+      redirect_to '/top'
+ end
 
 
   end

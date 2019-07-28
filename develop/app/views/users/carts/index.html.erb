@@ -6,6 +6,8 @@
       <div id="wrap">
         <h2>ショッピングカート</h2>
         <hr class="line-bg">
+　　　　　※購入数量を変更した場合、更新するを押してください。<br><br>
+
         <table class="cart">
           <tbody>
             <tr>
@@ -32,9 +34,8 @@
               <%= f.hidden_field :item_id, value: cart_item.item.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.submit "更新する",  class:"btn-default" %>
-              購入数量を変更した場合、更新を押してください。
               <% end %><br>
-              ※在庫数: <%= cart_item.item.stock_quantity %> 個
+              在庫数: <%= cart_item.item.stock_quantity %> 個
               </td>
               <td class="right"><%= number_with_delimiter(cart_item.item.price.to_s) %>円</td>
               <td class="right"><%= number_with_delimiter(cart_item.sub_total.to_s) %>円</td>
@@ -44,7 +45,6 @@
 
   </tbody>
   </table>
- 購入数量を変更した場合、更新を押してください。
   <div class="btn-inner">
     <%= link_to "ご注文画面へすすむ", new_users_order_path, class: "btn btn-primary btn-lg btn-block" %>
   </div>

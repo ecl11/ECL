@@ -5,15 +5,14 @@ class Users::UsersController < ApplicationController
   def show
     @user = current_user
     @current_address = @user.addresses.first
-
-
-   #if @current_adderess #@user.ddresses.present?
-    @address = Address.find_by(post_number: params[:post_number],address: params[:address])
-      @orders = Order.where(user_id: current_user.id).page(params[:page]).per(3)
-      @items = Item.all#where(order_id: order_id) 空だとエラーが出る でもアイテムとりすぎ
-     #else
-    #redirect_to new_users_address_path
-  #end
+    if @current_address #@user.ddresses.present?
+        @address = Address.find_by(post_number: params[:post_number],address: params[:address])
+        @address = @user.addresses.all
+        @orders = @user.orders
+        @orders = Order.page(params[:page]).per(3)
+    else
+        redirect_to new_users_address_path
+    end
   end
 
   def edit

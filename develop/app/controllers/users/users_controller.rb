@@ -6,6 +6,7 @@ class Users::UsersController < ApplicationController
     @user = current_user
     @address = Address.find_by(post_number: params[:post_number],address: params[:address])
     @address = @user.addresses.all
+    @orders = Order.find(params[:id])
     @orders = @user.orders
     @orders = Order.page(params[:page]).per(3)
   end

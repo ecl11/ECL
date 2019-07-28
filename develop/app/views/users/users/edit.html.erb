@@ -10,11 +10,13 @@
 
 				<%= form_for @user,:url => {:action => :update} do |f| %>
 				<tr>
-				<div class="form-group has-icon">
+				  <div class="form-group has-icon">
 					  <%= f.label :family_name, "姓" %><br>
 					  <%= f.text_field :family_name, class: "family_name", autofocus: true, autocomplete: "family_name" %>
-				</div>
+				  </div>
 				  <div>
+				  	  <%= f.label :first_name, "名" %><br>
+				  	  <%= f.text_field :first_name, class: "first_name", autofocus: true, autocomplete: "first_name" %>
 				  </div>
 			    </tr>
 			    <tr>
@@ -39,7 +41,7 @@
 			    <tr>
 			    	<div>
 			    		<%= f.label :phone_number, "電話番号（ハイフンなし）" %><br>
-			    		<%= f.number_field :phone_number, class: "phone_number", autocomplete: "phone_number" %>
+			    		<%= f.telephone_field :phone_number, class: "phone_number", autocomplete: "phone_number" %>
 			    	</div>
 			    </tr>
 			    <tr>

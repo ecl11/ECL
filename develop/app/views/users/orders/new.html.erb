@@ -98,7 +98,7 @@
                 </tr>
                 <tr>
                   <th>電話番号</th>
-                  <td><%= f.text_field :phone_number, value: @user.addresses.first.phone_number, required: true %></td>
+                  <td><%= f.telephone_field :phone_number, value: @user.addresses.first.phone_number, required: true %></td>
                 </tr>
               </tbody>
             </table>

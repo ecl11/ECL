@@ -5,6 +5,7 @@
     <%= @order.delivery_status %>
     <%= form_for(@order, url: admins_order_path) do |f| %>
       <%= f.select :delivery_status, Order.delivery_statuses.keys.to_a,{} %>
+      <%= f.submit '配送ステータス変更' %>
     <% end %>
 
     <div class='col-xs-12'>

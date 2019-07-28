@@ -26,7 +26,7 @@ class Admins::OrdersController < ApplicationController
     @order.update(order_params)
     if @order.save
       flash[:notice] = "You have creatad delivery status successfully."
-      redirect_to order_path(@order)
+      redirect_to admins_order_path(@order)
     end
   end
 

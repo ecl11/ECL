@@ -7,9 +7,7 @@ class Admins::OrdersController < ApplicationController
   def index
 
   	@orders = Order.all
-    @orders = Order.page(params[:page]).per(10)
-
-  	@orders = Order.page(params[:page]).per(20)
+  	@orders = Order.page(params[:page]).per(20).order(id: "DESC")
 
   end
 

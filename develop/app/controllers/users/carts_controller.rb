@@ -1,6 +1,6 @@
 class Users::CartsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:create]
+  #before_action :authenticate_user!, only: [:create]
 
   include DisplayUserHeader
 

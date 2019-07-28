@@ -53,7 +53,6 @@
               </th>
               <th>
                 <%= order.delivery_status %>
-                
               </th>
             </tr>
             <tr>
@@ -69,16 +68,14 @@
             </tr>
             <tr>
               <% order.order_items.each do |order_item| %>
-             <%# <% order_item.items.each do |item| %>
-
               <td>
-             <%#   <%= item.productname %>
+             <%#<%= order_item.item.product_name  %>
+            
               </td>
                <td>
-                <%= order_item.price %> × <%= order_item.sheet %> = <%= order.amount %>(税込)
+                <%= order_item.price %> × <%= order_item.sheet %> = <%= order_item.price*order_item.sheet %>(税込)
               </td>
             </tr>
-           <%# <% end %>
            <% end %>
            <% end %>
             <%= paginate @orders %>

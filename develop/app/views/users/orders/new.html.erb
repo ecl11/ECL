@@ -94,7 +94,7 @@
                 </tr>
                 <tr>
                   <th>配送先住所</th>
-                  <td><%= f.select :address, @user.addresses.all.map{|t| [t.address, t.id]} %><br>
+                  <td><%= f.select :address, @user.addresses.all.map{|t| [t.address]} %><br>
                     <%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
                   
                   </td>

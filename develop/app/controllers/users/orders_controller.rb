@@ -23,19 +23,18 @@ class Users::OrdersController < ApplicationController
     @order.user_id = current_user.id
     @cart_items = CartItem.where(user_id: current_user.id)
     @cart_items.each do |cart_item|
-    @item = cart_item.item
-    if @item.stock_quantity >= cart_item.sheet
-      @item.decrement!(:stock_quantity, cart_item.sheet.to_i)
-      cart_item.destroy
-    else
-      redirect_to users_carts_path
+      @item = cart_item.item
+      if @item.stock_quantity >= cart_item.sheet
+        @item.decrement!(:stock_quantity, cart_item.sheet.to_i)
+        cart_item.destroy
+      else
+        redirect_to users_carts_path
+      end
     end
-  end
       @order.delivery_status = 0
       @order.save
       flash[:notice] = "購入ありがとうございました。カートは空です。"
       redirect_to users_user_path(current_user)
-    
   end
 
 

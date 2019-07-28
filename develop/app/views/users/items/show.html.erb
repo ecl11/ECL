@@ -17,7 +17,7 @@
                     <li class="ed"><div class="sold_out">この商品は現在<%= @cart_item.sheet %>枚カートに入っています。</div></li>
                     <%= form_for(@cart_item, url: users_cart_path(@cart_item)) do |f| %>
                     <li class="ed">
-                    <p>在庫</p>
+                    <p>在庫数</p>
                     <p>（<%= @item.stock_quantity %>）</p>
                     <div class="add_cart form-inline form-group">
                     <% if user_signed_in? %>
@@ -36,14 +36,13 @@
                     <% else %>
                     <%= form_for(@cart_item, url: users_carts_path) do |f| %>
                     <li class="ed">
-                    <p>在庫</p>
-                    <p class="dara">（<%= @item.stock_quantity %>）</p>
+                    <p>在庫数 （<%= @item.stock_quantity %>）</p>
                     <div class="add_cart form-inline form-group">
 
                     <% if user_signed_in? %>
                     <%= f.hidden_field :user_id, value: current_user.id %>
                     <%= f.hidden_field :item_id, value: @item.id %>
-                    <%= f.number_field :sheet, in:1..10 %> 枚
+                    <%= f.number_field :sheet, in:1..10 %> 枚<br>
                     <%= f.submit "カートに入れる" %>
                     <% else %>
                     <%= link_to "カートに入れる", new_user_session_path %>
@@ -62,9 +61,10 @@
               <p class="lot-number">商品番号：<%= @item.id %></p>
               <h1><%= @item.product_name %></h1>
               <h1><% if @item.artist.present? %><%= @item.artist.artist_name %><% end %></h1>
-              <p class="price"><%= @item.price %> 円</p>
+              <h2>税込: <%= number_with_delimiter(@item.price_with_tax.to_s) %> 円</h2>
             </div>
             <div class="introduction">
+              商品詳細 <br><br>
               アーティスト：<% if @item.artist.present? %><%= @item.artist.artist_name %><% end %><br><br>
               ジャンル：<% if @item.genre.present? %><%= @item.genre.genre_name %><% end %><br><br>
               レーベル：<% if @item.label.present? %><%= @item.label.label_name %><% end %><br><br>

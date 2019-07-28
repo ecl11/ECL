@@ -77,8 +77,9 @@
                 <% order.order_items.each do |order_item| %>
                 <%= order_item.id %>
               </td>
+              <% sub_total = order_item.price*order_item.sheet %>
                <td>
-                <%= order_item.price %>×<%= order_item.sheet %>=<%= order_item.price*order_item.sheet %>(税込)
+                税込: <%= sub_total %>
               </td>
             </tr>
             <% end %>

@@ -33,7 +33,7 @@
                   <th><a class="sort_link">商品コード</a></th>
                   <th><a class="sort_link">商品名</a></th>
                   <th><a class="sort_link">アーティスト名</a></th>
-                  <th><a class="sort_link">価格</a></th>
+                  <th><a class="sort_link">価格 (税込)</a></th>
                   <th>在庫</th>
                 </tr>
               </thead>
@@ -59,7 +59,7 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= number_with_delimiter(item.price.to_s) %>円
+                    <%= number_with_delimiter(item.price_with_tax.to_s) %> 円
                   </td>
                   <td>
                     <ul class="list-unstyled">

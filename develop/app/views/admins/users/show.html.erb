@@ -66,10 +66,7 @@
                住所<br>
                 <%= order.address %>
               </td>
-              <td>
-                支払い:<%= order.payment_method %><br>
-　　　　　　　　　　合計金額:<%= order.total_price %>￥<br>
-                別途送料:<%= order.shipping_fee %>￥
+              <td>支払い:<%= order.payment_method %><br>合計金額:￥ <%= number_with_delimiter(order.total_price.to_s) %><br>別途送料:￥ <%= order.shipping_fee %>
               </td>
             </tr>
             <tr>
@@ -77,7 +74,7 @@
                 <% order.order_items.each do |order_item| %>
                 <%= order_item.id %>
               </td>
-              <% sub_total = order_item.price*order_item.sheet %>
+              <% sub_total = order_item.price_to_i*order_item.sheet_to_i %>
                <td>
                 税込: <%= sub_total %>
               </td>

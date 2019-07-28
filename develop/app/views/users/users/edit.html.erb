@@ -31,11 +31,15 @@
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= f.label "住所" %><br>
+			    		<%= f.label "登録済み住所" %><br>
 			    		<%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
 			    		<%= link_to "住所の編集と削除",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
 			    		<div class="form-group"><label for="artist_name"></label>
-			    			<br><%= f.select :address_id, @user.addresses.all.map{|t| [t.address, t.id]} %></div>
+			    			<br><% @user.addresses.each do |address| %></div>
+			    			<div class="address" >
+			    			<%= address.address %>
+		    				</div>
+			    			<% end %>
 			    	</div>
 			    </tr>
 			    <tr>

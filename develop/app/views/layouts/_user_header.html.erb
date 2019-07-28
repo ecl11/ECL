@@ -21,6 +21,10 @@
           <li>
             <%= link_to "Logout", destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>
           </li>
+          <li>
+            <font color="#f5f5f5"><%= current_user.family_name %><%= current_user.first_name %>さん</font>
+          </li>
+
         <% else %>
           <li>
             <%= link_to "ECL", top_path, class: "glyphicon glyphicon-home" %>

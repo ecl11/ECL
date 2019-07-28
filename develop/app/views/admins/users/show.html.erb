@@ -72,11 +72,11 @@
             <tr>
               <td>
                 <% order.order_items.each do |order_item| %>
-                <%= order_item.id %>
+                <%= order_item.item.product_name  %>
               </td>
-              <% sub_total = order_item.price_to_i*order_item.sheet_to_i %>
+              <% sub_total = ((order_item.price.to_i * order_item.sheet.to_i)*1.08).round %>
                <td>
-                税込: <%= sub_total %>
+                税込: ￥ <%= number_with_delimiter(sub_total.to_s) %>
               </td>
             </tr>
             <% end %>

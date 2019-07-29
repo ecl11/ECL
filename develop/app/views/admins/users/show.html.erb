@@ -36,7 +36,7 @@
             </tr>
             <tr>
               <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-6 btn btn-default" %></td>
-              <td><%= link_to "削除",admins_users_path(@user),class: "col-lg-6 btn-default", data: {:confirm => '本当に消しますか？'}, method: :delete %></td>
+              <td><%= link_to "削除",admins_user_path,class: "col-lg-12 btn btn-danger", data: {:confirm => '本当に消しますか？'}, method: :delete %></td>
             </tr>
            </tbody>
         </table>

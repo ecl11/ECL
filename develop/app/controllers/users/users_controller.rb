@@ -28,27 +28,32 @@ class Users::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to users_user_path(@user.id)
     end
+    @user.is_deleted = 0
+    @user.is_deleted.update
+    if @user.is_deleted = 1
+      redirect_to '/top'
+    end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    @address = Address.find_by(user_id: params[:id])
-    @orders = Order.find_by(user_id: params[:id])
-    if @orders.nil?
-      @user.destroy
-      @address.destroy
-      flash[:notice] = "退会しました"
-      redirect_to '/top'
-    else
-      @orders.destroy
-      @user.destroy
-      @address.destroy
-      flash[:notice] = "退会しました"
-      redirect_to '/top'
- end
+  #def destroy
+    #@user = User.find(params[:id])
+    #@address = Address.find_by(user_id: params[:id])
+    #@orders = Order.find_by(user_id: params[:id])
+    #if @orders.nil?
+     # @user.destroy
+      #@address.destroy
+      #flash[:notice] = "退会しました"
+      #redirect_to '/top'
+    #else
+     # @orders.destroy
+     # @user.destroy
+      #@address.destroy
+      #flash[:notice] = "退会しました"
+      #redirect_to '/top'
+ #end
 
 
-  end
+  #end
 
 
   private

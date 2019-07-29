@@ -66,8 +66,12 @@
 		        </tr>
 		        <tr>
 		        	<td>
-		            	<%= link_to "退会する",users_user_path,class: "col-lg-12 btn btn-danger", data: {:confirm => '本当に退会しますか？'},method: :delete %>
-		            </td>
+                  <%= form_for(@user, url: users_user_path) do |f| %>
+                <%= f.select :is_deleted, User.is_deleted.keys.to_a, {} %>
+                  <%= f.submit '退会する' %>
+                  <% end %>
+               </td>
+
 		        </tr>
 			</tbody>
 		  </table>

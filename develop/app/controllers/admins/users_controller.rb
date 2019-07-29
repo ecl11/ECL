@@ -38,9 +38,23 @@ class Admins::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admins_users_path
-  end
+    @address = Address.find_by(user_id: params[:id])
+    @orders = Order.find_by(user_id: params[:id])
+    if @orders.nil?
+      @user.destroy
+      @address.destroy
+      flash[:notice] = "退会しました"
+      redirect_to admins_user_path
+    else
+      @orders.destroy
+      @user.destroy
+      @address.destroy
+      flash[:notice] = "退会しました"
+      redirect_to admins_user_path
+    end
+ end
+
+  private
 
    def user_params
   params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number,

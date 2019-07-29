@@ -46,7 +46,7 @@
               <td class="right">
                 <%= number_with_delimiter(cart_item.item.price_with_tax.to_s) %> 円
               </td>
-              <% sub_total = cart_item.item.price.to_i * cart_item.sheet.to_i %>
+              <% sub_total = cart_item.item.price_with_tax.to_i * cart_item.sheet.to_i %>
               <% sum += sub_total %>
               <td class="right">
                 <%= number_with_delimiter(cart_item.sub_total_with_tax.to_s) %>円
@@ -59,8 +59,8 @@
 
             <% end %>
             <tr>
-              <td>合計</td>
-              <% sum_with_sub_total = (sum * 1.08).round %>
+              <td>合計(税込)</td>
+              <% sum_with_sub_total = sum.round %>
               <td class="right" colspan="5"><%= number_with_delimiter(sum_with_sub_total.to_s) %> 円</td>
               <%= f.hidden_field :total_price, :value => sum_with_sub_total %>
             </tr>

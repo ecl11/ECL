@@ -60,23 +60,26 @@
                配送先<br>
                 <%= order.address %>
               </td>
-              <td>支払い:<%= order.payment_method %><br>合計金額:￥ <%= number_with_delimiter(order.total_price.to_s) %><br>別途送料:￥ <%= order.shipping_fee %>
+              <td>支払い:<%= order.payment_method %><br>合計金額(税込　送料別):￥ <%= number_with_delimiter((order.total_price.round).to_s) %><br>別途送料:￥ <%= order.shipping_fee %>
               </td>
             </tr>
             <tr>
-              <td>
                 <% order.order_items.each do |order_item| %>
+              <td>
                 <%= order_item.item.product_name  %>
               </td>
+
               <% sub_total = ((order_item.price.to_i * order_item.sheet.to_i)*1.08).round %>
                <td>
-                税込: ￥ <%= number_with_delimiter(sub_total.to_s) %>
+                 <%= number_with_delimiter((order_item.price*1.08).round).to_s%> × <%= order_item.sheet %> = <%= number_with_delimiter((order_item.price*1.08*order_item.sheet).round).to_s %>(税込)<br>
+                
               </td>
             </tr>
+
            <% end %>
            <% end %>
             <%= paginate @orders %>
-
+            <br><br>
           </tbody>
         </table>
       </div>

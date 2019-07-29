@@ -29,6 +29,7 @@ class Users::UsersController < ApplicationController
   
   end
 
+
   
 
   def destroy
@@ -37,7 +38,6 @@ class Users::UsersController < ApplicationController
     redirect_to '/top'
      flash[:notice] = "退会しました"
   end
-
 
 
 

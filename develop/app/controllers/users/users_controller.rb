@@ -41,26 +41,10 @@ class Users::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to '/top'
-    #@user = User.find(params[:id])
-    #@address = Address.find_by(user_id: params[:id])
-    #@orders = Order.find_by(user_id: params[:id])
-    #if @orders.nil?
-     # @user.is_deleted = 1
-      #@user.update(user_params)
-      #sign_out(@user)
-      #@address.destroy
      flash[:notice] = "退会しました"
-     # redirect_to '/top'
-    #else
-     # @orders.destroy
-     # @user.destroy
-      #@address.destroy
-      #flash[:notice] = "退会しました"
-      #redirect_to '/top'
- end
+  end
 
 
-  #end
 
 
   private

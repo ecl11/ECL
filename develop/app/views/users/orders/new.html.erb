@@ -19,7 +19,7 @@
             <% sum = 0 %>
             <% @user.cart_items.each do |cart_item| %>
             <%= f.fields_for :order_items do |f| %>
-            
+
             <%= f.hidden_field :item_id, value: cart_item.item_id, required: true %>
             <%= f.hidden_field :sheet, value: cart_item.sheet, required: true %>
             <%= f.hidden_field :price, value: cart_item.item.price, required: true %>
@@ -80,31 +80,46 @@
           </table>
 
 
-          <p class="title">注文者情報</p>
+          <p class="title">請求先注文者情報</p>
           <div class="box">
             <table class="nonmember-ordre">
               <tbody>
                 <tr></tr>
                 <tr>
                   <th>姓</th>
-                  <td><%= f.text_field :family_name, value: @user.family_name, required: true %></td>
+                  <td><%= @user.family_name %></td>
                 </tr>
                 <tr>
                   <th>名</th>
-                  <td><%= f.text_field :first_name, value: @user.first_name, required: true %></td>
+                  <td><%= @user.first_name %></td>
                 </tr>
                 <tr>
-                  <th>配送先住所</th>
-                  <td><%= f.select :address, @user.addresses.all.map{|t| [t.address]} %><br>
-                    <%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
-                  
-                  </td>
+                  <th>注文者住所</th>
+                  <td>
+                    <%= @current_address.address %>
                 </tr>
                 <tr>
                   <th>電話番号</th>
-                  <td><%= f.telephone_field :phone_number, value: @user.addresses.first.phone_number, required: true %></td>
+                  <td><%= @user.phone_number %></td>
                 </tr>
               </tbody>
+            </table>
+          </div>
+
+
+
+          <p class="title">お届け先情報</p>
+          <div class="box">
+            <%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %><br><br>
+            <table class="nonmember-ordre">
+                  <% @addresses.each do |del_address| %>
+                  <%= f.radio_button :address, del_address.address, :checked => nil %><br>
+                  <%= del_address.post_number %><br>
+                  <%= del_address.address %><br>
+                  <%= del_address.family_name %> <%= del_address.first_name %><br>
+                  <%= del_address.phone_number %><br>
+
+                  <% end %>
             </table>
           </div>
 

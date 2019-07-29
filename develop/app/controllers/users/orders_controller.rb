@@ -7,6 +7,7 @@ class Users::OrdersController < ApplicationController
   def new
 
     @user = current_user
+    @addresses = @user.addresses.all
     @current_address = @user.addresses.first
     if @current_address
     @order = Order.new
@@ -32,6 +33,11 @@ class Users::OrdersController < ApplicationController
       end
     end
       @order.delivery_status = 0
+      @ad_info = Address.find_by(address: @order.address)
+      @order.post_number = @ad_info.post_number
+      @order.family_name = @ad_info.family_name
+      @order.first_name = @ad_info.first_name
+      @order.phone_number = @ad_info.phone_number
       @order.save
       flash[:notice] = "購入ありがとうございました。カートは空です。"
       redirect_to users_user_path(current_user)

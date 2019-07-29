@@ -52,7 +52,11 @@
       <p>〒<%= @user.addresses.first.post_number.to_s %></p>
       <p><%= @user.addresses.first.address %></p>
       <br>
-      <p><%= @user.addresses.first.family_name %><%= @user.addresses.first.first_name %></p>
+      <p>
+        <%= link_to admins_user_path(@user.id) do %>
+        <%= @user.addresses.first.family_name %><%= @user.addresses.first.first_name %>
+          <% end %>
+        </p>
       <p><%= @user.email %></p>
       <hr>
     </div>
@@ -67,6 +71,7 @@
       <br>
       <p><%= @order.name %></p>
       <p><%= @order.payment_method %></p>
+      <p><%= @order.phone_number %></p>
       <hr>
     </div>
   </div>

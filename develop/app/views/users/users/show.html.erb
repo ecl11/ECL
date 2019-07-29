@@ -65,7 +65,9 @@
             <tr>
                 <% order.order_items.each do |order_item| %>
               <td>
+                <%= link_to users_item_path(order_item.item.id) do %>
                 <%= order_item.item.product_name  %>
+                <% end %>
               </td>
 
               <% sub_total = ((order_item.price.to_i * order_item.sheet.to_i)*1.08).round %>

@@ -28,10 +28,7 @@
                 <% end %>
               </td>
             </tr>
-            <% end %>
           </div>
-              
-            
             <tr>
               <td><%= @user.phone_number %></td>
             </tr>
@@ -58,7 +55,9 @@
             <% @orders.each do |order| %>
 <tr>
               <th>
+                <%= link_to admins_order_path(order.id) do %>
                 <%= order[:created_at].strftime("%Y-%m-%d　%H:%M")  %>
+                <% end %>
               </th>
               <th>
                 <%= order.delivery_status %>
@@ -78,7 +77,9 @@
             <tr>
                 <% order.order_items.each do |order_item| %>
               <td>
+                <%= link_to admins_item_path(order_item.item.id) do %>
                 <%= order_item.item.product_name  %>
+                <% end %>
               </td>
 
               <% sub_total = ((order_item.price.to_i * order_item.sheet.to_i)*1.08).round %>

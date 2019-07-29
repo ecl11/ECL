@@ -96,7 +96,9 @@
                 <tr>
                   <th>注文者住所</th>
                   <td>
+                    〒<%= @current_address.post_number %>
                     <%= @current_address.address %>
+                  </td>
                 </tr>
                 <tr>
                   <th>電話番号</th>
@@ -114,7 +116,7 @@
             <table class="nonmember-ordre">
                   <% @addresses.each do |del_address| %>
                   <%= f.radio_button :address, del_address.address, :checked => nil %><br>
-                  <%= del_address.post_number %><br>
+                  〒<%= del_address.post_number %><br>
                   <%= del_address.address %><br>
                   <%= del_address.family_name %> <%= del_address.first_name %><br>
                   <%= del_address.phone_number %><br>

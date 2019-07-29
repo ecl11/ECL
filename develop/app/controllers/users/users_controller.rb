@@ -43,7 +43,7 @@ class Users::UsersController < ApplicationController
 
   private
   def user_params
-  params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number, :is_deleted)
+  params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number　)
   end
   def address_params
     params.require(:address).permit(:post_number,:address)

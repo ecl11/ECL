@@ -20,9 +20,11 @@
             <tr>
               <td>
                 <% @user.addresses.each do |address| %>
+                〒<%= address.post_number %><br>
                 <%= address.address %><br><br>
                 <% end %>
-              </td>            </tr>
+              </td>
+            </tr>
             <tr>
               <td><%= @user.phone_number %></td>
             </tr>
@@ -53,7 +55,8 @@
             </tr>
             <tr>
               <td>
-               配送先<br>
+               お届け先<br>
+               〒<%= order.post_number %>
                 <%= order.address %>
               </td>
               <td>支払い:<%= order.payment_method %><br>

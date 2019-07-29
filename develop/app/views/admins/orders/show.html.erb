@@ -23,7 +23,7 @@
           <tbody>
 　　　　　　　<% @order_items.each do |order_item| %>
               <tr>
-	              <td><%= attachment_image_tag @item, :jacket_image,size: '100x100', fallback: "no_image.jpg" %></td>
+	              <td><%= attachment_image_tag order_item.item, :jacket_image,size: '100x100', fallback: "no_image.jpg" %></td>
                 <td><%= order_item.item.product_name %></td>
                 <td><%= order_item.item.artist.artist_name %></td>
                 <td><%= number_with_delimiter((order_item.price*1.08).round).to_s %>円</td>

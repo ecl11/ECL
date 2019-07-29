@@ -25,15 +25,25 @@ class Users::UsersController < ApplicationController
     if params[:user][:encrypted_password].blank?
       params[:user].delete("encrypted_password")
     end
-    if @user.update(user_params)
-      redirect_to users_user_path(@user.id)
-    end
+     @user.update(user_params)
+  
   end
+
+  
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to '/top'
+     flash[:notice] = "退会しました"
+  end
+
+
 
 
   private
   def user_params
-  params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number)
+  params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number　)
   end
   def address_params
     params.require(:address).permit(:post_number,:address)

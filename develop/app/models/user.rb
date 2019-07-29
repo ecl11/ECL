@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	acts_as_paranoid
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 	devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
@@ -10,8 +11,10 @@ class User < ApplicationRecord
 
 	enum is_deleted:{
 		会員: 0,
-		退会済み: 1
+		退会: 1
 	}
+
+	
 	def self.search(search) #self.でクラスメソッドとしている
      if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
        User.where(['family_name LIKE ? OR first_name LIKE ?', "%#{search}%" ,"%#{search}%"])

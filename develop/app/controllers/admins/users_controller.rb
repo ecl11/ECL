@@ -38,9 +38,12 @@ class Admins::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admins_users_path
-  end
+      @user.destroy
+      flash[:notice] = "退会させました"
+      redirect_to admins_user_path
+ end
+
+  private
 
    def user_params
   params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number,

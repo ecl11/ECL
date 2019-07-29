@@ -36,7 +36,12 @@
             </tr>
             <tr>
               <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-6 btn btn-default" %></td>
-              <td><%= link_to "削除",admins_users_path(@user),class: "col-lg-6 btn-default", data: {:confirm => '本当に消しますか？'}, method: :delete %></td>
+              <td>
+                 <%= form_for(@user,:url => {:action => :update}) do |f| %>
+                <%= f.select :is_deleted, User.is_deleteds.keys.to_a, {} %>
+                  <%= f.submit '退会する' %>
+                  <% end %>
+              </td>
             </tr>
            </tbody>
         </table>

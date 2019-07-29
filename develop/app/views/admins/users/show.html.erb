@@ -10,22 +10,21 @@
 
             <tbody>
             <tr>
-              <td><%= @user.kana_family_name %></td>
-              <td><%= @user.kana_first_name %></td>
+              <td><%= @user.kana_family_name %><%= @user.kana_first_name %></td>
             </tr>
             <tr>
-              <td><%= @user.family_name %></td>
-              <td><%= @user.first_name %></td>
+              <td><%= @user.family_name %><%= @user.first_name %></td>
             </tr>
-            <tr>
-              <td></td>
-              <td></td>
+            <div>
+              <% @user.addresses.each do |address| %>
+              <tr><td><%= address.post_number %></td></tr>
+              <tr>
+              <td><%= address.address %></td>
             </tr>
-            <tr>
-              <td><% @user.addresses.each do |address| %></td>
-              <td><% address.address %></td>
-              <% end %>
-            </tr>
+            <% end %>
+          </div>
+              
+            
             <tr>
               <td><%= @user.phone_number %></td>
               <td></td>
@@ -35,12 +34,9 @@
               <td></td>
             </tr>
             <tr>
-              <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-6 btn btn-default" %></td>
+              <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-12 btn btn-default" %></td>
               <td>
-                 <%= form_for(@user,:url => {:action => :update}) do |f| %>
-                <%= f.select :is_deleted, User.is_deleteds.keys.to_a, {} %>
-                  <%= f.submit '退会する' %>
-                  <% end %>
+                  <%= link_to "退会する", admins_user_path(@user), method: :delete, class:"btn btn-danger" %>
               </td>
             </tr>
            </tbody>
@@ -71,19 +67,17 @@
                住所<br>
                 <%= order.address %>
               </td>
-              <td>
-                支払い:<%= order.payment_method %><br>
-　　　　　　　　　　合計金額:<%= order.total_price %>￥<br>
-                別途送料:<%= order.shipping_fee %>￥
+              <td>支払い:<%= order.payment_method %><br>合計金額:￥ <%= number_with_delimiter(order.total_price.to_s) %><br>別途送料:￥ <%= order.shipping_fee %>
               </td>
             </tr>
             <tr>
               <td>
                 <% order.order_items.each do |order_item| %>
-                <%= order_item.id %>
+                <%= order_item.item.product_name  %>
               </td>
+              <% sub_total = ((order_item.price.to_i * order_item.sheet.to_i)*1.08).round %>
                <td>
-                <%= order_item.price %>×<%= order_item.sheet %>=<%= order_item.price*order_item.sheet %>(税込)
+                税込: ￥ <%= number_with_delimiter(sub_total.to_s) %>
               </td>
             </tr>
             <% end %>

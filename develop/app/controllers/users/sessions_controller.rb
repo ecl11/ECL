@@ -24,16 +24,8 @@ class Users::SessionsController < Devise::SessionsController
   # protected
 
   def after_sign_in_path_for(resource)
-    if current_user.is_deleted == 1
-      #sign_out
-      redirect_to '/top'
-      else
-        if current_user.addresses.count == 0
-          new_users_address_path
-        else
           users_items_path
-        end
-      end
+   
     end
 
 

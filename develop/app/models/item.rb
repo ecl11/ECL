@@ -29,6 +29,9 @@ class Item < ApplicationRecord
     end
 
   end
+  def price_with_tax
+    (price.to_i * 1.08).round
+  end
 
 	def self.search(search) #self.でクラスメソッドとしている
     	if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索

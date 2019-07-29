@@ -14,8 +14,8 @@
               <th>商品画像</th>
               <th>品番・品名・アーティスト名</th>
               <th>数量</th>
-              <th>単価（税込）</th>
-              <th>小計</th>
+              <th>単価 (税込)</th>
+              <th>小計 (税込)</th>
               <th>削除</th>
             </tr>
             <% @user.cart_items.each do |cart_item| %>
@@ -37,8 +37,8 @@
               <% end %><br>
               在庫数: <%= cart_item.item.stock_quantity %> 個
               </td>
-              <td class="right"><%= number_with_delimiter(cart_item.item.price.to_s) %>円</td>
-              <td class="right"><%= number_with_delimiter(cart_item.sub_total.to_s) %>円</td>
+              <td class="right"><%= number_with_delimiter(cart_item.item.price_with_tax.to_s) %>円</td>
+              <td class="right"><%= number_with_delimiter(cart_item.sub_total_with_tax.to_s) %>円</td>
               <td class="center"><%= link_to "delete", users_cart_path(cart_item), method: :delete %></td>
             </tr>
             <% end %>

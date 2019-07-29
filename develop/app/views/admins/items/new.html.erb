@@ -50,7 +50,7 @@
                 <%= link_to "ジャンル追加",new_admins_genre_path,class: "col-lg-3 btn btn-default ddd" %><br>
               </div>
               <div class="form-group">
-                <label for="price">価格 (税込)</label><br>
+                <label for="price">価格 (税抜)</label><br>
                 <%= f.text_field :price %>
               </div>
               <div class="form-group disc">
@@ -79,13 +79,12 @@
             </div>
             <div class="col-md-9">
               <div class="form-group">
+                在庫数は半角で入力してください。<br>
                 <label for="stock_quantity">在庫</label><br>
-                <div class="help-block">在庫数は半角で入力してください。</div>
-                <%= f.text_field :stock_quantity %>
-                <div class="help-block">在庫数は半角で入力してください。</div>
-                <div class="help-block">販売停止の場合は下を編集してください。</div>
+                <%= f.text_field :stock_quantity %><br>
               </div>
               <div class="form-group">
+                販売停止の場合は下を編集してください。<br>
                 <label for="sales_status">販売ステータス</label><br>
                 <%= f.select :sales_status, Item.sales_statuses.keys.to_a, {} %>
               </div>

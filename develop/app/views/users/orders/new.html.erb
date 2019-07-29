@@ -12,8 +12,8 @@
               <th>商品画像</th>
               <th>品番・品名・詳細</th>
               <th>数量</th>
-              <th>単価（税込）</th>
-              <th>小計</th>
+              <th>単価（税込)</th>
+              <th>小計 (税込)</th>
               <th>削除</th>
             </tr>
             <% sum = 0 %>
@@ -44,12 +44,12 @@
                 <%= cart_item.sheet %>
               </td>
               <td class="right">
-                <%= cart_item.item.price %>円
+                <%= number_with_delimiter(cart_item.item.price_with_tax.to_s) %> 円
               </td>
-              <% sub_total = cart_item.item.price.to_i * cart_item.sheet.to_i %>
+              <% sub_total = cart_item.item.price_with_tax.to_i * cart_item.sheet.to_i %>
               <% sum += sub_total %>
               <td class="right">
-                <%= sub_total %>
+                <%= number_with_delimiter(cart_item.sub_total_with_tax.to_s) %>円
               </td>
               <td class="center">
                 <%= link_to "delete", users_cart_path(cart_item), method: :delete %>
@@ -59,20 +59,21 @@
 
             <% end %>
             <tr>
-              <td>合計</td>
-              <td class="right" colspan="5"><%= sum %>円</td>
-              <%= f.hidden_field :total_price, :value => sum %>
+              <td>合計(税込)</td>
+              <% sum_with_sub_total = sum.round %>
+              <td class="right" colspan="5"><%= number_with_delimiter(sum_with_sub_total.to_s) %> 円</td>
+              <%= f.hidden_field :total_price, :value => sum_with_sub_total %>
             </tr>
             <tr>
               <% shipping_fee = 500 %>
               <td>送料</td>
-              <td class="right" colspan="5"><%= shipping_fee %></td>
+              <td class="right" colspan="5"><%= shipping_fee %> 円</td>
               <%= f.hidden_field :shipping_fee, :value => shipping_fee %>
             </tr>
             <tr>
               <td>総額</td>
-              <% amount = sum.to_i + 500 %>
-              <td class="right" colspan="5"><%= amount %>円</td>
+              <% amount = sum_with_sub_total.to_i + 500 %>
+              <td class="right" colspan="5"><%= number_with_delimiter(amount.to_s) %> 円</td>
               <%= f.hidden_field :amount, :value => amount %>
             </tr>
           </tbody>

@@ -1,4 +1,15 @@
-  <div id="wrap">
+<% if flash[:notice] %>
+  <div id="gritter-notice-wrapper">
+    <div id="gritter-item-1" class="gritter-item-wrapper">
+      <div class="gritter-item gritter-css3">
+        <div class="gritter-close" style="display: none;"></div><img src="/assets/1249.png" class="gritter-image">
+        <div class="gritter-with-image">
+          <span class="gritter-title">Notification</span>
+          <p><%= flash[:notice] %></p></div>
+          <div style="clear:both"></div></div></div></div><% end %>
+
+
+<div id="wrap">
     <main class="container">
       <div id="main">
         <ul class="breadcrumb">
@@ -23,7 +34,8 @@
                 class="name"><%= link_to users_item_path(item.id) do %><%= item.product_name %><% end %></div>
               <div
                 class="name"><% if item.artist.present? %><%= item.artist.artist_name %><% end %></div>
-        <div class="price"><%= number_with_delimiter(item.price.to_s) %>円</div>
+        <div class="price">税込: <%= number_with_delimiter(item.price_with_tax.to_s) %>円</div>
+        <% if item.stock_quantity == 0 %><font color="red"><h4><売り切れ></h4></font><% end %>
         </li>
         <% end %>
   </ul>
@@ -32,3 +44,8 @@
   </main>
   </div>
 
+<script>
+  $(function(){
+  setTimeout("$('.gritter-item').fadeOut('slow')", 3000)
+})
+</script>

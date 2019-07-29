@@ -3,12 +3,15 @@
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
 				<h2>ECL</h2>
-			  <table>
+			  
 
 			  	<thead>ユーザー情報編集</thead>
-			  	<tbody>
+			  	
+			  	
 
 				<%= form_for @user,:url => {:action => :update} do |f| %>
+				<table>
+			    <tbody>
 				<tr>
 				  <div class="form-group has-icon">
 					  <%= f.label :family_name, "姓" %><br>
@@ -55,27 +58,24 @@
 			    	</div>
 			    </tr>
 			    <tr>
-			    	<div>
-			    		<%= f.label :encrypted_password,"新規パスワード" %><br>
-			    		<%= f.password_field :encrypted_password, class: "encrypted_password", autocomplete: "encrypted_password" %>
-			    	</div>
-			    </tr>
-			    <tr>
-			    	<div>
-			    		<%= f.label :password_confirmation,"パスワード確認" %><br>
-			    		<%= f.password_field :password_confirmation, class: "password_confirm", autocomplete: "new_password" %>
-			    	</div>
-			    </tr>
-			    <div class="actions">
+			    	<td>
+			        <div class="actions">
 			         	<%= f.submit "編集する" %>
-			         	<% end %>
+		            </div>
+		            </td>
+		        </tr>
+		        <% end %>
+		        <tr>
+		        	<td>
+		        	<%= link_to "退会する", users_user_path(@user), method: :delete, class:"btn btn-danger" %>
+		        	
+                 </td>
+
+
+		        </tr>
 			</tbody>
-			         </div>
-				
-			  </table>
-			</div>
-		</div>
+		  </table>
 
-
-
-</div>
+	    </div>
+	 </div>
+	</div>

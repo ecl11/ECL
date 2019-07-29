@@ -15,9 +15,9 @@
               <th></th>
               <th>商品名</th>
               <th>アーティスト名</th>
-              <th>価格</th>
+              <th>価格（税込）</th>
               <th>個数</th>
-              <th>小計</th>
+              <th>小計（税込）</th>
             </tr>
           </thead>
           <tbody>
@@ -26,9 +26,9 @@
 	              <td><%= attachment_image_tag @item, :jacket_image,size: '100x100', fallback: "no_image.jpg" %></td>
                 <td><%= order_item.item.product_name %></td>
                 <td><%= order_item.item.artist.artist_name %></td>
-                <td><%= order_item.price.to_i %>円</td>
+                <td><%= number_with_delimiter((order_item.price*1.08).round).to_s %>円</td>
                 <td><%= order_item.sheet %></td>
-                <td><%= order_item.subtotal.to_i %>円</td>
+                <td><%= number_with_delimiter((order_item.price*1.08*order_item.sheet).round).to_s %>円</td>
               </tr>
             <% end %>
           </tbody>
@@ -36,11 +36,11 @@
     </div>
     <div class='col-xs-12'>
      <hr>
-     <b class="text-right"><dl class="dl-horizontal"><dt>商品合計</dt><dd><%= @order.total_price.to_i %>円</dd></dl></b>
+     <b class="text-right"><dl class="dl-horizontal"><dt>商品合計</dt><dd><%= number_with_delimiter(@order.total_price.round).to_s %>円</dd></dl></b>
      <hr>
      <b class="text-right"><dl class="dl-horizontal"><dt>送料</dt><dd>500円</dd></dl></b>
      <hr>
-     <b class="text-right"><dl class="dl-horizontal"><dt>合計</dt><dd><%= @order.amount.to_i %>円</dd></dl></b>
+     <b class="text-right"><dl class="dl-horizontal"><dt>ご請求総額</dt><dd><%= number_with_delimiter(@order.amount.round).to_s %>円</dd></dl></b>
      <hr>
     </div>
   </div>

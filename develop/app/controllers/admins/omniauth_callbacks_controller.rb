@@ -2,7 +2,7 @@
 
 class Admins::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
 
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]

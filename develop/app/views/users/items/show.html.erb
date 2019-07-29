@@ -13,6 +13,7 @@
             <div class="main-product">
               <div class="sample"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, format: 'jpeg', fallback:"no_image.jpg" %></div>
               <ul class="stock">
+                <% if user_signed_in? %>
                 <% if @cart_item.sheet.present? %>
                     <li class="ed"><div class="sold_out">この商品は現在<%= @cart_item.sheet %>枚カートに入っています。</div></li>
                     <%= form_for(@cart_item, url: users_cart_path(@cart_item)) do |f| %>
@@ -52,6 +53,7 @@
                     <% end %>
               </ul>
             </div>
+                 <% end %>
                  <% end %>
 
 

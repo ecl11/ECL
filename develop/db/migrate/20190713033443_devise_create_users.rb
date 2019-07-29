@@ -40,7 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :kana_family_name
       t.string :kana_first_name
       t.string :phone_number
-      t.integer :is_deleted
+      t.integer :is_deleted, null: false, default: 0
 
 
       t.timestamps null: false

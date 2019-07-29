@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'top' => 'top#top'
+  delete 'top' => 'top#top'
 
   devise_for :admins, :controllers => {
     :sessions => 'admins/sessions',

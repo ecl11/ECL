@@ -25,32 +25,39 @@ class Users::UsersController < ApplicationController
     if params[:user][:encrypted_password].blank?
       params[:user].delete("encrypted_password")
     end
-    if @user.update(user_params)
-      redirect_to users_user_path(@user.id)
-    end
-    @user.is_deleted = 0
-    @user.is_deleted.update
-    if @user.is_deleted = 1
-      redirect_to '/top'
-    end
+   # @current_user.is_deleted = 0
+     @user.update(user_params)
+     # if @current_user.is_deleted = 1
+       sign_out
+        redirect_to '/top'
+      #else
+      #redirect_to users_user_path(@user.id)
+    #end
   end
 
-  #def destroy
+  
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to '/top'
     #@user = User.find(params[:id])
     #@address = Address.find_by(user_id: params[:id])
     #@orders = Order.find_by(user_id: params[:id])
     #if @orders.nil?
-     # @user.destroy
+     # @user.is_deleted = 1
+      #@user.update(user_params)
+      #sign_out(@user)
       #@address.destroy
-      #flash[:notice] = "退会しました"
-      #redirect_to '/top'
+     flash[:notice] = "退会しました"
+     # redirect_to '/top'
     #else
      # @orders.destroy
      # @user.destroy
       #@address.destroy
       #flash[:notice] = "退会しました"
       #redirect_to '/top'
- #end
+ end
 
 
   #end
@@ -58,7 +65,7 @@ class Users::UsersController < ApplicationController
 
   private
   def user_params
-  params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number)
+  params.require(:user).permit(:email,:encrypted_password,:address_id, :family_name,:firstname,:kana_family_name,:kana_first_name,:phone_number, :is_deleted)
   end
   def address_params
     params.require(:address).permit(:post_number,:address)

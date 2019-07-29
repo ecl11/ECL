@@ -36,23 +36,23 @@ class Admins::UsersController < ApplicationController
       end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    @address = Address.find_by(user_id: params[:id])
-    @orders = Order.find_by(user_id: params[:id])
-    if @orders.nil?
-      @user.destroy
-      @address.destroy
-      flash[:notice] = "退会しました"
-      redirect_to admins_user_path
-    else
-      @orders.destroy
-      @user.destroy
-      @address.destroy
-      flash[:notice] = "退会しました"
-      redirect_to admins_user_path
-    end
- end
+  #def destroy
+   # @user = User.find(params[:id])
+   # @address = Address.find_by(user_id: params[:id])
+   # @orders = Order.find_by(user_id: params[:id])
+   # if @orders.nil?
+   #   @user.destroy
+   #   @address.destroy
+      #flash[:notice] = "退会しました"
+      #redirect_to admins_user_path
+    #else
+     # @orders.destroy
+     # @user.destroy
+     # @address.destroy
+     # flash[:notice] = "退会しました"
+     # redirect_to admins_user_path
+    #end
+ #end
 
   private
 

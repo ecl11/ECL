@@ -64,20 +64,18 @@
 		            </div>
 		            </td>
 		        </tr>
+		        <% end %>
 		        <tr>
 		        	<td>
-                  <%= form_for(@user, url: users_user_path) do |f| %>
-                <%= f.select :is_deleted, User.is_deleted.keys.to_a, {} %>
-                  <%= f.submit '退会する' %>
-                  <% end %>
-               </td>
+		        	<%= link_to "退会する", users_user_path(@user), method: :delete, class:"btn btn-danger" %>
+		        	
+                 </td>
+
 
 		        </tr>
 			</tbody>
 		  </table>
-		  <% end %>
 
 	    </div>
 	 </div>
 	</div>
-</div>

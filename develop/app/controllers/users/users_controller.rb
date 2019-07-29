@@ -30,6 +30,11 @@ class Users::UsersController < ApplicationController
     end
   end
 
+  def member
+    @user = User.find(params[:id])
+    @user.is_deleted = 1
+  end
+
 
   private
   def user_params

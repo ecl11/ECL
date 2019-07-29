@@ -22,7 +22,7 @@
             <%= link_to "Logout", destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>
           </li>
           <li>
-            <font color="#f5f5f5"><%= current_user.family_name %><%= current_user.first_name %>さん</font>
+            <font color="#f5f5f5">ようこそ<%= current_user.family_name %><%= current_user.first_name %>さん</font>
           </li>
 
         <% else %>
@@ -37,6 +37,9 @@
           </li>
           <li>
             <%= link_to "Login", new_user_session_path, class: "glyphicon glyphicon-log-in" %>
+          </li>
+          <li>
+            <font color="#f5f5f5"> ようこそ　ゲスト さん</font>
           </li>
         <% end %>
       </ul>

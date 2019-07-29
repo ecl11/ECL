@@ -2,7 +2,7 @@
 
 class Admins::ConfirmationsController < Devise::ConfirmationsController
 
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
 
   include DisplayAdminHeader
 

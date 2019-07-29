@@ -10,16 +10,23 @@
 
             <tbody>
             <tr>
-              <td><%= @user.kana_family_name %><%= @user.kana_first_name %></td>
+              <td>
+                <%= @user.kana_family_name %>
+                <%= @user.kana_first_name %>
+              </td>
             </tr>
             <tr>
-              <td><%= @user.family_name %><%= @user.first_name %></td>
+              <td>
+                <%= @user.family_name %>
+                <%= @user.first_name %>
+              </td>
             </tr>
-            <div>
-              <% @user.addresses.each do |address| %>
-              <tr><td><%= address.post_number %></td></tr>
-              <tr>
-              <td><%= address.address %></td>
+            <tr>
+              <td>
+                <% @user.addresses.each do |address| %>
+                <%= address.address %><br><br>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </div>
@@ -27,17 +34,13 @@
             
             <tr>
               <td><%= @user.phone_number %></td>
-              <td></td>
             </tr>
             <tr>
               <td><%= @user.email %></td>
-              <td></td>
             </tr>
             <tr>
-              <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-12 btn btn-default" %></td>
-              <td>
-                  <%= link_to "退会する", admins_user_path(@user), method: :delete, class:"btn btn-danger" %>
-              </td>
+
+              <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-6 btn btn-default" %></td>
             </tr>
            </tbody>
         </table>
@@ -69,6 +72,7 @@
               <td>支払い:<%= order.payment_method %><br>
                 合計金額(税込　送料別):￥ <%= number_with_delimiter(order.total_price.round).to_s %><br>
                 別途送料:￥ <%= order.shipping_fee %>
+                ご請求額(税、送料込):￥<%= number_with_delimiter(order.amount.round).to_s %>円
               </td>
             </tr>
             <tr>
@@ -85,6 +89,7 @@
             </tr>
 
            <% end %>
+                       <tr><td><td><br><br></td></td></tr>
            <% end %>
             <%= paginate @orders %>
           </tbody>

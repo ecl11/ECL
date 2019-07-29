@@ -26,6 +26,7 @@ class Users::UsersController < ApplicationController
       params[:user].delete("encrypted_password")
     end
      @user.update(user_params)
+     redirect_to users_items_path
   
   end
 

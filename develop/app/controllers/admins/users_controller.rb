@@ -40,7 +40,7 @@ class Admins::UsersController < ApplicationController
     @user = User.find(params[:id])
       @user.destroy
       flash[:notice] = "退会させました"
-      redirect_to admins_user_path
+      redirect_to admins_users_path
  end
 
   private

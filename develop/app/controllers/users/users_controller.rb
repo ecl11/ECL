@@ -25,14 +25,8 @@ class Users::UsersController < ApplicationController
     if params[:user][:encrypted_password].blank?
       params[:user].delete("encrypted_password")
     end
-   # @current_user.is_deleted = 0
      @user.update(user_params)
-     # if @current_user.is_deleted = 1
-       sign_out
-        redirect_to '/top'
-      #else
-      #redirect_to users_user_path(@user.id)
-    #end
+  
   end
 
   

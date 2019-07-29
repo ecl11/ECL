@@ -51,7 +51,9 @@
                     <% end %>
                     </td>
                   <td>
+                    <%= link_to admins_item_path(item.id) do %>
                     <%= item.product_name %>
+                    <% end %>
                   </td>
                   <td>
                     <% if item.artist.present? %>

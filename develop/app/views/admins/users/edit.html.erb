@@ -53,6 +53,7 @@
 			         	<%= f.submit "編集する" %>
 			         </div>
 				<% end %>
+				<%= link_to "退会させる", users_user_path(@user), method: :delete, class:"btn btn-danger" %>
 			  </tbody>
 			</div>
 		</div>

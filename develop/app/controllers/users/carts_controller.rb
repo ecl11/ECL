@@ -25,7 +25,7 @@ def create
     else
     @cart_item.destroy
     redirect_to users_carts_path
-    flash[:notice] = "カートにいくつかのエラーがありました"
+    flash[:notice] = "在庫より注文数量が多い商品があります"
   end
   end
 
@@ -37,7 +37,7 @@ def create
     else
     @cart_item.destroy
     redirect_to users_carts_path
-    flash[:notice] = "カートにいくつかのエラーがありました"
+    flash[:notice] = "在庫より注文数量が多い商品があります"
 
   end
 end

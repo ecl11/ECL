@@ -38,7 +38,7 @@
             </tr>
             <tr>
 
-              <td><%= link_to "編集",edit_admins_user_path(@user.id),class: "col-lg-6 btn btn-default" %></td>
+              <td><%= link_to "編集", edit_admins_user_path(@user.id), class: "col-lg-6 btn btn-default" %></td>
             </tr>
            </tbody>
         </table>
@@ -72,8 +72,8 @@
               </td>
               <td>支払い:<%= order.payment_method %><br>
                 合計金額(税込　送料別):￥ <%= number_with_delimiter(order.total_price.round).to_s %><br>
-                別途送料:￥ <%= order.shipping_fee %>
-                ご請求額(税、送料込):￥<%= number_with_delimiter(order.amount.round).to_s %>円
+                別途送料:￥ <%= order.shipping_fee %><br>
+                請求額(税、送料込):￥<%= number_with_delimiter(order.amount.round).to_s %>円
               </td>
             </tr>
             <tr>

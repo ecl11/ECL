@@ -34,16 +34,15 @@
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= f.label "登録済み住所" %><br>
+			    		<br><%= f.label "登録済み住所" %><br>
 			    		<%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
-			    		<%= link_to "住所の編集と削除",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
-			    		<div class="form-group"><label for="artist_name"></label>
-			    			<br><% @user.addresses.each do |address| %></div>
-			    			<div class="address" >
-			    			〒<%= address.post_number %><br>
-			    			<%= address.address %>
-		    				</div>
-			    			<% end %>
+			    		<%= link_to "住所の編集と削除",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br><br>
+			    		<div>
+			    			<% @user.addresses.each do |address| %>
+			    			<%= address.post_number %><br>
+			    			<%= address.address %><br><br><br>
+		    				<% end %>
+		    			</div>
 			    	</div>
 			    </tr>
 			    <tr>
@@ -69,10 +68,7 @@
 		        <tr>
 		        	<td>
 		        	<%= link_to "退会する", users_user_path(@user), method: :delete, class:"btn btn-danger" %>
-		        	
-                 </td>
-
-
+		        	</td>
 		        </tr>
 			</tbody>
 		  </table>

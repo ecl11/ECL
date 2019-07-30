@@ -8,6 +8,7 @@
 			  	<thead>ユーザー情報編集</thead>
 
 				<%= form_for @user,:url => {:action => :update} do |f| %>
+				<table>
 				<tr>
 				<div class="form-group has-icon">
 					  <%= f.label :family_name, "姓" %><br>
@@ -30,12 +31,16 @@
 			    </tr>
 			    <tr>
 			    	<div>
-			    		<%= f.label "住所" %><br>
-			    		<%= link_to "住所追加",new_users_address_path,class: "col-lg-3 btn btn-default" %>
+			    		<%= f.label "登録済み住所" %><br>
 			    		<%= link_to "住所の編集と削除",edit_users_address_path,class: "col-lg-3 btn btn-default" %><br>
-			    		<div class="form-group"><label for="artist_name"></label>
-			    			<br><%= f.select :address_id, @user.addresses.all.map{|t| [t.address, t.id]} %></div>
-			    	</div>
+			    		<br>
+			    		<div>
+			    			<% @user.addresses.each do |address| %>
+			    			<%= address.post_number %><br>
+			    			<%= address.address %><br><br><br>
+			    			<% end %>
+		    			</div>
+		    		</div>
 			    </tr>
 			    <tr>
 			    	<div>
@@ -54,10 +59,8 @@
 			         </div>
 				<% end %>
 				<%= link_to "退会させる", users_user_path(@user), method: :delete, class:"btn btn-danger" %>
+			</table>
 			  </tbody>
 			</div>
 		</div>
-
-
-
 </div>
